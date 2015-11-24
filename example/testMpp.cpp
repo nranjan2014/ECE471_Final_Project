@@ -150,6 +150,7 @@ int main(int argc, char **argv)
 
         }
     }
+    writeData(nXTr, "NormData.tr");
     nXTe = XTe;
     // normalize the testing data set with sigma from covariance and mean already calculated
     for (int j = 0; j < nf ; j++)
@@ -168,8 +169,12 @@ int main(int argc, char **argv)
 
     // get optimal basis vector
     B_M = GetPCA(nXTr);
+    
     // using this basis vector to transformed training and testing data set
     tXTr = GetDataTransformedFLD ( nXTr, B_M);
+    
+    writeData(tXTr, "PCA.tr");
+    
     tXTe = GetDataTransformedFLD ( nXTe, B_M);
 
 
@@ -180,10 +185,17 @@ int main(int argc, char **argv)
 
     // using this optimal projection direction to transformed training and testing data set
     fXTr = GetDataTransformedFLD ( nXTr,W);
+    
+    writeData(fXTr, "FLD.tr");
+    
     fXTe = GetDataTransformedFLD ( nXTe,W);
     
+    if ( cases == 0)
+    {
+        
+    }
     // case: run the task of  MAP, case1, case2, case3 classification on nX data set with equal prior probabilty
-    if ( cases == 1)
+    else if ( cases == 1)
     {
         // assign prior probability
         Matrix Pw(classes, 1);
