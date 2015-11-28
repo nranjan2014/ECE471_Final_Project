@@ -121,6 +121,7 @@ Matrix getTrainingData(Matrix &foldData, Matrix &glassData, int i );
 // this function implements kNN using original Euclidean distance to be used to 
 // clasiify the testing set using 10 folds cross-validation technique
 int KNNClassifierEuclidianFold(Matrix &nXTr, Matrix &sample, int K,int classes);
+void MakeFoldData(int row);
 
 #endif
 
