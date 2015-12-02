@@ -71,7 +71,7 @@ Matrix GetPCA( Matrix &nX);
 Matrix GetDataTransformedFLD ( Matrix &nX, Matrix W);
 
 // this function calculates the TP, TN, FP, FN, TPR, FPR, sensitivity, specificity, precision, accuracy, and recall rate 
-void DerivePerferformanceMetric ( Matrix & tested, Matrix &truth, int datatype);
+void DerivePerformanceMetric ( Matrix & tested, int datatype);
 
 // this function does the classification on data set nX, tX, fX using MAP with 
 // optimal prior probability found 
@@ -122,6 +122,11 @@ Matrix getTrainingData(Matrix &foldData, Matrix &glassData, int i );
 // clasiify the testing set using 10 folds cross-validation technique
 int KNNClassifierEuclidianFold(Matrix &nXTr, Matrix &sample, int K,int classes);
 void MakeFoldData(int row);
-
+void RunMPPCase123 (Matrix &nXTr, int caseNum);
+void FindOptimalPP( Matrix &mat);
+void GetROC(Matrix &nXTr);
+void ClassifyBestPwPCAFLD(Matrix &tXTr);
+void DerivePerformanceMetricROC ( Matrix & tested);
+void RunKNN (Matrix &nXTr, int caseNum);
 #endif
 
