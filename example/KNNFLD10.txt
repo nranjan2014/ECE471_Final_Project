@@ -1,0 +1,33 @@
+Correct Rate: 20
+Running Time: 0.006671 seconds
+Correct Rate: 10
+Running Time: 0.006414 seconds
+Correct Rate: 15
+Running Time: 0.005764 seconds
+Correct Rate: 30
+Running Time: 0.004897 seconds
+Correct Rate: 25
+Running Time: 0.004692 seconds
+Correct Rate: 15
+Running Time: 0.004647 seconds
+Correct Rate: 45
+Running Time: 0.00443 seconds
+Correct Rate: 25
+Running Time: 0.004562 seconds
+Correct Rate: 25
+Running Time: 0.005427 seconds
+Correct Rate: 46.6667
+Running Time: 0.003422 seconds
+Average Correct Rate: 25.1282
+Average Running Time: 0.0050926 seconds
+The TP rate using 10 is 10
+The TN rate using 10 is 46
+The FP rate using 10 is 3
+The FN rate using 10 is 136
+The Sensitivity rate using 10 is 0.0684932
+The Specificity rate using 10 is 0.938776
+The Precision rate using 10 is 0.769231
+The Recall rate using 10 is 0.0684932
+The Accuracy rate using 10 is 0.287179
+The FPR rate using 10 is 0.0612245
+The TPR rate using 10 is 0.0684932

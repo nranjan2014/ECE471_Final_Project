@@ -1,0 +1,10 @@
+ConfusionMatrix1 : MPPCASE1Normdata
+ConfusionMatrix2  MPPCASE2Normdata
+ConfusionMatrix3  MPPCASE3PCAdata
+ConfusionMatrix4  MPPcase3PCABESTPPdata
+ConfusionMatrix5  MPPcase3FLDBESTPPdata
+ConfusionMatrix6  KNN: K=1
+ConfusionMatrix7  KNN: K=5
+ConfusionMatrix10  KNN: K=10
+ConfusionMatrix15  KNN: K=15
+

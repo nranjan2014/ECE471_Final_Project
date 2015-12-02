@@ -1,0 +1,1353 @@
+row: 195
+ 160   88  128   62  117  151    4   89  143  181   26  163  174  157  127  123  187   39   36   19 
+ 107   57  153  144  170   44   37  106   66  175  168   94   70  194  142  150   99  178   87  105 
+  74   38  193  114   28   27  115  186    3   54  190   53   25   14   49  159  125   86    2  154 
+ 134  146   97  176  139   15  185   33  180   77  108   42  189    8  101   34   90  103   30   17 
+ 126   76  167  183  179    5  161  113  129   93   46  192  147   43   72   48    1  188  100  132 
+  12  165   98  172  152  136   58  110   35  112  155  135   83    9  138   96   63   10   21  166 
+ 182   95   20  116   55  173  145   85   69   78   73  149   80   61   40   11  177  141  130  124 
+  71   82   32  169   56  158   16   75   45   60    6   41  120  162  111   23  122   51   65  156 
+ 184    0  171  102   59   84  109   68   47   29  121  119   91   18  191  118   64   67   52   22 
+ 164   81   50   79   31   92  140   24  137   13  148  104  131    7  133   -1   -1   -1   -1   -1 
+
+The TP rate using 3 is 15
+The TN rate using 3 is 2
+The FP rate using 3 is 43
+The FN rate using 3 is 115
+The Sensitivity rate using 3 is 0.115385
+The Specificity rate using 3 is 0.0444444
+The Precision rate using 3 is 0.258621
+The Recall rate using 3 is 0.115385
+The Accuracy rate using 3 is 0.0971429
+The TPR rate using 3 is 0.115385
+The FPR rate using 3 is 0.955556
+Running Time: 0.000721 seconds
+
+The TP rate using 3 is 17
+The TN rate using 3 is 1
+The FP rate using 3 is 42
+The FN rate using 3 is 115
+The Sensitivity rate using 3 is 0.128788
+The Specificity rate using 3 is 0.0232558
+The Precision rate using 3 is 0.288136
+The Recall rate using 3 is 0.128788
+The Accuracy rate using 3 is 0.102857
+The TPR rate using 3 is 0.128788
+The FPR rate using 3 is 0.976744
+Running Time: 0.000506 seconds
+
+The TP rate using 3 is 17
+The TN rate using 3 is 2
+The FP rate using 3 is 41
+The FN rate using 3 is 115
+The Sensitivity rate using 3 is 0.128788
+The Specificity rate using 3 is 0.0465116
+The Precision rate using 3 is 0.293103
+The Recall rate using 3 is 0.128788
+The Accuracy rate using 3 is 0.108571
+The TPR rate using 3 is 0.128788
+The FPR rate using 3 is 0.953488
+Running Time: 0.000505 seconds
+
+The TP rate using 3 is 17
+The TN rate using 3 is 3
+The FP rate using 3 is 38
+The FN rate using 3 is 117
+The Sensitivity rate using 3 is 0.126866
+The Specificity rate using 3 is 0.0731707
+The Precision rate using 3 is 0.309091
+The Recall rate using 3 is 0.126866
+The Accuracy rate using 3 is 0.114286
+The TPR rate using 3 is 0.126866
+The FPR rate using 3 is 0.926829
+Running Time: 0.000505 seconds
+
+The TP rate using 3 is 17
+The TN rate using 3 is 3
+The FP rate using 3 is 38
+The FN rate using 3 is 117
+The Sensitivity rate using 3 is 0.126866
+The Specificity rate using 3 is 0.0731707
+The Precision rate using 3 is 0.309091
+The Recall rate using 3 is 0.126866
+The Accuracy rate using 3 is 0.114286
+The TPR rate using 3 is 0.126866
+The FPR rate using 3 is 0.926829
+Running Time: 0.000503 seconds
+
+The TP rate using 3 is 17
+The TN rate using 3 is 3
+The FP rate using 3 is 40
+The FN rate using 3 is 115
+The Sensitivity rate using 3 is 0.128788
+The Specificity rate using 3 is 0.0697674
+The Precision rate using 3 is 0.298246
+The Recall rate using 3 is 0.128788
+The Accuracy rate using 3 is 0.114286
+The TPR rate using 3 is 0.128788
+The FPR rate using 3 is 0.930233
+Running Time: 0.000501 seconds
+
+The TP rate using 3 is 17
+The TN rate using 3 is 3
+The FP rate using 3 is 43
+The FN rate using 3 is 112
+The Sensitivity rate using 3 is 0.131783
+The Specificity rate using 3 is 0.0652174
+The Precision rate using 3 is 0.283333
+The Recall rate using 3 is 0.131783
+The Accuracy rate using 3 is 0.114286
+The TPR rate using 3 is 0.131783
+The FPR rate using 3 is 0.934783
+Running Time: 0.000506 seconds
+
+The TP rate using 3 is 17
+The TN rate using 3 is 4
+The FP rate using 3 is 38
+The FN rate using 3 is 116
+The Sensitivity rate using 3 is 0.12782
+The Specificity rate using 3 is 0.0952381
+The Precision rate using 3 is 0.309091
+The Recall rate using 3 is 0.12782
+The Accuracy rate using 3 is 0.12
+The TPR rate using 3 is 0.12782
+The FPR rate using 3 is 0.904762
+Running Time: 0.000512 seconds
+
+The TP rate using 3 is 17
+The TN rate using 3 is 4
+The FP rate using 3 is 38
+The FN rate using 3 is 116
+The Sensitivity rate using 3 is 0.12782
+The Specificity rate using 3 is 0.0952381
+The Precision rate using 3 is 0.309091
+The Recall rate using 3 is 0.12782
+The Accuracy rate using 3 is 0.12
+The TPR rate using 3 is 0.12782
+The FPR rate using 3 is 0.904762
+Running Time: 0.000507 seconds
+
+The TP rate using 3 is 13
+The TN rate using 3 is 4
+The FP rate using 3 is 42
+The FN rate using 3 is 121
+The Sensitivity rate using 3 is 0.0970149
+The Specificity rate using 3 is 0.0869565
+The Precision rate using 3 is 0.236364
+The Recall rate using 3 is 0.0970149
+The Accuracy rate using 3 is 0.0944444
+The TPR rate using 3 is 0.0970149
+The FPR rate using 3 is 0.913043
+Running Time: 0.000396 seconds
+
+Average Running Time: 0.0005162 seconds
+The TP rate using 3 is 14
+The TN rate using 3 is 1
+The FP rate using 3 is 44
+The FN rate using 3 is 116
+The Sensitivity rate using 3 is 0.107692
+The Specificity rate using 3 is 0.0222222
+The Precision rate using 3 is 0.241379
+The Recall rate using 3 is 0.107692
+The Accuracy rate using 3 is 0.0857143
+The TPR rate using 3 is 0.107692
+The FPR rate using 3 is 0.977778
+Running Time: 0.000553 seconds
+The TP rate using 3 is 15
+The TN rate using 3 is 1
+The FP rate using 3 is 42
+The FN rate using 3 is 117
+The Sensitivity rate using 3 is 0.113636
+The Specificity rate using 3 is 0.0232558
+The Precision rate using 3 is 0.263158
+The Recall rate using 3 is 0.113636
+The Accuracy rate using 3 is 0.0914286
+The TPR rate using 3 is 0.113636
+The FPR rate using 3 is 0.976744
+Running Time: 0.000505 seconds
+The TP rate using 3 is 17
+The TN rate using 3 is 2
+The FP rate using 3 is 41
+The FN rate using 3 is 115
+The Sensitivity rate using 3 is 0.128788
+The Specificity rate using 3 is 0.0465116
+The Precision rate using 3 is 0.293103
+The Recall rate using 3 is 0.128788
+The Accuracy rate using 3 is 0.108571
+The TPR rate using 3 is 0.128788
+The FPR rate using 3 is 0.953488
+Running Time: 0.000504 seconds
+The TP rate using 3 is 12
+The TN rate using 3 is 3
+The FP rate using 3 is 38
+The FN rate using 3 is 122
+The Sensitivity rate using 3 is 0.0895522
+The Specificity rate using 3 is 0.0731707
+The Precision rate using 3 is 0.24
+The Recall rate using 3 is 0.0895522
+The Accuracy rate using 3 is 0.0857143
+The TPR rate using 3 is 0.0895522
+The FPR rate using 3 is 0.926829
+Running Time: 0.000504 seconds
+The TP rate using 3 is 14
+The TN rate using 3 is 3
+The FP rate using 3 is 38
+The FN rate using 3 is 120
+The Sensitivity rate using 3 is 0.104478
+The Specificity rate using 3 is 0.0731707
+The Precision rate using 3 is 0.269231
+The Recall rate using 3 is 0.104478
+The Accuracy rate using 3 is 0.0971429
+The TPR rate using 3 is 0.104478
+The FPR rate using 3 is 0.926829
+Running Time: 0.000506 seconds
+The TP rate using 3 is 15
+The TN rate using 3 is 4
+The FP rate using 3 is 39
+The FN rate using 3 is 117
+The Sensitivity rate using 3 is 0.113636
+The Specificity rate using 3 is 0.0930233
+The Precision rate using 3 is 0.277778
+The Recall rate using 3 is 0.113636
+The Accuracy rate using 3 is 0.108571
+The TPR rate using 3 is 0.113636
+The FPR rate using 3 is 0.906977
+Running Time: 0.000503 seconds
+The TP rate using 3 is 16
+The TN rate using 3 is 3
+The FP rate using 3 is 43
+The FN rate using 3 is 113
+The Sensitivity rate using 3 is 0.124031
+The Specificity rate using 3 is 0.0652174
+The Precision rate using 3 is 0.271186
+The Recall rate using 3 is 0.124031
+The Accuracy rate using 3 is 0.108571
+The TPR rate using 3 is 0.124031
+The FPR rate using 3 is 0.934783
+Running Time: 0.000504 seconds
+The TP rate using 3 is 12
+The TN rate using 3 is 5
+The FP rate using 3 is 37
+The FN rate using 3 is 121
+The Sensitivity rate using 3 is 0.0902256
+The Specificity rate using 3 is 0.119048
+The Precision rate using 3 is 0.244898
+The Recall rate using 3 is 0.0902256
+The Accuracy rate using 3 is 0.0971429
+The TPR rate using 3 is 0.0902256
+The FPR rate using 3 is 0.880952
+Running Time: 0.000503 seconds
+The TP rate using 3 is 16
+The TN rate using 3 is 5
+The FP rate using 3 is 37
+The FN rate using 3 is 117
+The Sensitivity rate using 3 is 0.120301
+The Specificity rate using 3 is 0.119048
+The Precision rate using 3 is 0.301887
+The Recall rate using 3 is 0.120301
+The Accuracy rate using 3 is 0.12
+The TPR rate using 3 is 0.120301
+The FPR rate using 3 is 0.880952
+Running Time: 0.000506 seconds
+The TP rate using 3 is 11
+The TN rate using 3 is 4
+The FP rate using 3 is 42
+The FN rate using 3 is 123
+The Sensitivity rate using 3 is 0.0820896
+The Specificity rate using 3 is 0.0869565
+The Precision rate using 3 is 0.207547
+The Recall rate using 3 is 0.0820896
+The Accuracy rate using 3 is 0.0833333
+The TPR rate using 3 is 0.0820896
+The FPR rate using 3 is 0.913043
+Running Time: 0.000396 seconds
+Average Running Time: 0.0010146 seconds
+The TP rate using 3 is 12
+The TN rate using 3 is 1
+The FP rate using 3 is 44
+The FN rate using 3 is 118
+The Sensitivity rate using 3 is 0.0923077
+The Specificity rate using 3 is 0.0222222
+The Precision rate using 3 is 0.214286
+The Recall rate using 3 is 0.0923077
+The Accuracy rate using 3 is 0.0742857
+The TPR rate using 3 is 0.0923077
+The FPR rate using 3 is 0.977778
+Running Time: 0.000505 seconds
+The TP rate using 3 is 14
+The TN rate using 3 is 1
+The FP rate using 3 is 42
+The FN rate using 3 is 118
+The Sensitivity rate using 3 is 0.106061
+The Specificity rate using 3 is 0.0232558
+The Precision rate using 3 is 0.25
+The Recall rate using 3 is 0.106061
+The Accuracy rate using 3 is 0.0857143
+The TPR rate using 3 is 0.106061
+The FPR rate using 3 is 0.976744
+Running Time: 0.000508 seconds
+The TP rate using 3 is 16
+The TN rate using 3 is 2
+The FP rate using 3 is 41
+The FN rate using 3 is 116
+The Sensitivity rate using 3 is 0.121212
+The Specificity rate using 3 is 0.0465116
+The Precision rate using 3 is 0.280702
+The Recall rate using 3 is 0.121212
+The Accuracy rate using 3 is 0.102857
+The TPR rate using 3 is 0.121212
+The FPR rate using 3 is 0.953488
+Running Time: 0.000503 seconds
+The TP rate using 3 is 11
+The TN rate using 3 is 4
+The FP rate using 3 is 37
+The FN rate using 3 is 123
+The Sensitivity rate using 3 is 0.0820896
+The Specificity rate using 3 is 0.097561
+The Precision rate using 3 is 0.229167
+The Recall rate using 3 is 0.0820896
+The Accuracy rate using 3 is 0.0857143
+The TPR rate using 3 is 0.0820896
+The FPR rate using 3 is 0.902439
+Running Time: 0.000505 seconds
+The TP rate using 3 is 12
+The TN rate using 3 is 3
+The FP rate using 3 is 38
+The FN rate using 3 is 122
+The Sensitivity rate using 3 is 0.0895522
+The Specificity rate using 3 is 0.0731707
+The Precision rate using 3 is 0.24
+The Recall rate using 3 is 0.0895522
+The Accuracy rate using 3 is 0.0857143
+The TPR rate using 3 is 0.0895522
+The FPR rate using 3 is 0.926829
+Running Time: 0.000505 seconds
+The TP rate using 3 is 13
+The TN rate using 3 is 4
+The FP rate using 3 is 39
+The FN rate using 3 is 119
+The Sensitivity rate using 3 is 0.0984848
+The Specificity rate using 3 is 0.0930233
+The Precision rate using 3 is 0.25
+The Recall rate using 3 is 0.0984848
+The Accuracy rate using 3 is 0.0971429
+The TPR rate using 3 is 0.0984848
+The FPR rate using 3 is 0.906977
+Running Time: 0.000508 seconds
+The TP rate using 3 is 16
+The TN rate using 3 is 3
+The FP rate using 3 is 43
+The FN rate using 3 is 113
+The Sensitivity rate using 3 is 0.124031
+The Specificity rate using 3 is 0.0652174
+The Precision rate using 3 is 0.271186
+The Recall rate using 3 is 0.124031
+The Accuracy rate using 3 is 0.108571
+The TPR rate using 3 is 0.124031
+The FPR rate using 3 is 0.934783
+Running Time: 0.000506 seconds
+The TP rate using 3 is 12
+The TN rate using 3 is 5
+The FP rate using 3 is 37
+The FN rate using 3 is 121
+The Sensitivity rate using 3 is 0.0902256
+The Specificity rate using 3 is 0.119048
+The Precision rate using 3 is 0.244898
+The Recall rate using 3 is 0.0902256
+The Accuracy rate using 3 is 0.0971429
+The TPR rate using 3 is 0.0902256
+The FPR rate using 3 is 0.880952
+Running Time: 0.000505 seconds
+The TP rate using 3 is 16
+The TN rate using 3 is 5
+The FP rate using 3 is 37
+The FN rate using 3 is 117
+The Sensitivity rate using 3 is 0.120301
+The Specificity rate using 3 is 0.119048
+The Precision rate using 3 is 0.301887
+The Recall rate using 3 is 0.120301
+The Accuracy rate using 3 is 0.12
+The TPR rate using 3 is 0.120301
+The FPR rate using 3 is 0.880952
+Running Time: 0.00051 seconds
+The TP rate using 3 is 11
+The TN rate using 3 is 4
+The FP rate using 3 is 42
+The FN rate using 3 is 123
+The Sensitivity rate using 3 is 0.0820896
+The Specificity rate using 3 is 0.0869565
+The Precision rate using 3 is 0.207547
+The Recall rate using 3 is 0.0820896
+The Accuracy rate using 3 is 0.0833333
+The TPR rate using 3 is 0.0820896
+The FPR rate using 3 is 0.913043
+Running Time: 0.000397 seconds
+Average Running Time: 0.0015098 seconds
+The TP rate using 3 is 12
+The TN rate using 3 is 1
+The FP rate using 3 is 44
+The FN rate using 3 is 118
+The Sensitivity rate using 3 is 0.0923077
+The Specificity rate using 3 is 0.0222222
+The Precision rate using 3 is 0.214286
+The Recall rate using 3 is 0.0923077
+The Accuracy rate using 3 is 0.0742857
+The TPR rate using 3 is 0.0923077
+The FPR rate using 3 is 0.977778
+Running Time: 0.000503 seconds
+The TP rate using 3 is 13
+The TN rate using 3 is 1
+The FP rate using 3 is 42
+The FN rate using 3 is 119
+The Sensitivity rate using 3 is 0.0984848
+The Specificity rate using 3 is 0.0232558
+The Precision rate using 3 is 0.236364
+The Recall rate using 3 is 0.0984848
+The Accuracy rate using 3 is 0.08
+The TPR rate using 3 is 0.0984848
+The FPR rate using 3 is 0.976744
+Running Time: 0.000502 seconds
+The TP rate using 3 is 15
+The TN rate using 3 is 2
+The FP rate using 3 is 41
+The FN rate using 3 is 117
+The Sensitivity rate using 3 is 0.113636
+The Specificity rate using 3 is 0.0465116
+The Precision rate using 3 is 0.267857
+The Recall rate using 3 is 0.113636
+The Accuracy rate using 3 is 0.0971429
+The TPR rate using 3 is 0.113636
+The FPR rate using 3 is 0.953488
+Running Time: 0.000504 seconds
+The TP rate using 3 is 11
+The TN rate using 3 is 4
+The FP rate using 3 is 37
+The FN rate using 3 is 123
+The Sensitivity rate using 3 is 0.0820896
+The Specificity rate using 3 is 0.097561
+The Precision rate using 3 is 0.229167
+The Recall rate using 3 is 0.0820896
+The Accuracy rate using 3 is 0.0857143
+The TPR rate using 3 is 0.0820896
+The FPR rate using 3 is 0.902439
+Running Time: 0.000505 seconds
+The TP rate using 3 is 12
+The TN rate using 3 is 3
+The FP rate using 3 is 38
+The FN rate using 3 is 122
+The Sensitivity rate using 3 is 0.0895522
+The Specificity rate using 3 is 0.0731707
+The Precision rate using 3 is 0.24
+The Recall rate using 3 is 0.0895522
+The Accuracy rate using 3 is 0.0857143
+The TPR rate using 3 is 0.0895522
+The FPR rate using 3 is 0.926829
+Running Time: 0.000505 seconds
+The TP rate using 3 is 13
+The TN rate using 3 is 4
+The FP rate using 3 is 39
+The FN rate using 3 is 119
+The Sensitivity rate using 3 is 0.0984848
+The Specificity rate using 3 is 0.0930233
+The Precision rate using 3 is 0.25
+The Recall rate using 3 is 0.0984848
+The Accuracy rate using 3 is 0.0971429
+The TPR rate using 3 is 0.0984848
+The FPR rate using 3 is 0.906977
+Running Time: 0.000504 seconds
+The TP rate using 3 is 15
+The TN rate using 3 is 3
+The FP rate using 3 is 43
+The FN rate using 3 is 114
+The Sensitivity rate using 3 is 0.116279
+The Specificity rate using 3 is 0.0652174
+The Precision rate using 3 is 0.258621
+The Recall rate using 3 is 0.116279
+The Accuracy rate using 3 is 0.102857
+The TPR rate using 3 is 0.116279
+The FPR rate using 3 is 0.934783
+Running Time: 0.000507 seconds
+The TP rate using 3 is 11
+The TN rate using 3 is 5
+The FP rate using 3 is 37
+The FN rate using 3 is 122
+The Sensitivity rate using 3 is 0.0827068
+The Specificity rate using 3 is 0.119048
+The Precision rate using 3 is 0.229167
+The Recall rate using 3 is 0.0827068
+The Accuracy rate using 3 is 0.0914286
+The TPR rate using 3 is 0.0827068
+The FPR rate using 3 is 0.880952
+Running Time: 0.000506 seconds
+The TP rate using 3 is 15
+The TN rate using 3 is 5
+The FP rate using 3 is 37
+The FN rate using 3 is 118
+The Sensitivity rate using 3 is 0.112782
+The Specificity rate using 3 is 0.119048
+The Precision rate using 3 is 0.288462
+The Recall rate using 3 is 0.112782
+The Accuracy rate using 3 is 0.114286
+The TPR rate using 3 is 0.112782
+The FPR rate using 3 is 0.880952
+Running Time: 0.000508 seconds
+The TP rate using 3 is 10
+The TN rate using 3 is 4
+The FP rate using 3 is 42
+The FN rate using 3 is 124
+The Sensitivity rate using 3 is 0.0746269
+The Specificity rate using 3 is 0.0869565
+The Precision rate using 3 is 0.192308
+The Recall rate using 3 is 0.0746269
+The Accuracy rate using 3 is 0.0777778
+The TPR rate using 3 is 0.0746269
+The FPR rate using 3 is 0.913043
+Running Time: 0.000396 seconds
+Average Running Time: 0.0020038 seconds
+The TP rate using 3 is 11
+The TN rate using 3 is 1
+The FP rate using 3 is 44
+The FN rate using 3 is 119
+The Sensitivity rate using 3 is 0.0846154
+The Specificity rate using 3 is 0.0222222
+The Precision rate using 3 is 0.2
+The Recall rate using 3 is 0.0846154
+The Accuracy rate using 3 is 0.0685714
+The TPR rate using 3 is 0.0846154
+The FPR rate using 3 is 0.977778
+Running Time: 0.000503 seconds
+The TP rate using 3 is 12
+The TN rate using 3 is 1
+The FP rate using 3 is 42
+The FN rate using 3 is 120
+The Sensitivity rate using 3 is 0.0909091
+The Specificity rate using 3 is 0.0232558
+The Precision rate using 3 is 0.222222
+The Recall rate using 3 is 0.0909091
+The Accuracy rate using 3 is 0.0742857
+The TPR rate using 3 is 0.0909091
+The FPR rate using 3 is 0.976744
+Running Time: 0.000502 seconds
+The TP rate using 3 is 11
+The TN rate using 3 is 2
+The FP rate using 3 is 41
+The FN rate using 3 is 121
+The Sensitivity rate using 3 is 0.0833333
+The Specificity rate using 3 is 0.0465116
+The Precision rate using 3 is 0.211538
+The Recall rate using 3 is 0.0833333
+The Accuracy rate using 3 is 0.0742857
+The TPR rate using 3 is 0.0833333
+The FPR rate using 3 is 0.953488
+Running Time: 0.000504 seconds
+The TP rate using 3 is 10
+The TN rate using 3 is 5
+The FP rate using 3 is 36
+The FN rate using 3 is 124
+The Sensitivity rate using 3 is 0.0746269
+The Specificity rate using 3 is 0.121951
+The Precision rate using 3 is 0.217391
+The Recall rate using 3 is 0.0746269
+The Accuracy rate using 3 is 0.0857143
+The TPR rate using 3 is 0.0746269
+The FPR rate using 3 is 0.878049
+Running Time: 0.000502 seconds
+The TP rate using 3 is 12
+The TN rate using 3 is 3
+The FP rate using 3 is 38
+The FN rate using 3 is 122
+The Sensitivity rate using 3 is 0.0895522
+The Specificity rate using 3 is 0.0731707
+The Precision rate using 3 is 0.24
+The Recall rate using 3 is 0.0895522
+The Accuracy rate using 3 is 0.0857143
+The TPR rate using 3 is 0.0895522
+The FPR rate using 3 is 0.926829
+Running Time: 0.000959 seconds
+The TP rate using 3 is 13
+The TN rate using 3 is 5
+The FP rate using 3 is 38
+The FN rate using 3 is 119
+The Sensitivity rate using 3 is 0.0984848
+The Specificity rate using 3 is 0.116279
+The Precision rate using 3 is 0.254902
+The Recall rate using 3 is 0.0984848
+The Accuracy rate using 3 is 0.102857
+The TPR rate using 3 is 0.0984848
+The FPR rate using 3 is 0.883721
+Running Time: 0.000899 seconds
+The TP rate using 3 is 13
+The TN rate using 3 is 3
+The FP rate using 3 is 43
+The FN rate using 3 is 116
+The Sensitivity rate using 3 is 0.100775
+The Specificity rate using 3 is 0.0652174
+The Precision rate using 3 is 0.232143
+The Recall rate using 3 is 0.100775
+The Accuracy rate using 3 is 0.0914286
+The TPR rate using 3 is 0.100775
+The FPR rate using 3 is 0.934783
+Running Time: 0.000889 seconds
+The TP rate using 3 is 11
+The TN rate using 3 is 5
+The FP rate using 3 is 37
+The FN rate using 3 is 122
+The Sensitivity rate using 3 is 0.0827068
+The Specificity rate using 3 is 0.119048
+The Precision rate using 3 is 0.229167
+The Recall rate using 3 is 0.0827068
+The Accuracy rate using 3 is 0.0914286
+The TPR rate using 3 is 0.0827068
+The FPR rate using 3 is 0.880952
+Running Time: 0.000888 seconds
+The TP rate using 3 is 14
+The TN rate using 3 is 5
+The FP rate using 3 is 37
+The FN rate using 3 is 119
+The Sensitivity rate using 3 is 0.105263
+The Specificity rate using 3 is 0.119048
+The Precision rate using 3 is 0.27451
+The Recall rate using 3 is 0.105263
+The Accuracy rate using 3 is 0.108571
+The TPR rate using 3 is 0.105263
+The FPR rate using 3 is 0.880952
+Running Time: 0.00091 seconds
+The TP rate using 3 is 10
+The TN rate using 3 is 4
+The FP rate using 3 is 42
+The FN rate using 3 is 124
+The Sensitivity rate using 3 is 0.0746269
+The Specificity rate using 3 is 0.0869565
+The Precision rate using 3 is 0.192308
+The Recall rate using 3 is 0.0746269
+The Accuracy rate using 3 is 0.0777778
+The TPR rate using 3 is 0.0746269
+The FPR rate using 3 is 0.913043
+Running Time: 0.0007 seconds
+Average Running Time: 0.0027294 seconds
+The TP rate using 3 is 8
+The TN rate using 3 is 1
+The FP rate using 3 is 44
+The FN rate using 3 is 122
+The Sensitivity rate using 3 is 0.0615385
+The Specificity rate using 3 is 0.0222222
+The Precision rate using 3 is 0.153846
+The Recall rate using 3 is 0.0615385
+The Accuracy rate using 3 is 0.0514286
+The TPR rate using 3 is 0.0615385
+The FPR rate using 3 is 0.977778
+Running Time: 0.000889 seconds
+The TP rate using 3 is 10
+The TN rate using 3 is 2
+The FP rate using 3 is 41
+The FN rate using 3 is 122
+The Sensitivity rate using 3 is 0.0757576
+The Specificity rate using 3 is 0.0465116
+The Precision rate using 3 is 0.196078
+The Recall rate using 3 is 0.0757576
+The Accuracy rate using 3 is 0.0685714
+The TPR rate using 3 is 0.0757576
+The FPR rate using 3 is 0.953488
+Running Time: 0.000878 seconds
+The TP rate using 3 is 10
+The TN rate using 3 is 4
+The FP rate using 3 is 39
+The FN rate using 3 is 122
+The Sensitivity rate using 3 is 0.0757576
+The Specificity rate using 3 is 0.0930233
+The Precision rate using 3 is 0.204082
+The Recall rate using 3 is 0.0757576
+The Accuracy rate using 3 is 0.08
+The TPR rate using 3 is 0.0757576
+The FPR rate using 3 is 0.906977
+Running Time: 0.000714 seconds
+The TP rate using 3 is 9
+The TN rate using 3 is 5
+The FP rate using 3 is 36
+The FN rate using 3 is 125
+The Sensitivity rate using 3 is 0.0671642
+The Specificity rate using 3 is 0.121951
+The Precision rate using 3 is 0.2
+The Recall rate using 3 is 0.0671642
+The Accuracy rate using 3 is 0.08
+The TPR rate using 3 is 0.0671642
+The FPR rate using 3 is 0.878049
+Running Time: 0.000608 seconds
+The TP rate using 3 is 10
+The TN rate using 3 is 3
+The FP rate using 3 is 38
+The FN rate using 3 is 124
+The Sensitivity rate using 3 is 0.0746269
+The Specificity rate using 3 is 0.0731707
+The Precision rate using 3 is 0.208333
+The Recall rate using 3 is 0.0746269
+The Accuracy rate using 3 is 0.0742857
+The TPR rate using 3 is 0.0746269
+The FPR rate using 3 is 0.926829
+Running Time: 0.000629 seconds
+The TP rate using 3 is 13
+The TN rate using 3 is 6
+The FP rate using 3 is 37
+The FN rate using 3 is 119
+The Sensitivity rate using 3 is 0.0984848
+The Specificity rate using 3 is 0.139535
+The Precision rate using 3 is 0.26
+The Recall rate using 3 is 0.0984848
+The Accuracy rate using 3 is 0.108571
+The TPR rate using 3 is 0.0984848
+The FPR rate using 3 is 0.860465
+Running Time: 0.000612 seconds
+The TP rate using 3 is 10
+The TN rate using 3 is 4
+The FP rate using 3 is 42
+The FN rate using 3 is 119
+The Sensitivity rate using 3 is 0.0775194
+The Specificity rate using 3 is 0.0869565
+The Precision rate using 3 is 0.192308
+The Recall rate using 3 is 0.0775194
+The Accuracy rate using 3 is 0.08
+The TPR rate using 3 is 0.0775194
+The FPR rate using 3 is 0.913043
+Running Time: 0.000612 seconds
+The TP rate using 3 is 11
+The TN rate using 3 is 5
+The FP rate using 3 is 37
+The FN rate using 3 is 122
+The Sensitivity rate using 3 is 0.0827068
+The Specificity rate using 3 is 0.119048
+The Precision rate using 3 is 0.229167
+The Recall rate using 3 is 0.0827068
+The Accuracy rate using 3 is 0.0914286
+The TPR rate using 3 is 0.0827068
+The FPR rate using 3 is 0.880952
+Running Time: 0.00061 seconds
+The TP rate using 3 is 13
+The TN rate using 3 is 5
+The FP rate using 3 is 37
+The FN rate using 3 is 120
+The Sensitivity rate using 3 is 0.0977444
+The Specificity rate using 3 is 0.119048
+The Precision rate using 3 is 0.26
+The Recall rate using 3 is 0.0977444
+The Accuracy rate using 3 is 0.102857
+The TPR rate using 3 is 0.0977444
+The FPR rate using 3 is 0.880952
+Running Time: 0.000617 seconds
+The TP rate using 3 is 9
+The TN rate using 3 is 4
+The FP rate using 3 is 42
+The FN rate using 3 is 125
+The Sensitivity rate using 3 is 0.0671642
+The Specificity rate using 3 is 0.0869565
+The Precision rate using 3 is 0.176471
+The Recall rate using 3 is 0.0671642
+The Accuracy rate using 3 is 0.0722222
+The TPR rate using 3 is 0.0671642
+The FPR rate using 3 is 0.913043
+Running Time: 0.000524 seconds
+Average Running Time: 0.0033987 seconds
+The TP rate using 3 is 7
+The TN rate using 3 is 2
+The FP rate using 3 is 43
+The FN rate using 3 is 123
+The Sensitivity rate using 3 is 0.0538462
+The Specificity rate using 3 is 0.0444444
+The Precision rate using 3 is 0.14
+The Recall rate using 3 is 0.0538462
+The Accuracy rate using 3 is 0.0514286
+The TPR rate using 3 is 0.0538462
+The FPR rate using 3 is 0.955556
+Running Time: 0.000503 seconds
+The TP rate using 3 is 5
+The TN rate using 3 is 3
+The FP rate using 3 is 40
+The FN rate using 3 is 127
+The Sensitivity rate using 3 is 0.0378788
+The Specificity rate using 3 is 0.0697674
+The Precision rate using 3 is 0.111111
+The Recall rate using 3 is 0.0378788
+The Accuracy rate using 3 is 0.0457143
+The TPR rate using 3 is 0.0378788
+The FPR rate using 3 is 0.930233
+Running Time: 0.000503 seconds
+The TP rate using 3 is 9
+The TN rate using 3 is 4
+The FP rate using 3 is 39
+The FN rate using 3 is 123
+The Sensitivity rate using 3 is 0.0681818
+The Specificity rate using 3 is 0.0930233
+The Precision rate using 3 is 0.1875
+The Recall rate using 3 is 0.0681818
+The Accuracy rate using 3 is 0.0742857
+The TPR rate using 3 is 0.0681818
+The FPR rate using 3 is 0.906977
+Running Time: 0.000503 seconds
+The TP rate using 3 is 8
+The TN rate using 3 is 5
+The FP rate using 3 is 36
+The FN rate using 3 is 126
+The Sensitivity rate using 3 is 0.0597015
+The Specificity rate using 3 is 0.121951
+The Precision rate using 3 is 0.181818
+The Recall rate using 3 is 0.0597015
+The Accuracy rate using 3 is 0.0742857
+The TPR rate using 3 is 0.0597015
+The FPR rate using 3 is 0.878049
+Running Time: 0.000506 seconds
+The TP rate using 3 is 8
+The TN rate using 3 is 4
+The FP rate using 3 is 37
+The FN rate using 3 is 126
+The Sensitivity rate using 3 is 0.0597015
+The Specificity rate using 3 is 0.097561
+The Precision rate using 3 is 0.177778
+The Recall rate using 3 is 0.0597015
+The Accuracy rate using 3 is 0.0685714
+The TPR rate using 3 is 0.0597015
+The FPR rate using 3 is 0.902439
+Running Time: 0.000503 seconds
+The TP rate using 3 is 12
+The TN rate using 3 is 6
+The FP rate using 3 is 37
+The FN rate using 3 is 120
+The Sensitivity rate using 3 is 0.0909091
+The Specificity rate using 3 is 0.139535
+The Precision rate using 3 is 0.244898
+The Recall rate using 3 is 0.0909091
+The Accuracy rate using 3 is 0.102857
+The TPR rate using 3 is 0.0909091
+The FPR rate using 3 is 0.860465
+Running Time: 0.000503 seconds
+The TP rate using 3 is 9
+The TN rate using 3 is 4
+The FP rate using 3 is 42
+The FN rate using 3 is 120
+The Sensitivity rate using 3 is 0.0697674
+The Specificity rate using 3 is 0.0869565
+The Precision rate using 3 is 0.176471
+The Recall rate using 3 is 0.0697674
+The Accuracy rate using 3 is 0.0742857
+The TPR rate using 3 is 0.0697674
+The FPR rate using 3 is 0.913043
+Running Time: 0.000502 seconds
+The TP rate using 3 is 11
+The TN rate using 3 is 5
+The FP rate using 3 is 37
+The FN rate using 3 is 122
+The Sensitivity rate using 3 is 0.0827068
+The Specificity rate using 3 is 0.119048
+The Precision rate using 3 is 0.229167
+The Recall rate using 3 is 0.0827068
+The Accuracy rate using 3 is 0.0914286
+The TPR rate using 3 is 0.0827068
+The FPR rate using 3 is 0.880952
+Running Time: 0.000501 seconds
+The TP rate using 3 is 11
+The TN rate using 3 is 5
+The FP rate using 3 is 37
+The FN rate using 3 is 122
+The Sensitivity rate using 3 is 0.0827068
+The Specificity rate using 3 is 0.119048
+The Precision rate using 3 is 0.229167
+The Recall rate using 3 is 0.0827068
+The Accuracy rate using 3 is 0.0914286
+The TPR rate using 3 is 0.0827068
+The FPR rate using 3 is 0.880952
+Running Time: 0.000503 seconds
+The TP rate using 3 is 7
+The TN rate using 3 is 4
+The FP rate using 3 is 42
+The FN rate using 3 is 127
+The Sensitivity rate using 3 is 0.0522388
+The Specificity rate using 3 is 0.0869565
+The Precision rate using 3 is 0.142857
+The Recall rate using 3 is 0.0522388
+The Accuracy rate using 3 is 0.0611111
+The TPR rate using 3 is 0.0522388
+The FPR rate using 3 is 0.913043
+Running Time: 0.000447 seconds
+Average Running Time: 0.0038961 seconds
+The TP rate using 3 is 5
+The TN rate using 3 is 2
+The FP rate using 3 is 43
+The FN rate using 3 is 125
+The Sensitivity rate using 3 is 0.0384615
+The Specificity rate using 3 is 0.0444444
+The Precision rate using 3 is 0.104167
+The Recall rate using 3 is 0.0384615
+The Accuracy rate using 3 is 0.04
+The TPR rate using 3 is 0.0384615
+The FPR rate using 3 is 0.955556
+Running Time: 0.000505 seconds
+The TP rate using 3 is 5
+The TN rate using 3 is 3
+The FP rate using 3 is 40
+The FN rate using 3 is 127
+The Sensitivity rate using 3 is 0.0378788
+The Specificity rate using 3 is 0.0697674
+The Precision rate using 3 is 0.111111
+The Recall rate using 3 is 0.0378788
+The Accuracy rate using 3 is 0.0457143
+The TPR rate using 3 is 0.0378788
+The FPR rate using 3 is 0.930233
+Running Time: 0.000514 seconds
+The TP rate using 3 is 9
+The TN rate using 3 is 4
+The FP rate using 3 is 39
+The FN rate using 3 is 123
+The Sensitivity rate using 3 is 0.0681818
+The Specificity rate using 3 is 0.0930233
+The Precision rate using 3 is 0.1875
+The Recall rate using 3 is 0.0681818
+The Accuracy rate using 3 is 0.0742857
+The TPR rate using 3 is 0.0681818
+The FPR rate using 3 is 0.906977
+Running Time: 0.000503 seconds
+The TP rate using 3 is 8
+The TN rate using 3 is 5
+The FP rate using 3 is 36
+The FN rate using 3 is 126
+The Sensitivity rate using 3 is 0.0597015
+The Specificity rate using 3 is 0.121951
+The Precision rate using 3 is 0.181818
+The Recall rate using 3 is 0.0597015
+The Accuracy rate using 3 is 0.0742857
+The TPR rate using 3 is 0.0597015
+The FPR rate using 3 is 0.878049
+Running Time: 0.000503 seconds
+The TP rate using 3 is 8
+The TN rate using 3 is 4
+The FP rate using 3 is 37
+The FN rate using 3 is 126
+The Sensitivity rate using 3 is 0.0597015
+The Specificity rate using 3 is 0.097561
+The Precision rate using 3 is 0.177778
+The Recall rate using 3 is 0.0597015
+The Accuracy rate using 3 is 0.0685714
+The TPR rate using 3 is 0.0597015
+The FPR rate using 3 is 0.902439
+Running Time: 0.000502 seconds
+The TP rate using 3 is 11
+The TN rate using 3 is 6
+The FP rate using 3 is 37
+The FN rate using 3 is 121
+The Sensitivity rate using 3 is 0.0833333
+The Specificity rate using 3 is 0.139535
+The Precision rate using 3 is 0.229167
+The Recall rate using 3 is 0.0833333
+The Accuracy rate using 3 is 0.0971429
+The TPR rate using 3 is 0.0833333
+The FPR rate using 3 is 0.860465
+Running Time: 0.000504 seconds
+The TP rate using 3 is 9
+The TN rate using 3 is 5
+The FP rate using 3 is 41
+The FN rate using 3 is 120
+The Sensitivity rate using 3 is 0.0697674
+The Specificity rate using 3 is 0.108696
+The Precision rate using 3 is 0.18
+The Recall rate using 3 is 0.0697674
+The Accuracy rate using 3 is 0.08
+The TPR rate using 3 is 0.0697674
+The FPR rate using 3 is 0.891304
+Running Time: 0.000501 seconds
+The TP rate using 3 is 9
+The TN rate using 3 is 5
+The FP rate using 3 is 37
+The FN rate using 3 is 124
+The Sensitivity rate using 3 is 0.0676692
+The Specificity rate using 3 is 0.119048
+The Precision rate using 3 is 0.195652
+The Recall rate using 3 is 0.0676692
+The Accuracy rate using 3 is 0.08
+The TPR rate using 3 is 0.0676692
+The FPR rate using 3 is 0.880952
+Running Time: 0.000503 seconds
+The TP rate using 3 is 10
+The TN rate using 3 is 5
+The FP rate using 3 is 37
+The FN rate using 3 is 123
+The Sensitivity rate using 3 is 0.075188
+The Specificity rate using 3 is 0.119048
+The Precision rate using 3 is 0.212766
+The Recall rate using 3 is 0.075188
+The Accuracy rate using 3 is 0.0857143
+The TPR rate using 3 is 0.075188
+The FPR rate using 3 is 0.880952
+Running Time: 0.000502 seconds
+The TP rate using 3 is 6
+The TN rate using 3 is 5
+The FP rate using 3 is 41
+The FN rate using 3 is 128
+The Sensitivity rate using 3 is 0.0447761
+The Specificity rate using 3 is 0.108696
+The Precision rate using 3 is 0.12766
+The Recall rate using 3 is 0.0447761
+The Accuracy rate using 3 is 0.0611111
+The TPR rate using 3 is 0.0447761
+The FPR rate using 3 is 0.891304
+Running Time: 0.000404 seconds
+Average Running Time: 0.0043902 seconds
+The TP rate using 3 is 5
+The TN rate using 3 is 3
+The FP rate using 3 is 42
+The FN rate using 3 is 125
+The Sensitivity rate using 3 is 0.0384615
+The Specificity rate using 3 is 0.0666667
+The Precision rate using 3 is 0.106383
+The Recall rate using 3 is 0.0384615
+The Accuracy rate using 3 is 0.0457143
+The TPR rate using 3 is 0.0384615
+The FPR rate using 3 is 0.933333
+Running Time: 0.000503 seconds
+The TP rate using 3 is 4
+The TN rate using 3 is 3
+The FP rate using 3 is 40
+The FN rate using 3 is 128
+The Sensitivity rate using 3 is 0.030303
+The Specificity rate using 3 is 0.0697674
+The Precision rate using 3 is 0.0909091
+The Recall rate using 3 is 0.030303
+The Accuracy rate using 3 is 0.04
+The TPR rate using 3 is 0.030303
+The FPR rate using 3 is 0.930233
+Running Time: 0.000504 seconds
+The TP rate using 3 is 5
+The TN rate using 3 is 4
+The FP rate using 3 is 39
+The FN rate using 3 is 127
+The Sensitivity rate using 3 is 0.0378788
+The Specificity rate using 3 is 0.0930233
+The Precision rate using 3 is 0.113636
+The Recall rate using 3 is 0.0378788
+The Accuracy rate using 3 is 0.0514286
+The TPR rate using 3 is 0.0378788
+The FPR rate using 3 is 0.906977
+Running Time: 0.000504 seconds
+The TP rate using 3 is 7
+The TN rate using 3 is 5
+The FP rate using 3 is 36
+The FN rate using 3 is 127
+The Sensitivity rate using 3 is 0.0522388
+The Specificity rate using 3 is 0.121951
+The Precision rate using 3 is 0.162791
+The Recall rate using 3 is 0.0522388
+The Accuracy rate using 3 is 0.0685714
+The TPR rate using 3 is 0.0522388
+The FPR rate using 3 is 0.878049
+Running Time: 0.000505 seconds
+The TP rate using 3 is 7
+The TN rate using 3 is 4
+The FP rate using 3 is 37
+The FN rate using 3 is 127
+The Sensitivity rate using 3 is 0.0522388
+The Specificity rate using 3 is 0.097561
+The Precision rate using 3 is 0.159091
+The Recall rate using 3 is 0.0522388
+The Accuracy rate using 3 is 0.0628571
+The TPR rate using 3 is 0.0522388
+The FPR rate using 3 is 0.902439
+Running Time: 0.000501 seconds
+The TP rate using 3 is 10
+The TN rate using 3 is 6
+The FP rate using 3 is 37
+The FN rate using 3 is 122
+The Sensitivity rate using 3 is 0.0757576
+The Specificity rate using 3 is 0.139535
+The Precision rate using 3 is 0.212766
+The Recall rate using 3 is 0.0757576
+The Accuracy rate using 3 is 0.0914286
+The TPR rate using 3 is 0.0757576
+The FPR rate using 3 is 0.860465
+Running Time: 0.000504 seconds
+The TP rate using 3 is 9
+The TN rate using 3 is 5
+The FP rate using 3 is 41
+The FN rate using 3 is 120
+The Sensitivity rate using 3 is 0.0697674
+The Specificity rate using 3 is 0.108696
+The Precision rate using 3 is 0.18
+The Recall rate using 3 is 0.0697674
+The Accuracy rate using 3 is 0.08
+The TPR rate using 3 is 0.0697674
+The FPR rate using 3 is 0.891304
+Running Time: 0.00051 seconds
+The TP rate using 3 is 7
+The TN rate using 3 is 7
+The FP rate using 3 is 35
+The FN rate using 3 is 126
+The Sensitivity rate using 3 is 0.0526316
+The Specificity rate using 3 is 0.166667
+The Precision rate using 3 is 0.166667
+The Recall rate using 3 is 0.0526316
+The Accuracy rate using 3 is 0.08
+The TPR rate using 3 is 0.0526316
+The FPR rate using 3 is 0.833333
+Running Time: 0.000503 seconds
+The TP rate using 3 is 8
+The TN rate using 3 is 5
+The FP rate using 3 is 37
+The FN rate using 3 is 125
+The Sensitivity rate using 3 is 0.0601504
+The Specificity rate using 3 is 0.119048
+The Precision rate using 3 is 0.177778
+The Recall rate using 3 is 0.0601504
+The Accuracy rate using 3 is 0.0742857
+The TPR rate using 3 is 0.0601504
+The FPR rate using 3 is 0.880952
+Running Time: 0.000502 seconds
+The TP rate using 3 is 5
+The TN rate using 3 is 5
+The FP rate using 3 is 41
+The FN rate using 3 is 129
+The Sensitivity rate using 3 is 0.0373134
+The Specificity rate using 3 is 0.108696
+The Precision rate using 3 is 0.108696
+The Recall rate using 3 is 0.0373134
+The Accuracy rate using 3 is 0.0555556
+The TPR rate using 3 is 0.0373134
+The FPR rate using 3 is 0.891304
+Running Time: 0.000402 seconds
+Average Running Time: 0.004884 seconds
+The TP rate using 3 is 4
+The TN rate using 3 is 3
+The FP rate using 3 is 42
+The FN rate using 3 is 126
+The Sensitivity rate using 3 is 0.0307692
+The Specificity rate using 3 is 0.0666667
+The Precision rate using 3 is 0.0869565
+The Recall rate using 3 is 0.0307692
+The Accuracy rate using 3 is 0.04
+The TPR rate using 3 is 0.0307692
+The FPR rate using 3 is 0.933333
+Running Time: 0.0005 seconds
+The TP rate using 3 is 3
+The TN rate using 3 is 3
+The FP rate using 3 is 40
+The FN rate using 3 is 129
+The Sensitivity rate using 3 is 0.0227273
+The Specificity rate using 3 is 0.0697674
+The Precision rate using 3 is 0.0697674
+The Recall rate using 3 is 0.0227273
+The Accuracy rate using 3 is 0.0342857
+The TPR rate using 3 is 0.0227273
+The FPR rate using 3 is 0.930233
+Running Time: 0.000501 seconds
+The TP rate using 3 is 3
+The TN rate using 3 is 4
+The FP rate using 3 is 39
+The FN rate using 3 is 129
+The Sensitivity rate using 3 is 0.0227273
+The Specificity rate using 3 is 0.0930233
+The Precision rate using 3 is 0.0714286
+The Recall rate using 3 is 0.0227273
+The Accuracy rate using 3 is 0.04
+The TPR rate using 3 is 0.0227273
+The FPR rate using 3 is 0.906977
+Running Time: 0.0005 seconds
+The TP rate using 3 is 6
+The TN rate using 3 is 5
+The FP rate using 3 is 36
+The FN rate using 3 is 128
+The Sensitivity rate using 3 is 0.0447761
+The Specificity rate using 3 is 0.121951
+The Precision rate using 3 is 0.142857
+The Recall rate using 3 is 0.0447761
+The Accuracy rate using 3 is 0.0628571
+The TPR rate using 3 is 0.0447761
+The FPR rate using 3 is 0.878049
+Running Time: 0.000502 seconds
+The TP rate using 3 is 3
+The TN rate using 3 is 4
+The FP rate using 3 is 37
+The FN rate using 3 is 131
+The Sensitivity rate using 3 is 0.0223881
+The Specificity rate using 3 is 0.097561
+The Precision rate using 3 is 0.075
+The Recall rate using 3 is 0.0223881
+The Accuracy rate using 3 is 0.04
+The TPR rate using 3 is 0.0223881
+The FPR rate using 3 is 0.902439
+Running Time: 0.000537 seconds
+The TP rate using 3 is 8
+The TN rate using 3 is 6
+The FP rate using 3 is 37
+The FN rate using 3 is 124
+The Sensitivity rate using 3 is 0.0606061
+The Specificity rate using 3 is 0.139535
+The Precision rate using 3 is 0.177778
+The Recall rate using 3 is 0.0606061
+The Accuracy rate using 3 is 0.08
+The TPR rate using 3 is 0.0606061
+The FPR rate using 3 is 0.860465
+Running Time: 0.000503 seconds
+The TP rate using 3 is 8
+The TN rate using 3 is 5
+The FP rate using 3 is 41
+The FN rate using 3 is 121
+The Sensitivity rate using 3 is 0.0620155
+The Specificity rate using 3 is 0.108696
+The Precision rate using 3 is 0.163265
+The Recall rate using 3 is 0.0620155
+The Accuracy rate using 3 is 0.0742857
+The TPR rate using 3 is 0.0620155
+The FPR rate using 3 is 0.891304
+Running Time: 0.000503 seconds
+The TP rate using 3 is 2
+The TN rate using 3 is 7
+The FP rate using 3 is 35
+The FN rate using 3 is 131
+The Sensitivity rate using 3 is 0.0150376
+The Specificity rate using 3 is 0.166667
+The Precision rate using 3 is 0.0540541
+The Recall rate using 3 is 0.0150376
+The Accuracy rate using 3 is 0.0514286
+The TPR rate using 3 is 0.0150376
+The FPR rate using 3 is 0.833333
+Running Time: 0.000503 seconds
+The TP rate using 3 is 6
+The TN rate using 3 is 6
+The FP rate using 3 is 36
+The FN rate using 3 is 127
+The Sensitivity rate using 3 is 0.0451128
+The Specificity rate using 3 is 0.142857
+The Precision rate using 3 is 0.142857
+The Recall rate using 3 is 0.0451128
+The Accuracy rate using 3 is 0.0685714
+The TPR rate using 3 is 0.0451128
+The FPR rate using 3 is 0.857143
+Running Time: 0.000504 seconds
+The TP rate using 3 is 4
+The TN rate using 3 is 5
+The FP rate using 3 is 41
+The FN rate using 3 is 130
+The Sensitivity rate using 3 is 0.0298507
+The Specificity rate using 3 is 0.108696
+The Precision rate using 3 is 0.0888889
+The Recall rate using 3 is 0.0298507
+The Accuracy rate using 3 is 0.05
+The TPR rate using 3 is 0.0298507
+The FPR rate using 3 is 0.891304
+Running Time: 0.000398 seconds
+Average Running Time: 0.0053791 seconds
+The TP rate using 3 is 0
+The TN rate using 3 is 6
+The FP rate using 3 is 39
+The FN rate using 3 is 130
+The Sensitivity rate using 3 is 0
+The Specificity rate using 3 is 0.133333
+The Precision rate using 3 is 0
+The Recall rate using 3 is 0
+The Accuracy rate using 3 is 0.0342857
+The TPR rate using 3 is 0
+The FPR rate using 3 is 0.866667
+Running Time: 0.000498 seconds
+The TP rate using 3 is 0
+The TN rate using 3 is 4
+The FP rate using 3 is 39
+The FN rate using 3 is 132
+The Sensitivity rate using 3 is 0
+The Specificity rate using 3 is 0.0930233
+The Precision rate using 3 is 0
+The Recall rate using 3 is 0
+The Accuracy rate using 3 is 0.0228571
+The TPR rate using 3 is 0
+The FPR rate using 3 is 0.906977
+Running Time: 0.000499 seconds
+The TP rate using 3 is 0
+The TN rate using 3 is 5
+The FP rate using 3 is 38
+The FN rate using 3 is 132
+The Sensitivity rate using 3 is 0
+The Specificity rate using 3 is 0.116279
+The Precision rate using 3 is 0
+The Recall rate using 3 is 0
+The Accuracy rate using 3 is 0.0285714
+The TPR rate using 3 is 0
+The FPR rate using 3 is 0.883721
+Running Time: 0.0005 seconds
+The TP rate using 3 is 0
+The TN rate using 3 is 6
+The FP rate using 3 is 35
+The FN rate using 3 is 134
+The Sensitivity rate using 3 is 0
+The Specificity rate using 3 is 0.146341
+The Precision rate using 3 is 0
+The Recall rate using 3 is 0
+The Accuracy rate using 3 is 0.0342857
+The TPR rate using 3 is 0
+The FPR rate using 3 is 0.853659
+Running Time: 0.000496 seconds
+The TP rate using 3 is 0
+The TN rate using 3 is 6
+The FP rate using 3 is 35
+The FN rate using 3 is 134
+The Sensitivity rate using 3 is 0
+The Specificity rate using 3 is 0.146341
+The Precision rate using 3 is 0
+The Recall rate using 3 is 0
+The Accuracy rate using 3 is 0.0342857
+The TPR rate using 3 is 0
+The FPR rate using 3 is 0.853659
+Running Time: 0.000497 seconds
+The TP rate using 3 is 0
+The TN rate using 3 is 6
+The FP rate using 3 is 37
+The FN rate using 3 is 132
+The Sensitivity rate using 3 is 0
+The Specificity rate using 3 is 0.139535
+The Precision rate using 3 is 0
+The Recall rate using 3 is 0
+The Accuracy rate using 3 is 0.0342857
+The TPR rate using 3 is 0
+The FPR rate using 3 is 0.860465
+Running Time: 0.000497 seconds
+The TP rate using 3 is 0
+The TN rate using 3 is 6
+The FP rate using 3 is 40
+The FN rate using 3 is 129
+The Sensitivity rate using 3 is 0
+The Specificity rate using 3 is 0.130435
+The Precision rate using 3 is 0
+The Recall rate using 3 is 0
+The Accuracy rate using 3 is 0.0342857
+The TPR rate using 3 is 0
+The FPR rate using 3 is 0.869565
+Running Time: 0.000498 seconds
+The TP rate using 3 is 0
+The TN rate using 3 is 7
+The FP rate using 3 is 35
+The FN rate using 3 is 133
+The Sensitivity rate using 3 is 0
+The Specificity rate using 3 is 0.166667
+The Precision rate using 3 is 0
+The Recall rate using 3 is 0
+The Accuracy rate using 3 is 0.04
+The TPR rate using 3 is 0
+The FPR rate using 3 is 0.833333
+Running Time: 0.000497 seconds
+The TP rate using 3 is 0
+The TN rate using 3 is 7
+The FP rate using 3 is 35
+The FN rate using 3 is 133
+The Sensitivity rate using 3 is 0
+The Specificity rate using 3 is 0.166667
+The Precision rate using 3 is 0
+The Recall rate using 3 is 0
+The Accuracy rate using 3 is 0.04
+The TPR rate using 3 is 0
+The FPR rate using 3 is 0.833333
+Running Time: 0.0005 seconds
+The TP rate using 3 is 0
+The TN rate using 3 is 6
+The FP rate using 3 is 40
+The FN rate using 3 is 134
+The Sensitivity rate using 3 is 0
+The Specificity rate using 3 is 0.130435
+The Precision rate using 3 is 0
+The Recall rate using 3 is 0
+The Accuracy rate using 3 is 0.0333333
+The TPR rate using 3 is 0
+The FPR rate using 3 is 0.869565
+Running Time: 0.000391 seconds
+Average Running Time: 0.0058664 seconds

@@ -1,0 +1,33 @@
+Correct Rate: 55
+Running Time: 0.015533 seconds
+Correct Rate: 50
+Running Time: 0.009631 seconds
+Correct Rate: 80
+Running Time: 0.00961 seconds
+Correct Rate: 65
+Running Time: 0.009632 seconds
+Correct Rate: 85
+Running Time: 0.009524 seconds
+Correct Rate: 65
+Running Time: 0.010646 seconds
+Correct Rate: 90
+Running Time: 0.012134 seconds
+Correct Rate: 85
+Running Time: 0.009581 seconds
+Correct Rate: 95
+Running Time: 0.00956 seconds
+Correct Rate: 66.6667
+Running Time: 0.007181 seconds
+The TP rate using 4 is 99
+The TN rate using 4 is 45
+The FP rate using 4 is 3
+The FN rate using 4 is 48
+The Sensitivity rate using 4 is 0.673469
+The Specificity rate using 4 is 0.9375
+The Precision rate using 4 is 0.970588
+The Recall rate using 4 is 0.673469
+The Accuracy rate using 4 is 0.738462
+The FPR rate using 4 is 0.0625
+0.673469,The TPR rate using 4 is 0.673469
+Average Correct Rate: 73.8462
+Average Running Time: 0.0103032 seconds

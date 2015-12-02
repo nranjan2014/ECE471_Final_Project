@@ -1,0 +1,246 @@
+Error Rate: 80
+Running Time: 0.012856 seconds
+Error Rate: 90
+Running Time: 0.009936 seconds
+Error Rate: 85
+Running Time: 0.009575 seconds
+Error Rate: 70
+Running Time: 0.017413 seconds
+Error Rate: 80
+Running Time: 0.011227 seconds
+Error Rate: 85
+Running Time: 0.009582 seconds
+Error Rate: 55
+Running Time: 0.01217 seconds
+Error Rate: 75
+Running Time: 0.014138 seconds
+Error Rate: 75
+Running Time: 0.009609 seconds
+Error Rate: 53.3333
+Running Time: 0.007227 seconds
+Average Error Rate: 75.3846
+Average Running Time: 0.0113733 seconds
+Error Rate: 85
+Running Time: 0.00958 seconds
+Error Rate: 90
+Running Time: 0.009583 seconds
+Error Rate: 90
+Running Time: 0.009619 seconds
+Error Rate: 80
+Running Time: 0.0096 seconds
+Error Rate: 90
+Running Time: 0.009567 seconds
+Error Rate: 80
+Running Time: 0.009604 seconds
+Error Rate: 80
+Running Time: 0.014086 seconds
+Error Rate: 90
+Running Time: 0.009548 seconds
+Error Rate: 95
+Running Time: 0.00953 seconds
+Error Rate: 80
+Running Time: 0.00715 seconds
+Average Error Rate: 80.7692
+Average Running Time: 0.02116 seconds
+Error Rate: 70
+Running Time: 0.009551 seconds
+Error Rate: 70
+Running Time: 0.009534 seconds
+Error Rate: 90
+Running Time: 0.009561 seconds
+Error Rate: 75
+Running Time: 0.0095 seconds
+Error Rate: 90
+Running Time: 0.009493 seconds
+Error Rate: 70
+Running Time: 0.009504 seconds
+Error Rate: 85
+Running Time: 0.009554 seconds
+Error Rate: 100
+Running Time: 0.00951 seconds
+Error Rate: 95
+Running Time: 0.00949 seconds
+Error Rate: 86.6667
+Running Time: 0.007093 seconds
+Average Error Rate: 81.5385
+Average Running Time: 0.030439 seconds
+Error Rate: 75
+Running Time: 0.009513 seconds
+Error Rate: 65
+Running Time: 0.00951 seconds
+Error Rate: 85
+Running Time: 0.009493 seconds
+Error Rate: 70
+Running Time: 0.009509 seconds
+Error Rate: 85
+Running Time: 0.009565 seconds
+Error Rate: 70
+Running Time: 0.009515 seconds
+Error Rate: 90
+Running Time: 0.009568 seconds
+Error Rate: 95
+Running Time: 0.009571 seconds
+Error Rate: 95
+Running Time: 0.01041 seconds
+Error Rate: 93.3333
+Running Time: 0.007121 seconds
+Average Error Rate: 81.6667
+Average Running Time: 0.0398165 seconds
+Error Rate: 75
+Running Time: 0.009539 seconds
+Error Rate: 65
+Running Time: 0.009537 seconds
+Error Rate: 85
+Running Time: 0.009524 seconds
+Error Rate: 70
+Running Time: 0.009514 seconds
+Error Rate: 85
+Running Time: 0.009546 seconds
+Error Rate: 70
+Running Time: 0.009533 seconds
+Error Rate: 85
+Running Time: 0.009534 seconds
+Error Rate: 90
+Running Time: 0.009522 seconds
+Error Rate: 95
+Running Time: 0.009523 seconds
+Error Rate: 86.6667
+Running Time: 0.007151 seconds
+Average Error Rate: 81.4359
+Average Running Time: 0.0491088 seconds
+Error Rate: 70
+Running Time: 0.009527 seconds
+Error Rate: 65
+Running Time: 0.009564 seconds
+Error Rate: 85
+Running Time: 0.009542 seconds
+Error Rate: 70
+Running Time: 0.009534 seconds
+Error Rate: 85
+Running Time: 0.014088 seconds
+Error Rate: 65
+Running Time: 0.010286 seconds
+Error Rate: 85
+Running Time: 0.009537 seconds
+Error Rate: 85
+Running Time: 0.012202 seconds
+Error Rate: 95
+Running Time: 0.011426 seconds
+Error Rate: 80
+Running Time: 0.007137 seconds
+Average Error Rate: 80.9402
+Average Running Time: 0.0593931 seconds
+Error Rate: 70
+Running Time: 0.009597 seconds
+Error Rate: 60
+Running Time: 0.009528 seconds
+Error Rate: 85
+Running Time: 0.009514 seconds
+Error Rate: 65
+Running Time: 0.009511 seconds
+Error Rate: 85
+Running Time: 0.009516 seconds
+Error Rate: 65
+Running Time: 0.009838 seconds
+Error Rate: 85
+Running Time: 0.0095 seconds
+Error Rate: 85
+Running Time: 0.009504 seconds
+Error Rate: 95
+Running Time: 0.009495 seconds
+Error Rate: 73.3333
+Running Time: 0.007142 seconds
+Average Error Rate: 80.3663
+Average Running Time: 0.0687076 seconds
+Error Rate: 55
+Running Time: 0.009562 seconds
+Error Rate: 50
+Running Time: 0.00956 seconds
+Error Rate: 80
+Running Time: 0.009515 seconds
+Error Rate: 65
+Running Time: 0.0098 seconds
+Error Rate: 85
+Running Time: 0.009567 seconds
+Error Rate: 65
+Running Time: 0.00954 seconds
+Error Rate: 90
+Running Time: 0.013696 seconds
+Error Rate: 85
+Running Time: 0.009967 seconds
+Error Rate: 95
+Running Time: 0.009522 seconds
+Error Rate: 66.6667
+Running Time: 0.007162 seconds
+Average Error Rate: 79.5513
+Average Running Time: 0.0784967 seconds
+Error Rate: 55
+Running Time: 0.00953 seconds
+Error Rate: 50
+Running Time: 0.009537 seconds
+Error Rate: 75
+Running Time: 0.00952 seconds
+Error Rate: 65
+Running Time: 0.009509 seconds
+Error Rate: 80
+Running Time: 0.009617 seconds
+Error Rate: 55
+Running Time: 0.009519 seconds
+Error Rate: 85
+Running Time: 0.009488 seconds
+Error Rate: 85
+Running Time: 0.009566 seconds
+Error Rate: 90
+Running Time: 0.009515 seconds
+Error Rate: 60
+Running Time: 0.007139 seconds
+Average Error Rate: 78.5185
+Average Running Time: 0.0877907 seconds
+Error Rate: 45
+Running Time: 0.009519 seconds
+Error Rate: 50
+Running Time: 0.00951 seconds
+Error Rate: 75
+Running Time: 0.009782 seconds
+Error Rate: 65
+Running Time: 0.009549 seconds
+Error Rate: 80
+Running Time: 0.009602 seconds
+Error Rate: 50
+Running Time: 0.009527 seconds
+Error Rate: 80
+Running Time: 0.009538 seconds
+Error Rate: 85
+Running Time: 0.009517 seconds
+Error Rate: 75
+Running Time: 0.009531 seconds
+Error Rate: 60
+Running Time: 0.007133 seconds
+Average Error Rate: 77.3333
+Average Running Time: 0.0971115 seconds
+Error Rate: 20
+Running Time: 0.009549 seconds
+Error Rate: 10
+Running Time: 0.009534 seconds
+Error Rate: 15
+Running Time: 0.009531 seconds
+Error Rate: 30
+Running Time: 0.009549 seconds
+Error Rate: 20
+Running Time: 0.009562 seconds
+Error Rate: 15
+Running Time: 0.00951 seconds
+Error Rate: 45
+Running Time: 0.012248 seconds
+Error Rate: 25
+Running Time: 0.009992 seconds
+Error Rate: 25
+Running Time: 0.009532 seconds
+Error Rate: 46.6667
+Running Time: 0.007132 seconds
+Average Error Rate: 72.5408
+Average Running Time: 0.106725 seconds
+highest Pw found:  0.3 
+ 0.7 
+
+high accuracy found: 81.6667

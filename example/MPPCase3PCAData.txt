@@ -1,0 +1,33 @@
+Correct Rate: 70
+Running Time: 0.013801 seconds
+Correct Rate: 65
+Running Time: 0.0096 seconds
+Correct Rate: 85
+Running Time: 0.010024 seconds
+Correct Rate: 70
+Running Time: 0.009978 seconds
+Correct Rate: 85
+Running Time: 0.009575 seconds
+Correct Rate: 65
+Running Time: 0.009556 seconds
+Correct Rate: 85
+Running Time: 0.009576 seconds
+Correct Rate: 85
+Running Time: 0.00964 seconds
+Correct Rate: 95
+Running Time: 0.012739 seconds
+Correct Rate: 80
+Running Time: 0.007186 seconds
+The TP rate using 3 is 110
+The TN rate using 3 is 43
+The FP rate using 3 is 5
+The FN rate using 3 is 37
+The Sensitivity rate using 3 is 0.748299
+The Specificity rate using 3 is 0.895833
+The Precision rate using 3 is 0.956522
+The Recall rate using 3 is 0.748299
+The Accuracy rate using 3 is 0.784615
+The FPR rate using 3 is 0.104167
+0.748299,The TPR rate using 3 is 0.748299
+Average Correct Rate: 78.4615
+Average Running Time: 0.0101675 seconds

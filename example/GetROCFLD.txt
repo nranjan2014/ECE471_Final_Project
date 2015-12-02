@@ -1,0 +1,84 @@
+PW0 is: 0
+PW1 is: 1
+The FPR rate is 1
+The TPR rate is 1
+PW0 is: 0.05
+PW1 is: 0.95
+The FPR rate is 0.77551
+The TPR rate is 1
+PW0 is: 0.1
+PW1 is: 0.9
+The FPR rate is 0.734694
+The TPR rate is 1
+PW0 is: 0.15
+PW1 is: 0.85
+The FPR rate is 0.673469
+The TPR rate is 1
+PW0 is: 0.2
+PW1 is: 0.8
+The FPR rate is 0.632653
+The TPR rate is 1
+PW0 is: 0.25
+PW1 is: 0.75
+The FPR rate is 0.612245
+The TPR rate is 1
+PW0 is: 0.3
+PW1 is: 0.7
+The FPR rate is 0.571429
+The TPR rate is 1
+PW0 is: 0.35
+PW1 is: 0.65
+The FPR rate is 0.530612
+The TPR rate is 1
+PW0 is: 0.4
+PW1 is: 0.6
+The FPR rate is 0.510204
+The TPR rate is 1
+PW0 is: 0.45
+PW1 is: 0.55
+The FPR rate is 0.510204
+The TPR rate is 1
+PW0 is: 0.5
+PW1 is: 0.5
+The FPR rate is 0.510204
+The TPR rate is 1
+PW0 is: 0.55
+PW1 is: 0.45
+The FPR rate is 0.510204
+The TPR rate is 1
+PW0 is: 0.6
+PW1 is: 0.4
+The FPR rate is 0.489796
+The TPR rate is 1
+PW0 is: 0.65
+PW1 is: 0.35
+The FPR rate is 0.489796
+The TPR rate is 1
+PW0 is: 0.7
+PW1 is: 0.3
+The FPR rate is 0.469388
+The TPR rate is 0.993151
+PW0 is: 0.75
+PW1 is: 0.25
+The FPR rate is 0.469388
+The TPR rate is 0.993151
+PW0 is: 0.8
+PW1 is: 0.2
+The FPR rate is 0.428571
+The TPR rate is 0.979452
+PW0 is: 0.85
+PW1 is: 0.15
+The FPR rate is 0.326531
+The TPR rate is 0.965753
+PW0 is: 0.9
+PW1 is: 0.1
+The FPR rate is 0.285714
+The TPR rate is 0.952055
+PW0 is: 0.95
+PW1 is: 0.05
+The FPR rate is 0.244898
+The TPR rate is 0.89726
+PW0 is: 1
+PW1 is: 0
+The FPR rate is 0
+The TPR rate is 0

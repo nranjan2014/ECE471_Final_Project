@@ -1,0 +1,33 @@
+Correct Rate: 20
+Running Time: 0.008285 seconds
+Correct Rate: 10
+Running Time: 0.005512 seconds
+Correct Rate: 15
+Running Time: 0.004842 seconds
+Correct Rate: 30
+Running Time: 0.00439 seconds
+Correct Rate: 25
+Running Time: 0.004884 seconds
+Correct Rate: 15
+Running Time: 0.004884 seconds
+Correct Rate: 45
+Running Time: 0.00441 seconds
+Correct Rate: 25
+Running Time: 0.004364 seconds
+Correct Rate: 25
+Running Time: 0.004336 seconds
+Correct Rate: 46.6667
+Running Time: 0.003402 seconds
+Average Correct Rate: 25.1282
+Average Running Time: 0.0049309 seconds
+The TP rate using 1 is 9
+The TN rate using 1 is 46
+The FP rate using 1 is 3
+The FN rate using 1 is 137
+The Sensitivity rate using 1 is 0.0616438
+The Specificity rate using 1 is 0.938776
+The Precision rate using 1 is 0.75
+The Recall rate using 1 is 0.0616438
+The Accuracy rate using 1 is 0.282051
+The FPR rate using 1 is 0.0612245
+The TPR rate using 1 is 0.0616438
