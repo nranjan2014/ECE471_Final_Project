@@ -70,6 +70,8 @@ int mpp(const Matrix &train, const Matrix &tedata, const int c, const int cases,
         ncte = tedata.getCol();
         nrtr = train.getRow();
         nrte = tedata.getRow();
+       // cout << "nctr: " << nctr << endl;
+       // cout << "ncte: " << ncte << endl;
         if (nctr != (nrte+1)) {
             // if (nctr != (nrte)) {
             cout << "MPP: "
@@ -97,8 +99,8 @@ int mpp(const Matrix &train, const Matrix &tedata, const int c, const int cases,
           //  cout << "temp: " << tmp << endl;
             covs[i] = cov(tmp, nf);
             means[i] = mean(tmp, nf);
-           // cout << "means[" << i << "]: " << means[i] << endl;
-          //  cout << "covariance[" << i << "]:  " << covs[i] << endl;
+        //    cout << "means[" << i << "]: " << means[i] << endl;
+         //   cout << "covariance[" << i << "]:  " << covs[i] << endl;
             covsum = covsum + covs[i];
         }
 
@@ -137,14 +139,19 @@ int mpp(const Matrix &train, const Matrix &tedata, const int c, const int cases,
             }
             break;
         case 3:
+           // cout << "comes here " << endl;
+          //  cout << "class" << c << endl;
             for (i=0; i<c; i++) {
-    
+            //    cout << "class" << i << endl;
                 mdist = mah(tedata, covs[i], means[i]);
+              //  cout << "mdist : " << mdist << endl;
                 disc(0,i) = -0.5*mdist*mdist - 0.5*log(det(covs[i])) + log(Pw(i,0));
+               // cout << "dic: " << disc(0,i) << endl;
               
             }
             break;
         case 4:
+          //  cout << "comes here " << endl;
             for (i=0; i<c; i++) {
                 Matrix diff = (tedata - (means[i]));
                 Matrix diffTrans = transpose(diff);
