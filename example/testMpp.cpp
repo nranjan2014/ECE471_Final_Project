@@ -50,7 +50,9 @@ int main(int argc, char **argv)
     // column number
     Matrix XTr, XTe;      // original training and testing set
     Matrix Tr, Te;        // training and testing set file received from command line
-
+    Matrix tXTr, tXTe;
+    Matrix fXTr, fXTe;
+    Matrix nXTr, nXTe;
     // check to see if the number of argument is correct
     if (argc < 6) {
         cout << Usage;
@@ -68,9 +70,10 @@ int main(int argc, char **argv)
 
     XTr = readData(argv[1], nc);
     nrTr = XTr.getRow();          // get the number of rows in training set
-    cout << "row: " << nrTr << endl;
+  //  cout << "row: " << nrTr << endl;
     Matrix X;
-
+if ( cases == 1)
+{
     X = subMatrix(XTr, 0,0, nrTr-1, nf-1);
 
     // prepare the labels and error count
@@ -99,7 +102,7 @@ int main(int argc, char **argv)
         }
     }
     writeData(nXTr, "NormData.tr");
-   
+    cout << "Column NormData: " << nXTr.getCol() << endl;
     // perform the transformation of normalized data set using PCA
     Matrix tXTr, tXTe;
    
@@ -110,6 +113,7 @@ int main(int argc, char **argv)
     tXTr = GetDataTransformedFLD ( nXTr, B_M);
     
     writeData(tXTr, "PCA.tr");
+    cout << "Column PCA.tr: " << tXTr.getCol() << endl;
 
     // perform the transformation of normalized data set using FLD
     Matrix W, fXTr, fXTe;
@@ -120,71 +124,73 @@ int main(int argc, char **argv)
     fXTr = GetDataTransformedFLD ( nXTr,W);
     
     writeData(fXTr, "FLD.tr");
+    cout << "Column FLD.tr: " << fXTr.getCol() << endl;
     
     MakeFoldData(nrTr);
+    
     int fea = 22;   // there are 9 features in this data set
     int sumError = 0;
     int sumTotalCount = 0;
     double totalTime = 0.0;
     
     int sampFold = 20;
+}
     // case: run the task of  MAP, case1, case2, case3 classification on nX data set with equal prior probabilty
-    if ( cases == 01)
+    else if ( cases == 2)
     {
+        nXTr = readData("NormData.tr", 23);
         RunMPPCase123 (nXTr, 1);
     }
-    else if ( cases == 02)
+    else if ( cases == 3)
     {
+        nXTr = readData("NormData.tr", 23);
         RunMPPCase123 (nXTr, 2);
     }
-    else if ( cases == 03) // tXTr
+    else if ( cases == 4) // tXTr
     {
+       tXTr = readData("PCA.tr", 7);
        RunMPPCase123 (tXTr, 3);
     }
     // perform the task of finding optimal prior probability
 
-    else if ( cases == 04)
+    else if ( cases == 5)
     {
+        tXTr = readData("PCA.tr", 7);
         FindOptimalPP( tXTr);
     }
     // perform the task of classification using MAP on data set tX
-    else if ( cases == 05)
+    else if ( cases == 6)
     {
+        tXTr = readData("PCA.tr", 7);
         ClassifyBestPwPCAFLD(tXTr);
     }
     // perform the task of classification using MAP on data set fX
-    else if ( cases == 06)
+    else if ( cases == 7)
     {
+        fXTr = readData("FLD.tr", 2);
        ClassifyBestPwPCAFLD(fXTr);
     }
     
-    else if ( cases == 07)
+    else if ( cases == 8)
     {
+        tXTr = readData("PCA.tr", 7);
         GetROC(tXTr);
     }
     // perform the task of getting FPR TPR for ROC Curve plot for nX data set
-    else if ( cases == 7)
+    else if ( cases == 9)
     {
+        fXTr = readData("FLD.tr", 2);
         GetROC(fXTr);
     }
     // perform the task of getting FPR TPR for ROC Curve plot for tX data set
-    else if ( cases == 6)
+    else if ( cases == 10)
     {
-        Matrix Pw2(2, 1);
-        
-        // variy the prior probabity over the range 0 to 1 with increment of 0.1
-        // and get the performance metric in each case for classification rule MAP applied
-        for ( int i = 0; i < 11; i++)
-        {
-            Pw2(0,0) = (float)i/10;
-            
-            Pw2(1,0) = 1 - (Pw2(0,0));
-            
-            ClassificationWithBestPW ( tXTr, tXTe, Pw2, cases );
-        }
+        nXTr = readData("NormData.tr", 2);
+        GetROC(nXTr);
+
     }
     // perform the task of getting FPR TPR for ROC Curve plot for fX data set
-    else if ( cases == 7)
+    else if ( cases ==11)
     {
         Matrix Pw2(2, 1);
         
@@ -201,7 +207,7 @@ int main(int argc, char **argv)
     }
 
     // kNN basic implementation using full Euclidean distance on data set nX
-    else if ( cases == 8)
+    else if ( cases == 12)
     {
         Matrix label (nXTe.getRow(), 1);
 
@@ -217,12 +223,12 @@ int main(int argc, char **argv)
         }
         clock_t end = clock();
 
-        DerivePerferformanceMetric ( label, nXTe, cases);
+        DerivePerferformanceMetric ( label, cases);
 
         cout << "Running Time: " << (double) (end-start)/ 1000000 << " seconds" << endl;
     }
     // kNN implementation using partial Euclidean distance on data set nX
-    else if ( cases == 9)
+    else if ( cases == 13)
     {
         Matrix label (nXTe.getRow(), 1);
 
@@ -238,13 +244,13 @@ int main(int argc, char **argv)
         }
         clock_t end = clock();
 
-        DerivePerferformanceMetric ( label, nXTe, cases);
+        DerivePerferformanceMetric ( label, cases);
 
         cout << "Running Time: " << (double) (end-start)/ 1000000 << " seconds" << endl;
 
     }
     // kNN implementation using full Euclidean distance on data set tX
-    else if ( cases == 10)
+    else if ( cases == 14)
     {
         Matrix label (tXTe.getRow(), 1);
 
@@ -260,13 +266,13 @@ int main(int argc, char **argv)
         }
         clock_t end = clock();
 
-        DerivePerferformanceMetric ( label, tXTe, cases);
+        DerivePerferformanceMetric ( label, cases);
 
         cout << "Running Time: " << (double) (end-start)/ 1000000 << " seconds" << endl;
 
     }
     // kNN implementation using partial Euclidean distance on data set tX
-    else if ( cases == 11)
+    else if ( cases == 15)
     {
         Matrix label (tXTe.getRow(), 1);
 
@@ -282,13 +288,13 @@ int main(int argc, char **argv)
         }
         clock_t end = clock();
 
-        DerivePerferformanceMetric ( label, tXTe, cases);
+        DerivePerferformanceMetric ( label, cases);
 
         cout << "Running Time: " << (double) (end-start)/ 1000000 << " seconds" << endl;
 
     }
     // kNN implementation using full Euclidean distance on data set fX
-    else if ( cases == 12)
+    else if ( cases == 16)
     {
         Matrix label (fXTe.getRow(), 1);
 
@@ -304,13 +310,13 @@ int main(int argc, char **argv)
         }
         clock_t end = clock();
 
-        DerivePerferformanceMetric ( label, fXTe, cases);
+        DerivePerferformanceMetric ( label, cases);
 
         cout << "Running Time: " << (double) (end-start)/ 1000000 << " seconds" << endl;
 
     }
     // kNN implementation using partial Euclidean distance on data set fX
-    else if ( cases == 13)
+    else if ( cases == 17)
     {
         Matrix label (fXTe.getRow(), 1);
 
@@ -326,13 +332,13 @@ int main(int argc, char **argv)
         }
         clock_t end = clock();
 
-        DerivePerferformanceMetric ( label, fXTe, cases);
+        DerivePerferformanceMetric ( label, cases);
 
         cout << "Running Time: " << (double) (end-start)/ 1000000 << " seconds" << endl;
 
     }
     // kNN implementation using full Minkowski distance on data set nX
-    else if ( cases == 14)
+    else if ( cases == 18)
     {
         Matrix label (nXTe.getRow(), 1);
 
@@ -348,13 +354,13 @@ int main(int argc, char **argv)
         }
         clock_t end = clock();
 
-        DerivePerferformanceMetric ( label, nXTe, cases);
+        DerivePerferformanceMetric ( label, cases);
 
         cout << "Running Time: " << (double) (end-start)/ 1000000 << " seconds" << endl;
 
     }
     // kNN implementation using partial Minkowski distance on data set nX
-    else if ( cases == 15)
+    else if ( cases == 19)
     {
         Matrix label (nXTe.getRow(), 1);
 
@@ -370,13 +376,13 @@ int main(int argc, char **argv)
         }
         clock_t end = clock();
 
-        DerivePerferformanceMetric ( label, nXTe, cases);
+        DerivePerferformanceMetric ( label, cases);
 
         cout << "Running Time: " << (double) (end-start)/ 1000000 << " seconds" << endl;
 
     }
     // kNN implementation using full Minkowski distance on data set tX
-    else if ( cases == 16)
+    else if ( cases == 20)
     {
         Matrix label (tXTe.getRow(), 1);
 
@@ -392,13 +398,13 @@ int main(int argc, char **argv)
         }
         clock_t end = clock();
 
-        DerivePerferformanceMetric ( label, tXTe, cases);
+        DerivePerferformanceMetric ( label, cases);
 
         cout << "Running Time: " << (double) (end-start)/ 1000000 << " seconds" << endl;
 
     }
     // kNN implementation using partial Minkowski distance on data set tX
-    else if ( cases == 17)
+    else if ( cases == 21)
     {
         Matrix label (tXTe.getRow(), 1);
 
@@ -414,13 +420,13 @@ int main(int argc, char **argv)
         }
         clock_t end = clock();
 
-        DerivePerferformanceMetric ( label, tXTe, cases);
+        DerivePerferformanceMetric ( label, cases);
 
         cout << "Running Time: " << (double) (end-start)/ 1000000 << " seconds" << endl;
 
     }
     // kNN implementation using full Minkowski distance on data set fX
-    else if ( cases == 18)
+    else if ( cases == 22)
     {
         Matrix label (fXTe.getRow(), 1);
 
@@ -436,12 +442,12 @@ int main(int argc, char **argv)
         }
         clock_t end = clock();
 
-        DerivePerferformanceMetric ( label, fXTe, cases);
+        DerivePerferformanceMetric ( label, cases);
 
         cout << "Running Time: " << (double) (end-start)/ 1000000 << " seconds" << endl;
     }
     // kNN implementation using partial Minkowski distance on data set fX
-    else if ( cases == 19)
+    else if ( cases == 23)
     {
         Matrix label (fXTe.getRow(), 1);
 
@@ -457,7 +463,7 @@ int main(int argc, char **argv)
         }
         clock_t end = clock();
 
-        DerivePerferformanceMetric ( label, fXTe, cases);
+        DerivePerferformanceMetric ( label, cases);
 
         cout << "Running Time: " << (double) (end-start)/ 1000000 << " seconds" << endl;
     }
@@ -488,13 +494,13 @@ void ClassificationWithBestPW ( Matrix &trn, Matrix &tet, Matrix &BestPW, int ty
         labelMPP(i,0) = mpp(trn, sample, 2 , 4, BestPW);
     }
 
-    DerivePerferformanceMetric ( labelMPP, tet,type );
+    DerivePerferformanceMetric ( labelMPP,type );
 
 }
 
 // this function calculates the performance metrics for the classification rule MAP used
 // on the each type of data set tested
-void DerivePerferformanceMetric ( Matrix & tested, Matrix &truth, int datatype)
+void DerivePerferformanceMetric ( Matrix & tested, int datatype)
 {
     double Sensitivity;
     double Specificity;
@@ -519,14 +525,15 @@ void DerivePerferformanceMetric ( Matrix & tested, Matrix &truth, int datatype)
     Accuracy = 0.0;
     TPR =0.0;
     FPR = 0.0;
-    int row = truth.getRow();
-    int col = truth.getCol();
+    int row = tested.getRow();
+    int col = tested.getCol();
+    Matrix ConfusionMatrix (2,2);
     
     for (int i=0; i<row; i++) {
-        if (tested(i,0) == truth(i, col-1))
+        if (tested(i,0) == tested(i,1))
         {
             CorrectCountMPP++;
-            if ( truth(i,col-1) == 1) // truth yes, observed yes
+            if ( tested(i,0) == 1) // truth yes, observed yes
             {
                 TP++;
             }
@@ -537,7 +544,7 @@ void DerivePerferformanceMetric ( Matrix & tested, Matrix &truth, int datatype)
         }
         else
         {
-            if (truth(i,col-1) == 1) // truth yes, observed no
+            if (tested(i,0) == 1) // truth yes, observed no
             {
                 FN++;
             }
@@ -547,6 +554,7 @@ void DerivePerferformanceMetric ( Matrix & tested, Matrix &truth, int datatype)
             }
         }
     }
+    
     Sensitivity = ((double)(TP))/(TP+FN);
     Specificity = ((double)(TN))/(TN+FP);
     Precision = ((double)(TP))/(TP+FP);
@@ -554,6 +562,17 @@ void DerivePerferformanceMetric ( Matrix & tested, Matrix &truth, int datatype)
     Accuracy = ((double)((TP+TN)))/(TP+TN+FN+FP);
     FPR = ((double)(FP))/(FP+TN);
     TPR = ((double)(TP))/(TP+FN);
+    ConfusionMatrix(0,0) = TP;
+    ConfusionMatrix(0,1) = FN;
+    ConfusionMatrix(1,0) = FP;
+    ConfusionMatrix(1,1) = TN;
+    
+    string lb = "ConfusionMatrix" + to_string(datatype);
+    
+    //std::string str = "string";
+    const char *cstr = lb.c_str();
+
+    writeData(ConfusionMatrix, cstr);
     
     cout << "The TP rate using " << datatype << " is " << TP << endl;
     cout << "The TN rate using " << datatype << " is " << TN << endl;
@@ -564,8 +583,11 @@ void DerivePerferformanceMetric ( Matrix & tested, Matrix &truth, int datatype)
     cout << "The Precision rate using " << datatype << " is " << Precision << endl;
     cout << "The Recall rate using " << datatype << " is " << Recall << endl;
     cout << "The Accuracy rate using " << datatype << " is " << Accuracy << endl;
-    cout << "The TPR rate using " << datatype << " is " << TPR << endl;
+    
     cout << "The FPR rate using " << datatype << " is " << FPR << endl;
+    cout << TPR << ",";
+    cout << "The TPR rate using " << datatype << " is " << TPR << endl;
+    
 }
 
 // this function finds the optimal projection direction for FLD
@@ -1411,36 +1433,40 @@ void RunMPPCase123 (Matrix &nXTr, int caseNum)
 {
     //  cout << "data " << nXTr << endl;
     int fea = 22;   // there are 9 features in this data set
-    int sumError = 0;
+    int sumCorrect = 0;
     int sumTotalCount = 0;
     double totalTime = 0.0;
     
     int sampFold = 20;
+    int numrow = nXTr.getRow();
     int classes = 2;
+    Matrix labelTotal(numrow, 2);
+    
     // read in fold data
     Matrix foldData = readData("foldTen.dat", sampFold );
     
     // read one row at a time from the 10 folds and assign the current row read as
     // fold for building validating set. Then assign rest of the current to use as
     // training set using kNN classifier c;assify the validating set from training set
-    for (int i = 0; i < foldData.getRow(); i++ )
+    int labelrow = 0;
+    for (int j = 0; j < foldData.getRow(); j++ )
     {
         // current fold
-        Matrix S = subMatrix(foldData, i,0,i,foldData.getCol()-1);
+        Matrix S = subMatrix(foldData, j,0,j,foldData.getCol()-1);
         //cout << "pass 1" << endl;
         // build the validating set from the one fold just read
         Matrix test = getTestingData(S, nXTr);
         // cout << "pass 2" << endl;
         // build the training set from leaving the current fold and including the rest of the
         // fold
-        Matrix training = getTrainingData(foldData, nXTr, i );
+        Matrix training = getTrainingData(foldData, nXTr, j );
         // cout << "pass 3" << endl;
         // to hold class label for testing samples
-        Matrix label (test.getRow(), 1);
+        Matrix label (test.getRow(), 2);
         
         
         int foldclass = 2; // there are 7 class category in this data set
-        int ErrorCount = 0;
+        int CorrectCount = 0;
         
         // assign prior probability
         Matrix Pw(classes, 1);
@@ -1448,7 +1474,7 @@ void RunMPPCase123 (Matrix &nXTr, int caseNum)
             Pw(i,0) = (float)1/classes;   // assuming equal prior probability
         
         // perform classification
-        int j;
+        //int j;
         
         
         // start timming the kNN classification completion for one fold
@@ -1466,33 +1492,54 @@ void RunMPPCase123 (Matrix &nXTr, int caseNum)
             
             //   cout << "pass 4" << endl;
             // call MPP to perform classification
-            label(i,0) = mpp(training, sample, classes, caseNum , Pw);
+            label(i,0) = test(i,test.getCol()-1);
+            label(i,1) = mpp(training, sample, classes, caseNum , Pw);
            // cout << "come here" << endl;
             
             // label(i,0) = KNNClassifierEuclidianFold(training, sample, K, foldclass);
             
-            if (label(i,0) == test(i,test.getCol()-1))
+            labelTotal(labelrow, 0) = test(i,test.getCol()-1);
+            labelTotal(labelrow, 1) = label(i,1);
+            labelrow++;
+            
+            if (label(i,1) == test(i,test.getCol()-1))
             {
-                ErrorCount++;
+                CorrectCount++;
             }
         }
         // get the performance metrics for the classification tested
        // DerivePerferformanceMetric ( label, training, 3);
         
-        
-        sumError = sumError + ErrorCount;
+        sumCorrect = sumCorrect + CorrectCount;
         sumTotalCount = sumTotalCount + test.getRow();
         
-        cout << "Error Rate: " << (((float) ErrorCount) / test.getRow())*100 << endl;
+        cout << "Correct Rate: " << (((float) CorrectCount) / test.getRow())*100 << endl;
         
         clock_t end = clock();
         totalTime = totalTime + (((double) (end-start)) / 1000000);
         cout << "Running Time: " << (double) (end-start)/ 1000000 << " seconds" << endl;
     }
-    cout << "sunerror: " << sumError << endl;
-    cout <<"sumtotal " << sumTotalCount << endl;
-    cout << "Average Error Rate: " << (((float) sumError) / sumTotalCount)*100 << endl;
+   if (caseNum == 1)
+   {
+    writeData(labelTotal, "labelTotalMPP1.dat");
+    DerivePerferformanceMetric ( labelTotal, 1);
+   }
+    else if (caseNum == 2)
+    {
+        writeData(labelTotal, "labelTotalMPP2.dat");
+        DerivePerferformanceMetric ( labelTotal, 2);
+    }
+    else if (caseNum == 3)
+    {
+        writeData(labelTotal, "labelTotalMPP3.dat");
+        DerivePerferformanceMetric ( labelTotal, 3);
+    }
+    
+    
+    cout << "Average Correct Rate: " << (((float) sumCorrect) / sumTotalCount)*100 << endl;
     cout << "Average Running Time: " << totalTime / 10 << " seconds" << endl;
+    
+    
 }
 void FindOptimalPP( Matrix &nXTr)
 {
@@ -1560,7 +1607,7 @@ void FindOptimalPP( Matrix &nXTr)
                 
                 //   cout << "pass 4" << endl;
                 // call MPP to perform classification
-                label(i,0) = mpp(training, sample, classes, 3, Pw);
+                label(i,0) = mpp(training, sample, classes, 2, Pw);
                // cout << "come here" << endl;
                 
                 // label(i,0) = KNNClassifierEuclidianFold(training, sample, K, foldclass);
@@ -1614,40 +1661,44 @@ void ClassifyBestPwPCAFLD(Matrix &nXTr)
     
     //  cout << "data " << nXTr << endl;
     int fea = 22;   // there are 9 features in this data set
-    int sumError = 0;
+    int sumCorrect = 0;
     int sumTotalCount = 0;
     double totalTime = 0.0;
     
     int sampFold = 20;
     int classes = 2;
+    int numrow = nXTr.getRow();
+    Matrix labelTotal(numrow, 2);
+    int labelrow = 0;
+
     // read in fold data
     Matrix foldData = readData("foldTen.dat", sampFold );
     
     // read one row at a time from the 10 folds and assign the current row read as
     // fold for building validating set. Then assign rest of the current to use as
     // training set using kNN classifier c;assify the validating set from training set
-    for (int i = 0; i < foldData.getRow(); i++ )
+    for (int j = 0; j < foldData.getRow(); j++ )
     {
         // current fold
-        Matrix S = subMatrix(foldData, i,0,i,foldData.getCol()-1);
+        Matrix S = subMatrix(foldData, j,0,j,foldData.getCol()-1);
         //cout << "pass 1" << endl;
         // build the validating set from the one fold just read
         Matrix test = getTestingData(S, nXTr);
         // cout << "pass 2" << endl;
         // build the training set from leaving the current fold and including the rest of the
         // fold
-        Matrix training = getTrainingData(foldData, nXTr, i );
+        Matrix training = getTrainingData(foldData, nXTr, j );
         // cout << "pass 3" << endl;
         // to hold class label for testing samples
-        Matrix label (test.getRow(), 1);
+        Matrix label (test.getRow(), 2);
         
         
         int foldclass = 2; // there are 7 class category in this data set
-        int ErrorCount = 0;
+        int CorrectCount = 0;
         
         
         // perform classification
-        int j;
+        //int j;
         
         
         // start timming the kNN classification completion for one fold
@@ -1665,34 +1716,50 @@ void ClassifyBestPwPCAFLD(Matrix &nXTr)
             
             //   cout << "pass 4" << endl;
             // call MPP to perform classification
-            label(i,0) = mpp(training, sample, classes, 2 , Pw);
+            label(i,0) = test(i,test.getCol()-1);
+            label(i,1) = mpp(training, sample, classes, 3, Pw);
+            labelTotal(labelrow, 0) = test(i,test.getCol()-1);
+            labelTotal(labelrow, 1) = label(i,1);
+            labelrow++;
+
             //ClassificationWithBestPW ( tXTr, tXTe,Pw2, cases );
             //label(i,0) = mpp(training, sample, classes, caseNum , Pw);
           //  cout << "come here" << endl;
             
             // label(i,0) = KNNClassifierEuclidianFold(training, sample, K, foldclass);
             
-            if (label(i,0) == test(i,test.getCol()-1))
+            if (label(i,1) == test(i,test.getCol()-1))
             {
-                ErrorCount++;
+                CorrectCount++;
             }
         }
         // get the performance metrics for the classification tested
         // DerivePerferformanceMetric ( label, training, 3);
         
         
-        sumError = sumError + ErrorCount;
+        sumCorrect = sumCorrect + CorrectCount;
         sumTotalCount = sumTotalCount + test.getRow();
         
-        cout << "Error Rate: " << (((float) ErrorCount) / test.getRow())*100 << endl;
+        cout << "Correct Rate: " << (((float) CorrectCount) / test.getRow())*100 << endl;
         
         clock_t end = clock();
         totalTime = totalTime + (((double) (end-start)) / 1000000);
         cout << "Running Time: " << (double) (end-start)/ 1000000 << " seconds" << endl;
     }
-    cout << "sunerror: " << sumError << endl;
-    cout <<"sumtotal " << sumTotalCount << endl;
-    cout << "Average Error Rate: " << (((float) sumError) / sumTotalCount)*100 << endl;
+    if (nXTr.getCol() > 2)
+    {
+        writeData(labelTotal, "labelTotalPCAOptPP.dat");
+        
+        DerivePerferformanceMetric ( labelTotal,4 ); // PCA
+    }
+    else
+    {
+        writeData(labelTotal, "labelTotalFLDOptPP.dat");
+        
+        DerivePerferformanceMetric ( labelTotal,5 ); // FLD
+    }
+    
+    cout << "Average Correct Rate: " << (((float) sumCorrect) / sumTotalCount)*100 << endl;
     cout << "Average Running Time: " << totalTime / 10 << " seconds" << endl;
 }
 
@@ -1706,9 +1773,12 @@ void GetROC(Matrix &nXTr)
     
     //  cout << "data " << nXTr << endl;
     int fea = 22;   // there are 9 features in this data set
-    int sumError = 0;
+    int sumCorrect = 0;
     int sumTotalCount = 0;
     double totalTime = 0.0;
+    int numrow = nXTr.getRow();
+    Matrix labelTotal(numrow, 2);
+    int labelrow =0;
     
     int sampFold = 20;
     int classes = 2;
@@ -1717,11 +1787,14 @@ void GetROC(Matrix &nXTr)
 
     // variy the prior probabity over the range 0 to 1 with increment of 0.1
     // and get the performance metric in each case for classification rule MAP applied
-    for ( int i = 0; i < 11; i++)
+    for ( int k = 0; k < 21; k++)
     {
-        Pw(0,0) = (float)i/10;
+        Pw(0,0) = (float)k/20;
         
         Pw(1,0) = 1 - (Pw(0,0));
+        labelTotal.initMatrix(-1);
+        //labelTotal(numrow, 2);
+        labelrow =0;
        // clock_t start = clock();
         //clock_t end = clock();
         //ClassificationWithBestPW ( nXTr, nXTe, Pw2, cases );
@@ -1729,33 +1802,33 @@ void GetROC(Matrix &nXTr)
         // read one row at a time from the 10 folds and assign the current row read as
         // fold for building validating set. Then assign rest of the current to use as
         // training set using kNN classifier c;assify the validating set from training set
-        for (int i = 0; i < foldData.getRow(); i++ )
+        for (int j = 0; j < foldData.getRow(); j++ )
         {
             // current fold
-            Matrix S = subMatrix(foldData, i,0,i,foldData.getCol()-1);
+            Matrix S = subMatrix(foldData, j,0,j,foldData.getCol()-1);
             //cout << "pass 1" << endl;
             // build the validating set from the one fold just read
             Matrix test = getTestingData(S, nXTr);
             // cout << "pass 2" << endl;
             // build the training set from leaving the current fold and including the rest of the
             // fold
-            Matrix training = getTrainingData(foldData, nXTr, i );
+            Matrix training = getTrainingData(foldData, nXTr, j );
             // cout << "pass 3" << endl;
             // to hold class label for testing samples
-            Matrix label (test.getRow(), 1);
+            Matrix label (test.getRow(), 2);
             
             
-            int foldclass = 2; // there are 7 class category in this data set
-            int ErrorCount = 0;
+            int foldclass = 2; // there are 2 class category in this data set
+            int CorrectCount = 0;
             
             
             // perform classification
-            int j;
+           // int j;
             
             
             // start timming the kNN classification completion for one fold
             // of the validating set
-            clock_t start = clock();
+          //  clock_t start = clock();
             
             
             
@@ -1768,7 +1841,11 @@ void GetROC(Matrix &nXTr)
                 
                 //   cout << "pass 4" << endl;
                 // call MPP to perform classification
-                label(i,0) = mpp(training, sample, classes, 2 , Pw);
+                label(i,0) = test(i,test.getCol()-1);
+                label(i,1) = mpp(training, sample, classes, 3 , Pw);
+                labelTotal(labelrow, 0) = label(i,0);
+                labelTotal(labelrow, 1) = label(i,1);
+                labelrow++;
               //  ClassificationWithBestPW ( training, sample, Pw, 1 );
                 //ClassificationWithBestPW ( tXTr, tXTe,Pw2, cases );
                 //label(i,0) = mpp(training, sample, classes, caseNum , Pw);
@@ -1782,24 +1859,24 @@ void GetROC(Matrix &nXTr)
               //  }
             }
             // get the performance metrics for the classification tested
-             DerivePerferformanceMetric ( label, training, 3);
             
             
-          //  sumError = sumError + ErrorCount;
+            
+           // sumError = sumError + ErrorCount;
           //  sumTotalCount = sumTotalCount + test.getRow();
             
-         //   cout << "Error Rate: " << (((float) ErrorCount) / test.getRow())*100 << endl;
+           // cout << "Error Rate: " << (((float) ErrorCount) / test.getRow())*100 << endl;
             
-            clock_t end = clock();
-            totalTime = totalTime + (((double) (end-start)) / 1000000);
-            cout << "Running Time: " << (double) (end-start)/ 1000000 << " seconds" << endl;
+          //  clock_t end = clock();
+          //  totalTime = totalTime + (((double) (end-start)) / 1000000);
+         //   cout << "Running Time: " << (double) (end-start)/ 1000000 << " seconds" << endl;
         }
+        
         //cout << "sunerror: " << sumError << endl;
        // cout <<"sumtotal " << sumTotalCount << endl;
       //  cout << "Average Error Rate: " << (((float) sumError) / sumTotalCount)*100 << endl;
-        cout << "Average Running Time: " << totalTime / 10 << " seconds" << endl;
+      //  cout << "Average Running Time: " << totalTime / 10 << " seconds" << endl;
+        DerivePerferformanceMetricROC ( labelTotal);
     }
-
-    
 }
 
