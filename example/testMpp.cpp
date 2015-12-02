@@ -185,69 +185,30 @@ if ( cases == 1)
     // perform the task of getting FPR TPR for ROC Curve plot for tX data set
     else if ( cases == 10)
     {
-        nXTr = readData("NormData.tr", 2);
+        nXTr = readData("NormData.tr", 23);
         GetROC(nXTr);
 
     }
     // perform the task of getting FPR TPR for ROC Curve plot for fX data set
     else if ( cases ==11)
     {
-        Matrix Pw2(2, 1);
+        nXTr = readData("NormData.tr", 23);
         
-        // variy the prior probabity over the range 0 to 1 with increment of 0.1
-        // and get the performance metric in each case for classification rule MAP applied
-        for ( int i = 0; i < 11; i++)
-        {
-            Pw2(0,0) = (float)i/10;
-            
-            Pw2(1,0) = 1 - (Pw2(0,0));
-            
-            ClassificationWithBestPW ( fXTr, fXTe, Pw2, cases );
-        }
+        RunKNN (nXTr, K);
     }
 
     // kNN basic implementation using full Euclidean distance on data set nX
     else if ( cases == 12)
     {
-        Matrix label (nXTe.getRow(), 1);
+        tXTr = readData("PCA.tr", 7);
+        RunKNN (tXTr, K);
 
-        // for each sample in testing set call the KNNClassifierEuclidian() to determine the class of the testing sample
-        // Also time the function execution time for classification using KNN with full ecludian distance
-        clock_t start = clock();
-
-        for (int i = 0; i < nXTe.getRow(); i++)
-        {
-            Matrix sample = subMatrix(nXTe, i,0,i, nXTe.getCol()-1);
-
-            label(i,0) = KNNClassifierEuclidian(nXTr, sample, K);
-        }
-        clock_t end = clock();
-
-        DerivePerferformanceMetric ( label, cases);
-
-        cout << "Running Time: " << (double) (end-start)/ 1000000 << " seconds" << endl;
     }
     // kNN implementation using partial Euclidean distance on data set nX
     else if ( cases == 13)
     {
-        Matrix label (nXTe.getRow(), 1);
-
-        // for each sample in testing set call the KNNClassifierPartialEuclidian() to determine the class of the testing sample
-        // Also time the function execution time for classification using KNN with partial ecludian distance
-        clock_t start = clock();
-
-        for (int i = 0; i < nXTe.getRow(); i++)
-        {
-            Matrix sample = subMatrix(nXTe, i,0,i, nXTe.getCol()-1);
-
-            label(i,0) = KNNClassifierPartialEuclidian(nXTr, sample, K);
-        }
-        clock_t end = clock();
-
-        DerivePerferformanceMetric ( label, cases);
-
-        cout << "Running Time: " << (double) (end-start)/ 1000000 << " seconds" << endl;
-
+       fXTr = readData("FLD.tr", 2);
+       RunKNN (fXTr, K);
     }
     // kNN implementation using full Euclidean distance on data set tX
     else if ( cases == 14)
@@ -266,7 +227,7 @@ if ( cases == 1)
         }
         clock_t end = clock();
 
-        DerivePerferformanceMetric ( label, cases);
+        DerivePerformanceMetric ( label, cases);
 
         cout << "Running Time: " << (double) (end-start)/ 1000000 << " seconds" << endl;
 
@@ -288,7 +249,7 @@ if ( cases == 1)
         }
         clock_t end = clock();
 
-        DerivePerferformanceMetric ( label, cases);
+        DerivePerformanceMetric ( label, cases);
 
         cout << "Running Time: " << (double) (end-start)/ 1000000 << " seconds" << endl;
 
@@ -310,7 +271,7 @@ if ( cases == 1)
         }
         clock_t end = clock();
 
-        DerivePerferformanceMetric ( label, cases);
+        DerivePerformanceMetric ( label, cases);
 
         cout << "Running Time: " << (double) (end-start)/ 1000000 << " seconds" << endl;
 
@@ -332,7 +293,7 @@ if ( cases == 1)
         }
         clock_t end = clock();
 
-        DerivePerferformanceMetric ( label, cases);
+        DerivePerformanceMetric ( label, cases);
 
         cout << "Running Time: " << (double) (end-start)/ 1000000 << " seconds" << endl;
 
@@ -354,7 +315,7 @@ if ( cases == 1)
         }
         clock_t end = clock();
 
-        DerivePerferformanceMetric ( label, cases);
+        DerivePerformanceMetric ( label, cases);
 
         cout << "Running Time: " << (double) (end-start)/ 1000000 << " seconds" << endl;
 
@@ -376,7 +337,7 @@ if ( cases == 1)
         }
         clock_t end = clock();
 
-        DerivePerferformanceMetric ( label, cases);
+        DerivePerformanceMetric ( label, cases);
 
         cout << "Running Time: " << (double) (end-start)/ 1000000 << " seconds" << endl;
 
@@ -398,7 +359,7 @@ if ( cases == 1)
         }
         clock_t end = clock();
 
-        DerivePerferformanceMetric ( label, cases);
+        DerivePerformanceMetric ( label, cases);
 
         cout << "Running Time: " << (double) (end-start)/ 1000000 << " seconds" << endl;
 
@@ -420,7 +381,7 @@ if ( cases == 1)
         }
         clock_t end = clock();
 
-        DerivePerferformanceMetric ( label, cases);
+        DerivePerformanceMetric ( label, cases);
 
         cout << "Running Time: " << (double) (end-start)/ 1000000 << " seconds" << endl;
 
@@ -442,7 +403,7 @@ if ( cases == 1)
         }
         clock_t end = clock();
 
-        DerivePerferformanceMetric ( label, cases);
+        DerivePerformanceMetric ( label, cases);
 
         cout << "Running Time: " << (double) (end-start)/ 1000000 << " seconds" << endl;
     }
@@ -463,7 +424,7 @@ if ( cases == 1)
         }
         clock_t end = clock();
 
-        DerivePerferformanceMetric ( label, cases);
+        DerivePerformanceMetric ( label, cases);
 
         cout << "Running Time: " << (double) (end-start)/ 1000000 << " seconds" << endl;
     }
@@ -494,13 +455,13 @@ void ClassificationWithBestPW ( Matrix &trn, Matrix &tet, Matrix &BestPW, int ty
         labelMPP(i,0) = mpp(trn, sample, 2 , 4, BestPW);
     }
 
-    DerivePerferformanceMetric ( labelMPP,type );
+    DerivePerformanceMetric ( labelMPP,type );
 
 }
 
 // this function calculates the performance metrics for the classification rule MAP used
 // on the each type of data set tested
-void DerivePerferformanceMetric ( Matrix & tested, int datatype)
+void DerivePerformanceMetric ( Matrix & tested, int datatype)
 {
     double Sensitivity;
     double Specificity;
@@ -567,7 +528,10 @@ void DerivePerferformanceMetric ( Matrix & tested, int datatype)
     ConfusionMatrix(1,0) = FP;
     ConfusionMatrix(1,1) = TN;
     
-    string lb = "ConfusionMatrix" + to_string(datatype);
+    //string lb = "ConfusionMatrix" + to_string(datatype);
+  //  string lb = "ConfusionMatrixKNNNorm" + to_string(datatype);
+   // string lb = "ConfusionMatrixKNNPCA" + to_string(datatype);
+    string lb = "ConfusionMatrixKNNFLD" + to_string(datatype);
     
     //std::string str = "string";
     const char *cstr = lb.c_str();
@@ -585,7 +549,7 @@ void DerivePerferformanceMetric ( Matrix & tested, int datatype)
     cout << "The Accuracy rate using " << datatype << " is " << Accuracy << endl;
     
     cout << "The FPR rate using " << datatype << " is " << FPR << endl;
-    cout << TPR << ",";
+    //cout << TPR << ",";
     cout << "The TPR rate using " << datatype << " is " << TPR << endl;
     
 }
@@ -1508,7 +1472,7 @@ void RunMPPCase123 (Matrix &nXTr, int caseNum)
             }
         }
         // get the performance metrics for the classification tested
-       // DerivePerferformanceMetric ( label, training, 3);
+       // DerivePerformanceMetric ( label, training, 3);
         
         sumCorrect = sumCorrect + CorrectCount;
         sumTotalCount = sumTotalCount + test.getRow();
@@ -1522,17 +1486,17 @@ void RunMPPCase123 (Matrix &nXTr, int caseNum)
    if (caseNum == 1)
    {
     writeData(labelTotal, "labelTotalMPP1.dat");
-    DerivePerferformanceMetric ( labelTotal, 1);
+    DerivePerformanceMetric ( labelTotal, 1);
    }
     else if (caseNum == 2)
     {
         writeData(labelTotal, "labelTotalMPP2.dat");
-        DerivePerferformanceMetric ( labelTotal, 2);
+        DerivePerformanceMetric ( labelTotal, 2);
     }
     else if (caseNum == 3)
     {
         writeData(labelTotal, "labelTotalMPP3.dat");
-        DerivePerferformanceMetric ( labelTotal, 3);
+        DerivePerformanceMetric ( labelTotal, 3);
     }
     
     
@@ -1618,7 +1582,7 @@ void FindOptimalPP( Matrix &nXTr)
                 }
             }
             // get the performance metrics for the classification tested
-            // DerivePerferformanceMetric ( label, training, 3);
+            // DerivePerformanceMetric ( label, training, 3);
             
             
             sumError = sumError + ErrorCount;
@@ -1734,7 +1698,7 @@ void ClassifyBestPwPCAFLD(Matrix &nXTr)
             }
         }
         // get the performance metrics for the classification tested
-        // DerivePerferformanceMetric ( label, training, 3);
+        // DerivePerformanceMetric ( label, training, 3);
         
         
         sumCorrect = sumCorrect + CorrectCount;
@@ -1750,13 +1714,13 @@ void ClassifyBestPwPCAFLD(Matrix &nXTr)
     {
         writeData(labelTotal, "labelTotalPCAOptPP.dat");
         
-        DerivePerferformanceMetric ( labelTotal,4 ); // PCA
+        DerivePerformanceMetric ( labelTotal,4 ); // PCA
     }
     else
     {
         writeData(labelTotal, "labelTotalFLDOptPP.dat");
         
-        DerivePerferformanceMetric ( labelTotal,5 ); // FLD
+        DerivePerformanceMetric ( labelTotal,5 ); // FLD
     }
     
     cout << "Average Correct Rate: " << (((float) sumCorrect) / sumTotalCount)*100 << endl;
@@ -1876,7 +1840,209 @@ void GetROC(Matrix &nXTr)
        // cout <<"sumtotal " << sumTotalCount << endl;
       //  cout << "Average Error Rate: " << (((float) sumError) / sumTotalCount)*100 << endl;
       //  cout << "Average Running Time: " << totalTime / 10 << " seconds" << endl;
-        DerivePerferformanceMetricROC ( labelTotal);
+        cout << "PW0 is: " << Pw(0,0) << endl;
+        cout << "PW1 is: " << Pw(0,1) << endl;
+        DerivePerformanceMetricROC ( labelTotal);
     }
+}
+
+// this function calculates the performance metrics for the classification rule MAP used
+// on the each type of data set tested
+void DerivePerformanceMetricROC ( Matrix & tested)
+{
+    double Sensitivity;
+    double Specificity;
+    double Precision;
+    double Recall;
+    double Accuracy;
+    double TPR;
+    double FPR;
+    int CorrectCountMPP = 0;
+    int TP; // true positive number
+    int TN; // true negative number
+    int FP; // false positive number
+    int FN; // false negative number
+    TN = 0;
+    TP = 0;
+    FP = 0;
+    FN = 0;
+    Sensitivity = 0.0;
+    Specificity = 0.0;
+    Precision = 0.0;
+    Recall = 0.0;
+    Accuracy = 0.0;
+    TPR =0.0;
+    FPR = 0.0;
+    int row = tested.getRow();
+    int col = tested.getCol();
+   // Matrix ConfusionMatrix (2,2);
+    
+    for (int i=0; i<row; i++) {
+        if (tested(i,0) == tested(i,1))
+        {
+            CorrectCountMPP++;
+            if ( tested(i,0) == 1) // truth yes, observed yes
+            {
+                TP++;
+            }
+            else    // truth no, observed no
+            {
+                TN++;
+            }
+        }
+        else
+        {
+            if (tested(i,0) == 1) // truth yes, observed no
+            {
+                FN++;
+            }
+            else    // truth no, observed yes
+            {
+                FP++;
+            }
+        }
+    }
+    
+    Sensitivity = ((double)(TP))/(TP+FN);
+    Specificity = ((double)(TN))/(TN+FP);
+    Precision = ((double)(TP))/(TP+FP);
+    Recall = ((double)(TP))/(TP+FN);
+    Accuracy = ((double)((TP+TN)))/(TP+TN+FN+FP);
+    FPR = ((double)(FP))/(FP+TN);
+    TPR = ((double)(TP))/(TP+FN);
+    //ConfusionMatrix(0,0) = TP;
+   // ConfusionMatrix(0,1) = FN;
+   // ConfusionMatrix(1,0) = FP;
+   // ConfusionMatrix(1,1) = TN;
+    
+   // string lb = "ConfusionMatrix" + to_string(datatype);
+    
+    //std::string str = "string";
+  //  const char *cstr = lb.c_str();
+    
+  //  writeData(ConfusionMatrix, cstr);
+   /*
+    cout << "The TP rate using " << datatype << " is " << TP << endl;
+    cout << "The TN rate using " << datatype << " is " << TN << endl;
+    cout << "The FP rate using " << datatype << " is " << FP << endl;
+    cout << "The FN rate using " << datatype << " is " << FN << endl;
+    cout << "The Sensitivity rate using " << datatype << " is " << Sensitivity << endl;
+    cout << "The Specificity rate using " << datatype << " is " << Specificity << endl;
+    cout << "The Precision rate using " << datatype << " is " << Precision << endl;
+    cout << "The Recall rate using " << datatype << " is " << Recall << endl;
+    cout << "The Accuracy rate using " << datatype << " is " << Accuracy << endl;
+   */
+    cout << "The FPR rate is " << FPR << endl;
+   // cout << TPR << ",";
+    cout << "The TPR rate is " << TPR << endl;
+    
+}
+
+void RunKNN (Matrix &nXTr, int caseNum)
+{
+    //  cout << "data " << nXTr << endl;
+    int fea = 22;   // there are 9 features in this data set
+    int sumCorrect = 0;
+    int sumTotalCount = 0;
+    double totalTime = 0.0;
+    
+    int sampFold = 20;
+    int numrow = nXTr.getRow();
+    int classes = 2;
+    Matrix labelTotal(numrow, 2);
+    
+    // read in fold data
+    Matrix foldData = readData("foldTen.dat", sampFold );
+    
+    // read one row at a time from the 10 folds and assign the current row read as
+    // fold for building validating set. Then assign rest of the current to use as
+    // training set using kNN classifier c;assify the validating set from training set
+    int labelrow = 0;
+    for (int j = 0; j < foldData.getRow(); j++ )
+    {
+        // current fold
+        Matrix S = subMatrix(foldData, j,0,j,foldData.getCol()-1);
+        //cout << "pass 1" << endl;
+        // build the validating set from the one fold just read
+        Matrix test = getTestingData(S, nXTr);
+        // cout << "pass 2" << endl;
+        // build the training set from leaving the current fold and including the rest of the
+        // fold
+        Matrix training = getTrainingData(foldData, nXTr, j );
+        // cout << "pass 3" << endl;
+        // to hold class label for testing samples
+        Matrix label (test.getRow(), 2);
+        
+        
+        int foldclass = 2; // there are 7 class category in this data set
+        int CorrectCount = 0;
+        
+        
+        
+        // start timming the kNN classification completion for one fold
+        // of the validating set
+        clock_t start = clock();
+        
+        
+        
+        // for each sample in the validating set use the kNN
+        // with original Euclidean disable to find the class label of the sample
+        for (int i = 0; i < test.getRow(); i++)
+        {
+            //   cout << "come here" << endl;
+            Matrix sample = subMatrix(test, i,0,i, test.getCol()-2);
+            
+               //cout << "pass 4" << endl;
+            // call MPP to perform classification
+            label(i,0) = test(i,test.getCol()-1);
+           // label(i,1) = mpp(training, sample, classes, caseNum , Pw);
+            labelTotal(i,1) = KNNClassifierEuclidian(training, sample, caseNum);
+
+            // cout << "come here" << endl;
+            
+            // label(i,0) = KNNClassifierEuclidianFold(training, sample, K, foldclass);
+            
+            labelTotal(labelrow, 0) = test(i,test.getCol()-1);
+            labelTotal(labelrow, 1) = label(i,1);
+            labelrow++;
+            
+            if (label(i,1) == test(i,test.getCol()-1))
+            {
+                CorrectCount++;
+            }
+        }
+        // get the performance metrics for the classification tested
+        // DerivePerformanceMetric ( label, training, 3);
+        
+        sumCorrect = sumCorrect + CorrectCount;
+        sumTotalCount = sumTotalCount + test.getRow();
+        
+        cout << "Correct Rate: " << (((float) CorrectCount) / test.getRow())*100 << endl;
+        
+        clock_t end = clock();
+        totalTime = totalTime + (((double) (end-start)) / 1000000);
+        cout << "Running Time: " << (double) (end-start)/ 1000000 << " seconds" << endl;
+    }
+    
+    
+    
+    cout << "Average Correct Rate: " << (((float) sumCorrect) / sumTotalCount)*100 << endl;
+    cout << "Average Running Time: " << totalTime / 10 << " seconds" << endl;
+    DerivePerformanceMetric ( labelTotal,caseNum );
+    /*
+    if(caseNum == 1)
+    {
+        DerivePerformanceMetric ( labelTotal, 6);
+    }
+    else if (caseNum == 5)
+    {
+        DerivePerformanceMetric ( labelTotal, 7);
+    }
+    else
+    {
+        DerivePerformanceMetric ( labelTotal,caseNum );
+    }
+     */
+    
 }
 
