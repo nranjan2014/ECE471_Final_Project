@@ -1,0 +1,36 @@
+epoc: 1
+learning rate: 0.1
+epoc: 2
+learning rate: 0.09
+epoc: 3
+learning rate: 0.081
+epoc: 4
+learning rate: 0.0729
+epoc: 5
+learning rate: 0.06561
+epoc: 6
+learning rate: 0.059049
+epoc: 7
+learning rate: 0.0531441
+epoc: 8
+learning rate: 0.0478297
+epoc: 9
+learning rate: 0.0430467
+epoc: 10
+learning rate: 0.038742
+epoc: 11
+learning rate: 0.0348678
+epoc: 12
+learning rate: 0.0313811
+The TP rate using 1111128 is 112
+The TN rate using 1111128 is 14
+The FP rate using 1111128 is 35
+The FN rate using 1111128 is 34
+The Sensitivity rate using 1111128 is 0.767123
+The Specificity rate using 1111128 is 0.285714
+The Precision rate using 1111128 is 0.761905
+The Recall rate using 1111128 is 0.767123
+The Accuracy rate using 1111128 is 0.646154
+The FPR rate using 1111128 is 0.714286
+The TPR rate using 1111128 is 0.767123
+Running Time: 0.471907 seconds

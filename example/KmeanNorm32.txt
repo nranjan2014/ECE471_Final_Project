@@ -1,0 +1,20 @@
+epoc: 0
+epoc: 1
+epoc: 2
+epoc: 3
+epoc: 4
+epoc: 5
+epoc: 6
+epoc: 7
+The TP rate using 32 is 141
+The TN rate using 32 is 0
+The FP rate using 32 is 49
+The FN rate using 32 is 5
+The Sensitivity rate using 32 is 0.965753
+The Specificity rate using 32 is 0
+The Precision rate using 32 is 0.742105
+The Recall rate using 32 is 0.965753
+The Accuracy rate using 32 is 0.723077
+The FPR rate using 32 is 1
+The TPR rate using 32 is 0.965753
+Running Time: 0.092074 seconds

@@ -1,0 +1,20 @@
+epoc: 0
+epoc: 1
+epoc: 2
+epoc: 3
+epoc: 4
+epoc: 5
+epoc: 6
+epoc: 7
+The TP rate using 128 is 107
+The TN rate using 128 is 17
+The FP rate using 128 is 32
+The FN rate using 128 is 39
+The Sensitivity rate using 128 is 0.732877
+The Specificity rate using 128 is 0.346939
+The Precision rate using 128 is 0.769784
+The Recall rate using 128 is 0.732877
+The Accuracy rate using 128 is 0.635897
+The FPR rate using 128 is 0.653061
+The TPR rate using 128 is 0.732877
+Running Time: 0.326134 seconds

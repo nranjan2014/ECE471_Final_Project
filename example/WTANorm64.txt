@@ -1,0 +1,38 @@
+epoc: 1
+learning rate: 0.1
+epoc: 2
+learning rate: 0.09
+epoc: 3
+learning rate: 0.081
+epoc: 4
+learning rate: 0.0729
+epoc: 5
+learning rate: 0.06561
+epoc: 6
+learning rate: 0.059049
+epoc: 7
+learning rate: 0.0531441
+epoc: 8
+learning rate: 0.0478297
+epoc: 9
+learning rate: 0.0430467
+epoc: 10
+learning rate: 0.038742
+epoc: 11
+learning rate: 0.0348678
+epoc: 12
+learning rate: 0.0313811
+epoc: 13
+learning rate: 0.028243
+The TP rate using 111164 is 84
+The TN rate using 111164 is 23
+The FP rate using 111164 is 26
+The FN rate using 111164 is 62
+The Sensitivity rate using 111164 is 0.575342
+The Specificity rate using 111164 is 0.469388
+The Precision rate using 111164 is 0.763636
+The Recall rate using 111164 is 0.575342
+The Accuracy rate using 111164 is 0.548718
+The FPR rate using 111164 is 0.530612
+The TPR rate using 111164 is 0.575342
+Running Time: 0.271992 seconds

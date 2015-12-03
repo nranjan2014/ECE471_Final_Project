@@ -213,134 +213,44 @@ if ( cases == 1)
     // kNN implementation using full Euclidean distance on data set tX
     else if ( cases == 14)
     {
-        Matrix label (tXTe.getRow(), 1);
-
-        // for each sample in testing set call the KNNClassifierEuclidian() to determine the class of the testing sample
-        // Also time the function execution time for classification using KNN with full ecludian distance
-        clock_t start = clock();
-
-        for (int i = 0; i < tXTe.getRow(); i++)
-        {
-            Matrix sample = subMatrix(tXTe, i,0,i, tXTe.getCol()-1);
-
-            label(i,0) = KNNClassifierEuclidian(tXTr, sample, K);
-        }
-        clock_t end = clock();
-
-        DerivePerformanceMetric ( label, cases);
-
-        cout << "Running Time: " << (double) (end-start)/ 1000000 << " seconds" << endl;
+        
+        nXTr = readData("NormData.tr", 23);
+        
+        RunKmeansClustering(nXTr);
 
     }
     // kNN implementation using partial Euclidean distance on data set tX
     else if ( cases == 15)
     {
-        Matrix label (tXTe.getRow(), 1);
-
-        // for each sample in testing set call the KNNClassifierPartialEuclidian() to determine the class of the testing sample
-        // Also time the function execution time for classification using KNN with partial ecludian distance
-        clock_t start = clock();
-
-        for (int i = 0; i < tXTe.getRow(); i++)
-        {
-            Matrix sample = subMatrix(tXTe, i,0,i, tXTe.getCol()-1);
-
-            label(i,0) = KNNClassifierPartialEuclidian(tXTr, sample, K);
-        }
-        clock_t end = clock();
-
-        DerivePerformanceMetric ( label, cases);
-
-        cout << "Running Time: " << (double) (end-start)/ 1000000 << " seconds" << endl;
+        nXTr = readData("NormData.tr", 23);
+        
+        RunWTAClustering(nXTr);
 
     }
     // kNN implementation using full Euclidean distance on data set fX
     else if ( cases == 16)
     {
-        Matrix label (fXTe.getRow(), 1);
-
-        // for each sample in testing set call the KNNClassifierEuclidian() to determine the class of the testing sample
-        // Also time the function execution time for classification using KNN with full ecludian distance
-        clock_t start = clock();
-
-        for (int i = 0; i < fXTe.getRow(); i++)
-        {
-            Matrix sample = subMatrix(fXTe, i,0,i, fXTe.getCol()-1);
-
-            label(i,0) = KNNClassifierEuclidian(fXTr, sample, K);
-        }
-        clock_t end = clock();
-
-        DerivePerformanceMetric ( label, cases);
-
-        cout << "Running Time: " << (double) (end-start)/ 1000000 << " seconds" << endl;
-
+        tXTr = readData("PCA.tr", 7);
+        
+        RunKmeansClustering(tXTr);
     }
     // kNN implementation using partial Euclidean distance on data set fX
     else if ( cases == 17)
     {
-        Matrix label (fXTe.getRow(), 1);
-
-        // for each sample in testing set call the KNNClassifierPartialEuclidian() to determine the class of the testing sample
-        // Also time the function execution time for classification using KNN with partial ecludian distance
-        clock_t start = clock();
-
-        for (int i = 0; i < fXTe.getRow(); i++)
-        {
-            Matrix sample = subMatrix(fXTe, i,0,i, fXTe.getCol()-1);
-
-            label(i,0) = KNNClassifierPartialEuclidian(fXTr, sample, K);
-        }
-        clock_t end = clock();
-
-        DerivePerformanceMetric ( label, cases);
-
-        cout << "Running Time: " << (double) (end-start)/ 1000000 << " seconds" << endl;
-
+        tXTr = readData("PCA.tr", 7);
+        RunWTAClustering(tXTr);
     }
     // kNN implementation using full Minkowski distance on data set nX
     else if ( cases == 18)
     {
-        Matrix label (nXTe.getRow(), 1);
-
-        // for each sample in testing set call the KNNClassifierMinkowski() to determine the class of the testing sample
-        // Also time the function execution time for classification using KNN with Minkowski distance
-        clock_t start = clock();
-
-        for (int i = 0; i < nXTe.getRow(); i++)
-        {
-            Matrix sample = subMatrix(nXTe, i,0,i, nXTe.getCol()-1);
-
-            label(i,0) = KNNClassifierMinkowski(nXTr, sample, K,minK);
-        }
-        clock_t end = clock();
-
-        DerivePerformanceMetric ( label, cases);
-
-        cout << "Running Time: " << (double) (end-start)/ 1000000 << " seconds" << endl;
-
+        fXTr = readData("FLD.tr", 2);
+        RunKmeansClustering(fXTr);
     }
     // kNN implementation using partial Minkowski distance on data set nX
     else if ( cases == 19)
     {
-        Matrix label (nXTe.getRow(), 1);
-
-        // for each sample in testing set call the KNNClassifierPartialMinkowski() to determine the class of the testing sample
-        // Also time the function execution time for classification using KNN with Minkowski distance
-        clock_t start = clock();
-
-        for (int i = 0; i < nXTe.getRow(); i++)
-        {
-            Matrix sample = subMatrix(nXTe, i,0,i, nXTe.getCol()-1);
-
-            label(i,0) = KNNClassifierPartialMinkowski(nXTr, sample, K,minK);
-        }
-        clock_t end = clock();
-
-        DerivePerformanceMetric ( label, cases);
-
-        cout << "Running Time: " << (double) (end-start)/ 1000000 << " seconds" << endl;
-
+        fXTr = readData("FLD.tr", 2);
+        RunWTAClustering(fXTr);
     }
     // kNN implementation using full Minkowski distance on data set tX
     else if ( cases == 20)
@@ -531,7 +441,7 @@ void DerivePerformanceMetric ( Matrix & tested, int datatype)
     //string lb = "ConfusionMatrix" + to_string(datatype);
   //  string lb = "ConfusionMatrixKNNNorm" + to_string(datatype);
    // string lb = "ConfusionMatrixKNNPCA" + to_string(datatype);
-    string lb = "ConfusionMatrixKNNFLD" + to_string(datatype);
+    string lb = "ConfusionMatrixKmeans" + to_string(datatype);
     
     //std::string str = "string";
     const char *cstr = lb.c_str();
@@ -693,10 +603,11 @@ Matrix GetPCA( Matrix &nX)
             break;
         }
     }
-
+    
     // basic vector with higher values of eigen values
     B_M = subMatrix(V_M, 0, j, eignrow-1, eigncol-1);
     E_M = subMatrix(D_M, 0, j, 0, eigncol-1);
+   // cout << "eigen_vector" << E_M << endl;
 
     return B_M;
 }
@@ -2045,4 +1956,389 @@ void RunKNN (Matrix &nXTr, int caseNum)
      */
     
 }
+void RunKmeansClustering(Matrix &XTr)
+{
+    
+    int row;          // for rows in image matrix
+    int col;		  // for column in image matrix
+    
+    // number of clunters center to test with
+    // int numclusters = 256;
+     int numclusters = 128;
+    //int numclusters = 64;
+   // int numclusters = 32;
+    //int numclusters = 2;
+    row = XTr.getRow();
+    col = XTr.getCol()-1;
+    
+    Matrix centers(numclusters, col);     // for random centroids to start with
+    Matrix newcenters(numclusters, col);  // for updated centroids in case of WTA
+    // Matrix newData;
+    Matrix clusterAssign(row, 1);         // assigned clusters to the test samples
+    
+    
+    // time the convergence of the algorithms
+    clock_t start = clock();
+    
+    // get the random cluster centers from the test data corresponponding
+    // to the number of cluster tested in the program
+    for ( int i=0; i<numclusters; i++)
+    {
+        int randSamp = (rand ( ) % row ) ;
+        
+        for (int j=0; j < col; j++)
+        {
+            centers(i,j) = XTr(randSamp, j);
+        }
+    }
+    
+    //
+    int done = 0;
+    int epoc = 0;
+    
+            Matrix samp( 1 , col);
+        Matrix samp1(1, col);
+        clusterAssign.initMatrix(-1);
+        
+        // stopping creteria when there is not change in the cluster center assigment to all of the test
+        // data set
+        while ( !done)
+        {
+            cout << "epoc: " << epoc << endl;
+            epoc++;
+            done = 1;
+            int index;
+            
+            // for each test sample in the data set compare its Euclidean distance to
+            // each of the cluster center and find the cluster center with the minimum
+            // distance
+            for ( int i = 0; i < XTr.getRow(); i++ )
+            {
+                double sumDistance = 0.0;
+                double min;
+                int j;
+                for ( int h =0; h < col; h++)
+                {
+                    samp(0,h) = XTr(i,h);
+                }
+                
+                for ( j =0 ;j < centers.getRow(); j++)
+                {
+                    for ( int h1 =0; h1 < col; h1++)
+                    {
+                        samp1(0,h1) = centers(j,h1);
+                    }
+                    
+                    for ( int k =0; k < samp.getCol(); k++)
+                    {
+                        sumDistance = sumDistance + pow((samp(0,k) - samp1(0,k)), 2);
+                    }
+                    sumDistance = sqrt(sumDistance);
+                    
+                    if ( j == 0)
+                    {
+                        min = sumDistance;
+                        index = j;
+                    }
+                    else
+                    {
+                        if ( sumDistance < min )
+                        {
+                            min = sumDistance;
+                            //l = j;
+                            index = j;
+                        }
+                    }
+                }
+                
+                // if the found minimum distance cluster center if not the same as what is already
+                // assigned cluster center to the test sample then save that cluster as the nearest cluster
+                // center for the sample
+                if ((int)clusterAssign(i, 0) != index)
+                {
+                    // set the flag that the change has been made in the cluster assignment
+                    done = 0;
+                    clusterAssign(i, 0) = index;
+                }
+            }
+            
+            // exit the nearest cluster finding loop when there is
+            // no change in cluster assignment
+            if(done)
+            {
+                done = 1;
+                break;
+            }
+            
+            int val;
+            int num =0;
+            int col = 3;
+            
+            Matrix sum(1, col);
+            
+            // Compute the sample mean of each cluster
+            // and that will be the cluster centers to compare with
+            // for the reassignment of each sample to the cluster with the nearest mean
+            for ( int i = 0; i < numclusters; i++)
+            {
+                sum.initMatrix(0.0);
+                num = 0;
+                for ( int j = 0; j < clusterAssign.getRow(); j++ )
+                {
+                    if ((int)clusterAssign(j,0) == i )
+                    {
+                        for (int k=0; k< col; k++)
+                        {
+                            sum(0, k) = sum(0,k) + XTr(j,k);
+                            
+                        }
+                        num++;
+                    }
+                }
+                if(num !=0)
+                {
+                    for (int k = 0; k < col; k++)
+                    {
+                        centers(i,k) = sum(0, k) / num;
+                    }
+                }
+            }
+        }
+        
+        Matrix newData1(row,col);
+        Matrix FinalData(row,2);
+        // change the value of the data set to corresponding to the value
+        // of the assigned cluster centers that they belong to
+        for (int i=0; i < row; i++)
+        {
+            int r;
+            r = clusterAssign(i,0);
+            for (int j =0; j < col; j++ )
+            {
+                newData1(i,j) = centers(r, j);
+            }
+        }
+    
+    for ( int i=0; i< row; i++ )
+    {
+        int r;
+        r = clusterAssign(i,0);
+        FinalData(i,0) = XTr(i, XTr.getCol()-1);
+        FinalData(i,1) = XTr(r, XTr.getCol()-1);
+    }
+    DerivePerformanceMetric( FinalData, 128);
+    writeData(FinalData, "LabelKMeansNorm128.dat");
+        clock_t end = clock();
+        cout << "Running Time: " << (double) (end-start)/ 1000000 << " seconds" << endl;
+        // writeData(newData1, "data32NewKM.tr");
+       // writeData(newData1, "data2NewKMNorm.dat");
+        //   writeData(newData1, "data128NewKM.tr");
+        //  writeData(newData1, "data256NewKM.tr");
+      //  writeData(XTr, "originalDataNorm.dat");
+        //  writeImage("figout32Kmean.ppm", newData1, nrow,  ncol);
+      //  writeImage("figout64Kmean.ppm", newData1, nrow,  ncol);
+        // writeImage("figout128Kmean.ppm", newData1, nrow,  ncol);
+        // writeImage("figout256Kmean.ppm", newData1, nrow,  ncol);
+    
+    
+}
+
+void RunWTAClustering(Matrix &XTr)
+{
+    
+    int row;          // for rows in image matrix
+    int col;		  // for column in image matrix
+    
+    // number of clunters center to test with
+    // int numclusters = 256;
+    // int numclusters = 128;
+   // int numclusters = 64;
+    int numclusters = 2;
+    //int numclusters = 32;
+    
+    
+    row = XTr.getRow();
+    col = XTr.getCol()-1;
+    
+    
+    
+    Matrix centers(numclusters, col);     // for random centroids to start with
+    Matrix newcenters(numclusters, col);  // for updated centroids in case of WTA
+    // Matrix newData;
+    Matrix clusterAssign(row, 1);         // assigned clusters to the test samples
+    
+    
+    // time the convergence of the algorithms
+    clock_t start = clock();
+    
+    // get the random cluster centers from the test data corresponponding
+    // to the number of cluster tested in the program
+    for ( int i=0; i<numclusters; i++)
+    {
+        int randSamp = (rand ( ) % row ) ;
+        
+        for (int j=0; j < col; j++)
+        {
+            centers(i,j) = XTr(randSamp, j);
+        }
+    }
+    
+    //
+    int done = 0;
+    int epoc = 0;
+    
+            Matrix samp( 1 , col);
+        Matrix samp1(1, col);
+        double LR = 0.1;
+        int g = -1;
+        int p = 0;
+        int valuetobepushed = -1;
+        int s = 0;
+        int success = 0;
+        Matrix tenResults(1,10);
+        clusterAssign.initMatrix(-1);
+        
+        // if there is no change in the cluster center
+        // assignment for 10 epoch although the learning rate has been
+        // decreasing then the clustering is all done
+        while ( !success)
+        {
+            epoc++;
+            cout << "epoc: " << epoc << endl;
+            cout << "learning rate: " << LR << endl;
+            done = 1;
+            int index;
+            
+            // for each test sample in the data set compare its Euclidean distance to
+            // each of the cluster center and find the cluster center with the minimum
+            // distance
+            for ( int i = 0; i < XTr.getRow(); i++ )
+            {
+                double sumDistance = 0.0;
+                double min;
+                int j;
+                for ( int h =0; h < col; h++)
+                {
+                    samp(0,h) = XTr(i,h);
+                }
+                
+                for ( j =0 ;j < centers.getRow(); j++)
+                {
+                    for ( int h1 =0; h1 < col; h1++)
+                    {
+                        samp1(0,h1) = centers(j,h1);
+                    }
+                    
+                    for ( int k =0; k < samp.getCol(); k++)
+                    {
+                        sumDistance = sumDistance + pow((samp(0,k) - samp1(0,k)), 2);
+                    }
+                    sumDistance = sqrt(sumDistance);
+                    if ( j == 0)
+                    {
+                        min = sumDistance;
+                        index = j;
+                    }
+                    else
+                    {
+                        if ( sumDistance < min )
+                        {
+                            min = sumDistance;
+                            
+                            index = j;
+                        }
+                    }
+                }
+                
+                // if the found minimum distance cluster center if not the same as what is already
+                // assigned cluster center to the test sample then save that cluster as the nearest cluster
+                // center for the sample
+                if (((int)clusterAssign(i, 0) != index))
+                {
+                    
+                    g++;
+                    // set the flag that the change has been made in the cluster assignment
+                    done = 0;
+                    clusterAssign(i, 0) = index;
+                    
+                    // the winner has identified so update the winner cluster center value
+                    for ( int l =0; l<col; l++)
+                    {
+                        newcenters(index,l) = centers(index,l) + (LR * ((XTr(i,l) - centers(index,l))));
+                    }
+                }
+                
+            }
+            // at the end of the one epoch the found updated winner cluster centers
+            // are the cluster centers to be compared with for next epoch
+            centers = newcenters;
+            
+            // decrease the learning rate to guarantee the convergence of the algorithm
+            LR = 0.9 * LR;
+            
+            // keep track of the ten consecutive epoch for which the
+            // cluster assignment has not changed even though the
+            // learnig rate has been decreasing
+            if ( done != 0)
+            {
+                valuetobepushed=1;
+                
+            }
+            else {
+                valuetobepushed=0;
+            }
+            
+            for (int x=0; x <9; x++){
+                tenResults(0,x) = tenResults(0,x+1);
+            }
+            tenResults(0,9) = valuetobepushed;
+            s =0;
+            for ( int h =0; h < 10; h++)
+            {
+                s += tenResults(0,h);
+            }
+            
+            
+            if ( s==10){
+                success = 1;
+            }
+            
+        }
+        
+        // change the value of the data set to corresponding to the value
+        // of the assigned cluster centers that they belong to
+        Matrix newData1(row,col);
+        Matrix FinalData(row,2);
+        for (int i=0; i < row; i++)
+        {
+            int r;
+            r = clusterAssign(i,0);
+            for (int j =0; j < col; j++ )
+            {
+                newData1(i,j) = centers(r, j);
+            }
+        }
+        for ( int i=0; i< row; i++ )
+        {
+            int r;
+            r = clusterAssign(i,0);
+            FinalData(i,0) = XTr(i, XTr.getCol()-1);
+            FinalData(i,1) = XTr(r, XTr.getCol()-1);;
+        }
+        DerivePerformanceMetric( FinalData, 1111128);
+        writeData(FinalData, "LabelWTANorm128.dat");
+        clock_t end = clock();
+        cout << "Running Time: " << (double) (end-start)/ 1000000 << " seconds" << endl;
+        //writeData(newData1, "data2NewWTANorm.dat");
+        //  writeData(newData1, "data64NewWTA.tr");
+        //   writeData(newData1, "data128NewWTA.tr");
+        //  writeData(newData1, "data256NewWTA.tr");
+       // writeData(XTr, "originalData.tr");
+      //  writeImage("figout32WTA.ppm", newData1, nrow,  ncol);
+        //  writeImage("figout64WTA.ppm", newData1, nrow,  ncol);
+        //     writeImage("figout128WTA.ppm", newData1, nrow,  ncol);
+        //  writeImage("figout256WTA.ppm", newData1, nrow,  ncol);
+    
+}
+
 

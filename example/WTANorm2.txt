@@ -1,0 +1,66 @@
+epoc: 1
+learning rate: 0.1
+epoc: 2
+learning rate: 0.09
+epoc: 3
+learning rate: 0.081
+epoc: 4
+learning rate: 0.0729
+epoc: 5
+learning rate: 0.06561
+epoc: 6
+learning rate: 0.059049
+epoc: 7
+learning rate: 0.0531441
+epoc: 8
+learning rate: 0.0478297
+epoc: 9
+learning rate: 0.0430467
+epoc: 10
+learning rate: 0.038742
+epoc: 11
+learning rate: 0.0348678
+epoc: 12
+learning rate: 0.0313811
+epoc: 13
+learning rate: 0.028243
+epoc: 14
+learning rate: 0.0254187
+epoc: 15
+learning rate: 0.0228768
+epoc: 16
+learning rate: 0.0205891
+epoc: 17
+learning rate: 0.0185302
+epoc: 18
+learning rate: 0.0166772
+epoc: 19
+learning rate: 0.0150095
+epoc: 20
+learning rate: 0.0135085
+epoc: 21
+learning rate: 0.0121577
+epoc: 22
+learning rate: 0.0109419
+epoc: 23
+learning rate: 0.00984771
+epoc: 24
+learning rate: 0.00886294
+epoc: 25
+learning rate: 0.00797664
+epoc: 26
+learning rate: 0.00717898
+epoc: 27
+learning rate: 0.00646108
+The TP rate using 11112 is 146
+The TN rate using 11112 is 0
+The FP rate using 11112 is 49
+The FN rate using 11112 is 0
+The Sensitivity rate using 11112 is 1
+The Specificity rate using 11112 is 0
+The Precision rate using 11112 is 0.748718
+The Recall rate using 11112 is 1
+The Accuracy rate using 11112 is 0.748718
+The FPR rate using 11112 is 1
+The TPR rate using 11112 is 1
+Running Time: 0.022916 seconds
