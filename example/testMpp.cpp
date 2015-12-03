@@ -439,9 +439,11 @@ void DerivePerformanceMetric ( Matrix & tested, int datatype)
     ConfusionMatrix(1,1) = TN;
     
     //string lb = "ConfusionMatrix" + to_string(datatype);
+    string lb = "ConfusionMatrixMPPCase3PCA" + to_string(datatype);
+   // string lb = "ConfusionMatrixMPPCase3FLD" + to_string(datatype);
   //  string lb = "ConfusionMatrixKNNNorm" + to_string(datatype);
    // string lb = "ConfusionMatrixKNNPCA" + to_string(datatype);
-    string lb = "ConfusionMatrixKmeans" + to_string(datatype);
+    //string lb = "ConfusionMatrixKmeans" + to_string(datatype);
     
     //std::string str = "string";
     const char *cstr = lb.c_str();
@@ -1924,7 +1926,9 @@ void RunKNN (Matrix &nXTr, int caseNum)
         }
         // get the performance metrics for the classification tested
         // DerivePerformanceMetric ( label, training, 3);
-        
+      //  writeData(labelTotal, "labelKNN_NormData_K_10.dat");
+       // writeData(labelTotal, "labelKNN_PCAData_K_10.dat");
+        writeData(labelTotal, "labelKNN_FLDData_K_10.dat");
         sumCorrect = sumCorrect + CorrectCount;
         sumTotalCount = sumTotalCount + test.getRow();
         

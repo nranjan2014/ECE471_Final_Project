@@ -1,0 +1,14 @@
+labelTotalMPP1.dat:  equal prior probability case 1 MPP using nX data
+labelTotalMPP2.dat: equal prior probability case 2 MPP using nX data
+labelTotalMPP3.dat: equal prior probability case 3 MPP using PCA data
+
+labelTotalPCAOptPP.dat : optimal prior probability MPP case 3 PCA
+labelTotalFLDOptPP.dat: optimal prior probability MPP case 3 FLD
+
+
+LabelKMeansNorm2.dat   : Kmeans label nX data K= 2
+LabelWTANorm.dat:  WTA label nX data K =2
+
+labelKNN_NormData_K_10.dat : KNN, K= 10 Norm data
+labelKNN_PCAData_K_10.dat: KNN K =10 PCA DATA
+labelKNN_FLDData_K_10.dat: KNN K=10 FLD DATA
