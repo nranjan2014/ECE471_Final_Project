@@ -128,5 +128,7 @@ void GetROC(Matrix &nXTr);
 void ClassifyBestPwPCAFLD(Matrix &tXTr);
 void DerivePerformanceMetricROC ( Matrix & tested);
 void RunKNN (Matrix &nXTr, int caseNum);
+void RunWTAClustering(Matrix &nXTr);
+void RunKmeansClustering(Matrix &nXTr);
 #endif
 
