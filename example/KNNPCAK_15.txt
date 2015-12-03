@@ -1,0 +1,33 @@
+Correct Rate: 90
+Running Time: 0.006691 seconds
+Correct Rate: 85
+Running Time: 0.00774 seconds
+Correct Rate: 75
+Running Time: 0.006853 seconds
+Correct Rate: 95
+Running Time: 0.007314 seconds
+Correct Rate: 90
+Running Time: 0.007322 seconds
+Correct Rate: 90
+Running Time: 0.006941 seconds
+Correct Rate: 75
+Running Time: 0.007419 seconds
+Correct Rate: 95
+Running Time: 0.00666 seconds
+Correct Rate: 80
+Running Time: 0.006651 seconds
+Correct Rate: 93.3333
+Running Time: 0.005429 seconds
+Average Correct Rate: 86.6667
+Average Running Time: 0.006902 seconds
+The TP rate using 15 is 139
+The TN rate using 15 is 30
+The FP rate using 15 is 18
+The FN rate using 15 is 8
+The Sensitivity rate using 15 is 0.945578
+The Specificity rate using 15 is 0.625
+The Precision rate using 15 is 0.88535
+The Recall rate using 15 is 0.945578
+The Accuracy rate using 15 is 0.866667
+The FPR rate using 15 is 0.375
+The TPR rate using 15 is 0.945578

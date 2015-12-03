@@ -1,0 +1,33 @@
+Correct Rate: 100
+Running Time: 0.005646 seconds
+Correct Rate: 100
+Running Time: 0.007545 seconds
+Correct Rate: 90
+Running Time: 0.005272 seconds
+Correct Rate: 100
+Running Time: 0.005984 seconds
+Correct Rate: 100
+Running Time: 0.005785 seconds
+Correct Rate: 90
+Running Time: 0.005897 seconds
+Correct Rate: 85
+Running Time: 0.005979 seconds
+Correct Rate: 90
+Running Time: 0.005201 seconds
+Correct Rate: 80
+Running Time: 0.005479 seconds
+Correct Rate: 73.3333
+Running Time: 0.004289 seconds
+Average Correct Rate: 91.2821
+Average Running Time: 0.0057077 seconds
+The TP rate using 5 is 143
+The TN rate using 5 is 35
+The FP rate using 5 is 14
+The FN rate using 5 is 3
+The Sensitivity rate using 5 is 0.979452
+The Specificity rate using 5 is 0.714286
+The Precision rate using 5 is 0.910828
+The Recall rate using 5 is 0.979452
+The Accuracy rate using 5 is 0.912821
+The FPR rate using 5 is 0.285714
+The TPR rate using 5 is 0.979452

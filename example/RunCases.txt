@@ -1,0 +1,70 @@
+Case1: Make data Norm, PCA, FLD, 10-Fold
+
+Case2: RunMPPCase 1 Norm data : Equal PP
+Case3: RunMPPCase 2 Norm data: Equal PP
+Case4: RunMPPCase 3 PCA data: Equal PP
+
+Case5: Find Optimal PP Using PCA data case MPP 3
+Case6: Classify with Best PP PCA DATA mpp case 3
+Case7: Classify with Best PP FLD DATA mpp case 3
+
+Case8: GetROC PCA DATA MPP case 3
+Case9: GetROC FLD DATA MPP case 3
+Case10: 
+
+Case11: RunKNN Norm data 
+Case12: RunKNN PCA data
+Case13: RunKNN FLD data
+
+Case14: RunKmeansClustering Normdata
+Case15: RunWTAClustering Normdata
+
+Case16: RunKmeansClustering PCA data
+Case17: RunWTAClustering PCA data
+
+Case18: RunKmeansClustering FLD data
+Case19: RunWTAClustering FLD data
+
+Case20
+Case21
+Case22
+Case23
+Case24
+
+KNN K =1
+ConfusionMatrixKNNNorm1: KNN Norm K=1
+labelKNN_NormData_K_1.dat : KNN Norm K=1
+KNNNormK_1.txt :
+
+KNN K =5
+ConfusionMatrixKNNNorm5: KNN Norm 
+labelKNN_NormData_K_5.dat : KNN Norm 
+KNNNormK_5.txt :
+
+ConfusionMatrixKNNPCA5: KNN Norm 
+labelKNN_PCAData_K_5.dat : KNN Norm 
+KNNPCAK_5.txt :
+
+ConfusionMatrixKNNFLD5: KNN Norm 
+labelKNN_FLDData_K_5.dat : KNN Norm 
+KNNFLDK_5.txt :
+
+KNN K =10
+ConfusionMatrixKNNNorm10: KNN Norm 
+labelKNN_NormData_K_10.dat : KNN Norm 
+KNNNormK_10.txt :
+
+
+KNN K =15
+ConfusionMatrixKNNNorm15: KNN Norm 
+labelKNN_NormData_K_15.dat :KNN Norm
+KNNNormK_15.txt :
+
+
+
+
+
+
+
+
+
