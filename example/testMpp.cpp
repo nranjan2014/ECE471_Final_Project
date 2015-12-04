@@ -412,13 +412,13 @@ void DerivePerformanceMetric ( Matrix & tested, int datatype)
    // string lb = "ConfusionMatrixKNNNorm" + to_string(datatype);
     //string lb = "ConfusionMatrixKNNPCA" + to_string(datatype);
    // string lb = "ConfusionMatrixKNNFLD" + to_string(datatype);
-    string lb = "ConfusionMatrixNormOptPP" + to_string(datatype);
+  //  string lb = "ConfusionMatrixNormOptPP" + to_string(datatype);
     //string lb = "ConfusionMatrixKmeans" + to_string(datatype);
     
     //std::string str = "string";
-    const char *cstr = lb.c_str();
+   // const char *cstr = lb.c_str();
 
-    writeData(ConfusionMatrix, cstr);
+   // writeData(ConfusionMatrix, cstr);
     
     cout << "The TP rate using " << datatype << " is " << TP << endl;
     cout << "The TN rate using " << datatype << " is " << TN << endl;
@@ -2333,9 +2333,9 @@ void RunWTAClustering(Matrix &XTr)
 
 void RunNaiveBayes()
 {
-    Matrix x1 = readData("ConfusionMatrix4", 2);
-  //  Matrix x2 = readData("ConfusionMatrixKNNPCA1", 2);
-    Matrix x2 = readData("ConfusionMatrixKNNPCA1", 2);
+   // Matrix x1 = readData("ConfusionMatrix4", 2);
+    Matrix x1 = readData("ConfusionMatrixKNNPCA1", 2);
+    Matrix x2 = readData("ConfusionMatrixKmeans2", 2);
     Matrix M(2,4);
     
     double n1 = x1(0,0);
@@ -2373,8 +2373,10 @@ void RunNaiveBayes()
         }
     }
     
-    Matrix y1 = readData("labelTotalPCAOptPP.dat", 2);
-    Matrix y2 = readData("labelKNN_PCAData_K_1.dat", 2);
+   // Matrix y1 = readData("labelTotalPCAOptPP.dat", 2);
+    Matrix y1 = readData("labelKNN_PCAData_K_1.dat", 2);
+    Matrix y2 = readData("NewLabelKmeanNorm2", 2);
+
     
     int row = y1.getRow();
     Matrix label (row, 2);
