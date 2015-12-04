@@ -167,10 +167,9 @@ if ( cases == 1)
     // perform the task of classification using MAP on data set fX
     else if ( cases == 7)
     {
-        fXTr = readData("FLD.tr", 2);
+       fXTr = readData("FLD.tr", 2);
        ClassifyBestPwPCAFLD(fXTr);
     }
-    
     else if ( cases == 8)
     {
         tXTr = readData("PCA.tr", 7);
@@ -186,7 +185,9 @@ if ( cases == 1)
     else if ( cases == 10)
     {
         nXTr = readData("NormData.tr", 23);
-        GetROC(nXTr);
+      //  GetROC(nXTr);
+       // tXTr = readData("PCA.tr", 7);
+        ClassifyBestPwPCAFLD(nXTr);
 
     }
     // perform the task of getting FPR TPR for ROC Curve plot for fX data set
@@ -255,45 +256,12 @@ if ( cases == 1)
     // kNN implementation using full Minkowski distance on data set tX
     else if ( cases == 20)
     {
-        Matrix label (tXTe.getRow(), 1);
-
-        // for each sample in testing set call the KNNClassifierMinkowski() to determine the class of the testing sample
-        // Also time the function execution time for classification using KNN with Minkowski distance
-        clock_t start = clock();
-
-        for (int i = 0; i < tXTe.getRow(); i++)
-        {
-            Matrix sample = subMatrix(tXTe, i,0,i, tXTe.getCol()-1);
-
-            label(i,0) = KNNClassifierMinkowski(tXTr, sample, K,minK);
-        }
-        clock_t end = clock();
-
-        DerivePerformanceMetric ( label, cases);
-
-        cout << "Running Time: " << (double) (end-start)/ 1000000 << " seconds" << endl;
-
+        RunNaiveBayes();
     }
     // kNN implementation using partial Minkowski distance on data set tX
     else if ( cases == 21)
     {
-        Matrix label (tXTe.getRow(), 1);
-
-        // for each sample in testing set call the KNNClassifierPartialMinkowski() to determine the class of the testing sample
-        // Also time the function execution time for classification using KNN with Minkowski distance
-        clock_t start = clock();
-
-        for (int i = 0; i < tXTe.getRow(); i++)
-        {
-            Matrix sample = subMatrix(tXTe, i,0,i, tXTe.getCol()-1);
-
-            label(i,0) = KNNClassifierPartialMinkowski(tXTr, sample, K,minK);
-        }
-        clock_t end = clock();
-
-        DerivePerformanceMetric ( label, cases);
-
-        cout << "Running Time: " << (double) (end-start)/ 1000000 << " seconds" << endl;
+        RunClusterLabel();
 
     }
     // kNN implementation using full Minkowski distance on data set fX
@@ -443,7 +411,8 @@ void DerivePerformanceMetric ( Matrix & tested, int datatype)
    // string lb = "ConfusionMatrixMPPCase3FLD" + //to_string(datatype);
    // string lb = "ConfusionMatrixKNNNorm" + to_string(datatype);
     //string lb = "ConfusionMatrixKNNPCA" + to_string(datatype);
-    string lb = "ConfusionMatrixKNNFLD" + to_string(datatype);
+   // string lb = "ConfusionMatrixKNNFLD" + to_string(datatype);
+    string lb = "ConfusionMatrixNormOptPP" + to_string(datatype);
     //string lb = "ConfusionMatrixKmeans" + to_string(datatype);
     
     //std::string str = "string";
@@ -1595,7 +1564,7 @@ void ClassifyBestPwPCAFLD(Matrix &nXTr)
             //   cout << "pass 4" << endl;
             // call MPP to perform classification
             label(i,0) = test(i,test.getCol()-1);
-            label(i,1) = mpp(training, sample, classes, 3, Pw);
+            label(i,1) = mpp(training, sample, classes, 2, Pw);
             labelTotal(labelrow, 0) = test(i,test.getCol()-1);
             labelTotal(labelrow, 1) = label(i,1);
             labelrow++;
@@ -1626,13 +1595,13 @@ void ClassifyBestPwPCAFLD(Matrix &nXTr)
     }
     if (nXTr.getCol() > 2)
     {
-        writeData(labelTotal, "labelTotalPCAOptPP.dat");
+        writeData(labelTotal, "labelTotalNormOptPP.dat");
         
         DerivePerformanceMetric ( labelTotal,4 ); // PCA
     }
     else
     {
-        writeData(labelTotal, "labelTotalFLDOptPP.dat");
+        writeData(labelTotal, "labelTotalNormOptPP.dat");
         
         DerivePerformanceMetric ( labelTotal,5 ); // FLD
     }
@@ -1941,7 +1910,7 @@ void RunKNN (Matrix &nXTr, int caseNum)
 
       //  writeData(labelTotal, "labelKNN_NormData_K_15.dat");
         // writeData(labelTotal, "labelKNN_PCAData_K_15.dat");
-        writeData(labelTotal, "labelKNN_FLDData_K_15.dat");
+       // writeData(labelTotal, "labelKNN_FLDData_K_15.dat");
 
         sumCorrect = sumCorrect + CorrectCount;
         sumTotalCount = sumTotalCount + test.getRow();
@@ -2014,7 +1983,7 @@ void RunKmeansClustering(Matrix &XTr)
     int done = 0;
     int epoc = 0;
     
-            Matrix samp( 1 , col);
+        Matrix samp( 1 , col);
         Matrix samp1(1, col);
         clusterAssign.initMatrix(-1);
         
@@ -2123,8 +2092,10 @@ void RunKmeansClustering(Matrix &XTr)
             }
         }
         
-        Matrix newData1(row,col);
+    
         Matrix FinalData(row,2);
+    /*
+        Matrix newData1(row,col);
         // change the value of the data set to corresponding to the value
         // of the assigned cluster centers that they belong to
         for (int i=0; i < row; i++)
@@ -2136,7 +2107,7 @@ void RunKmeansClustering(Matrix &XTr)
                 newData1(i,j) = centers(r, j);
             }
         }
-    
+    */
     for ( int i=0; i< row; i++ )
     {
         int r;
@@ -2146,8 +2117,8 @@ void RunKmeansClustering(Matrix &XTr)
     }
     DerivePerformanceMetric( FinalData, 128);
     writeData(FinalData, "LabelKMeansNorm128.dat");
-        clock_t end = clock();
-        cout << "Running Time: " << (double) (end-start)/ 1000000 << " seconds" << endl;
+    clock_t end = clock();
+    cout << "Running Time: " << (double) (end-start)/ 1000000 << " seconds" << endl;
         // writeData(newData1, "data32NewKM.tr");
        // writeData(newData1, "data2NewKMNorm.dat");
         //   writeData(newData1, "data128NewKM.tr");
@@ -2322,11 +2293,12 @@ void RunWTAClustering(Matrix &XTr)
             }
             
         }
-        
+        Matrix FinalData(row,2);
+    /*
         // change the value of the data set to corresponding to the value
         // of the assigned cluster centers that they belong to
         Matrix newData1(row,col);
-        Matrix FinalData(row,2);
+    
         for (int i=0; i < row; i++)
         {
             int r;
@@ -2335,7 +2307,7 @@ void RunWTAClustering(Matrix &XTr)
             {
                 newData1(i,j) = centers(r, j);
             }
-        }
+        } */
         for ( int i=0; i< row; i++ )
         {
             int r;
@@ -2344,7 +2316,7 @@ void RunWTAClustering(Matrix &XTr)
             FinalData(i,1) = XTr(r, XTr.getCol()-1);;
         }
         DerivePerformanceMetric( FinalData, 1111128);
-        writeData(FinalData, "LabelWTANorm128.dat");
+      //  writeData(FinalData, "LabelWTANorm128.dat");
         clock_t end = clock();
         cout << "Running Time: " << (double) (end-start)/ 1000000 << " seconds" << endl;
         //writeData(newData1, "data2NewWTANorm.dat");
@@ -2356,6 +2328,136 @@ void RunWTAClustering(Matrix &XTr)
         //  writeImage("figout64WTA.ppm", newData1, nrow,  ncol);
         //     writeImage("figout128WTA.ppm", newData1, nrow,  ncol);
         //  writeImage("figout256WTA.ppm", newData1, nrow,  ncol);
+    
+}
+
+void RunNaiveBayes()
+{
+    Matrix x1 = readData("ConfusionMatrix4", 2);
+  //  Matrix x2 = readData("ConfusionMatrixKNNPCA1", 2);
+    Matrix x2 = readData("ConfusionMatrixKNNPCA1", 2);
+    Matrix M(2,4);
+    
+    double n1 = x1(0,0);
+    double n2 = x1(0,1);
+    double n3 = x1(1,0);
+    double n4 = x1(1,1);
+    
+    double m1 = x2(0,0);
+    double m2 = x2(0,1);
+    double m3 = x2(1,0);
+    double m4 = x2(1,1);
+    
+    x1(0,0) = ((double)n1)/ (n1+n2);
+    x1(0,1) = ((double)n2)/ (n1+n2);
+    x1(1,0) = ((double)n3)/ (n3+n4);
+    x1(1,1) = ((double)n4)/ (n3+n4);
+    
+    x2(0,0) = m1/ (m1+m2);
+    x2(0,1) = m2/ (m1+m2);
+    x2(1,0) = m3/ (m3+m4);
+    x2(1,1) = m4/ (m3+m4);
+
+    int j;
+    for (int i=0; i<2; i++)
+    {
+      for (j=0; j<2; j++)
+      {
+          M(i,j) = x1(i,0) * x2(i,j);
+          
+      }
+        for(int k = 0; k <2; k++ )
+        {
+            M(i,j) = x1(i,1) * x2(i,j);
+            j++;
+        }
+    }
+    
+    Matrix y1 = readData("labelTotalPCAOptPP.dat", 2);
+    Matrix y2 = readData("labelKNN_PCAData_K_1.dat", 2);
+    
+    int row = y1.getRow();
+    Matrix label (row, 2);
+    
+    int l1,l2;
+    
+    for(int i =0; i < row; i++)
+    {
+        l1 = y1(i,1);
+        l2 = y2(i,1);
+        
+        label(i,0) = y1(i,0);
+        
+        if (l1 == 1 && l2 == 1)
+        {
+           if( M(0,0) > M(1,0))
+           {
+               label(i,1) = 1;
+           }
+            else
+            {
+                label(i,1) = 0;
+            }
+        }
+        else if (l1 == 1 && l2 == 0)
+        {
+            if( M(0,1) > M(1,1))
+            {
+                label(i,1) = 1;
+            }
+            else
+            {
+                label(i,1) = 0;
+            }
+        }
+        else if (l1 == 0 && l2 == 1)
+        {
+            if( M(0,2) > M(1,2))
+            {
+                label(i,1) = 1;
+            }
+            else
+            {
+                label(i,1) = 0;
+            }
+        }
+        else if (l1 == 0 && l2 == 0)
+        {
+            if( M(0,3) > M(1,3))
+            {
+                label(i,1) = 1;
+            }
+            else
+            {
+                label(i,1) = 0;
+            }
+        }
+    }
+    DerivePerformanceMetric(label, 1);
+}
+
+void RunClusterLabel()
+{
+     Matrix foldData = readData("foldTen.dat", 20 );
+    
+     Matrix lbKM = readData("LabelKMeansNorm2.dat", 2 );
+    Matrix newLb(lbKM.getRow(), 2);
+    int num;
+    for (int i =0; i< foldData.getRow(); i++)
+    {
+        for (int j=0; j< foldData.getCol(); j++)
+        {
+            num = foldData(i,j);
+            if (num != -1)
+            {
+                newLb(num,0) = lbKM(i,0);
+                newLb(num,1) = lbKM(i,1);
+            }
+        }
+    }
+    
+    writeData(newLb, "NewLabelKmeanNorm2");
+    
     
 }
 
