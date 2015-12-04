@@ -2439,7 +2439,7 @@ void RunNaiveBayes()
 void RunClusterLabel()
 {
      Matrix foldData = readData("foldTen.dat", 20 );
-    
+    int k =0;
      Matrix lbKM = readData("LabelKMeansNorm2.dat", 2 );
     Matrix newLb(lbKM.getRow(), 2);
     int num;
@@ -2450,8 +2450,9 @@ void RunClusterLabel()
             num = foldData(i,j);
             if (num != -1)
             {
-                newLb(num,0) = lbKM(i,0);
-                newLb(num,1) = lbKM(i,1);
+                newLb(num,0) = lbKM(k,0);
+                newLb(num,1) = lbKM(k,1);
+                k++;
             }
         }
     }
