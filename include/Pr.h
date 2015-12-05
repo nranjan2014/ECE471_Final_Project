@@ -130,5 +130,7 @@ void DerivePerformanceMetricROC ( Matrix & tested);
 void RunKNN (Matrix &nXTr, int caseNum);
 void RunWTAClustering(Matrix &nXTr);
 void RunKmeansClustering(Matrix &nXTr);
+void RunNaiveBayes();
+void RunClusterLabel();
 #endif
 
