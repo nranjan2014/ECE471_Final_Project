@@ -1,32 +1,30 @@
 
 /***********************************************************************************************************************
 *
-* ECE 471 : Final Project Augmentation part
-*
+* ECE 471 : Final Project
+* Code developed from implementation from Project 1, 2, 3, and 4
 * Last Modified by/Date: Niloo Ranjan, 11/19/2015
 * Addition: modified the command line argument option. Auugmented the original file with functions and code
 * needed to perform the tasks for final project.
-* Added cases options to perform other tasks to accomodate the needs of the final project.
-* Added cases options to perform different task of project 2.
-* Case 1: Run: Use nX to Classify the test set using MAP with equal prior probability and test cases 1,2,3"
-* Case 2: Run: Use nX to Find a set of prior probability that would improve the classification accuracy."
-* Case 3: Run: Use tX to Classify the test set using MAP with found optimal prior probability"
-* Case 4: Run: Use fX to Classify the test set using MAP with found optimal prior probability"
-* Case 5: ROC Curve data points collection for nX data set
-* Case 6: ROC Curve data points collection for tX data set
-* Case 7: ROC Curve data points collection for fX data set
-* Case 8: kNN implementation using full Euclidean distance on data set nX
-* Case 9: kNN implementation using partial Euclidean distance on data set nX
-* Case 10: kNN implementation using full Euclidean distance on data set tX
-* Case 11: kNN implementation using partial Euclidean distance on data set tX
-* Case 12: kNN implementation using full Euclidean distance on data set fX
-* Case 13: kNN implementation using partial Euclidean distance on data set fX
-* Case 14: kNN implementation using full Minkowski distance with different p values on data set nX
-* Case 15: kNN implementation using partial Minkowski distance with different p values on data set nX
-* Case 16: kNN implementation using full Minkowski distance with different p values on data set tX
-* Case 17: kNN implementation using partial Minkowski distance with different p values on data set tX
-* Case 18: kNN implementation using full Minkowski distance with different p values on data set fX
-* Case 19: kNN implementation using partial Minkowski distance with different p values on data set fX
+* Added cases options to perform other tasks of the final project.
+*
+* Case 1: get the Normalized, PCA, FLD, 10-fold done
+* Case 2: MAP case1 classification on nX data set with equal prior probabilty
+* Case 3: MAP case2 classification on nX data set with equal prior probabilty
+* Case 4: MAP case3 classification on nX data set with equal prior probabilty
+* Case 5: finding optimal prior probability using MPP case 3 with PCA data
+* Case 6: classification using MAP on PCA data set
+* Case 7: classification using MAP on FLD data set
+* Case 8: getting FPR TPR for ROC Curve plot for PCA data set
+* Case 9: getting FPR TPR for ROC Curve plot for FLD data set
+* Case 10: getting FPR TPR for ROC Curve plot for Normalized data set
+* Case 11: kNN implementation using full Euclidean distance on Normalized data set
+* Case 12: kNN implementation using full Euclidean distance on PCA data set
+* Case 13: kNN implementation using partial Euclidean distance on FLD data set
+* Case 14: K-means implementation on Normalized data
+* Case 15: Winner Take All implementation on Normalized data
+* Case 16: Classifier fusion Naive Bayes
+* Case 17: make label from K-means classification similar to class label for sample from classifier using 10-fold data
 *************************************************************************************************************************/
 
 #include <iostream>
@@ -39,20 +37,21 @@
 #include <ctime>
 
 using namespace std;
-//#define CLOCK_PER_SEC 60
-#define Usage "Usage: ./testMpp training_set classes features cases \n\t training_set: the file name for training set\n\t classes: number of classes\n\t features: number of features (dimension)\n\t cases: used to run diffetent task categories, cases can be from 1 to 19\n\t K-values: for kNN \n\t p-values: for degrees of Minkowski distance\n\n"
+
+#define Usage "Usage: ./testMpp training_set classes features cases K-vaues \n\t training_set: the file name for data set\n\t classes: number of classes\n\t features: number of features (dimension)\n\t cases: used to run diffetent task categories, cases can be from 1 to 17\n\t K-values: for kNN \n\n"
 
 int main(int argc, char **argv)
 {
-    int nrTr, nrTe;       // number of rows in the training and test set
+    int nrTr;       // number of rows in the training and test set
     int  nc;              // number of columns in the data set; both the 
     // training and test set should have the same
     // column number
-    Matrix XTr, XTe;      // original training and testing set
-    Matrix Tr, Te;        // training and testing set file received from command line
-    Matrix tXTr, tXTe;
-    Matrix fXTr, fXTe;
-    Matrix nXTr, nXTe;
+    Matrix XTr;      // original training and testing set
+    Matrix Tr;        // training and testing set file received from command line
+    Matrix tXTr;
+    Matrix fXTr;
+    Matrix nXTr;
+    
     // check to see if the number of argument is correct
     if (argc < 6) {
         cout << Usage;
@@ -64,7 +63,7 @@ int main(int argc, char **argv)
     int cases = atoi(argv[4]);     // number of features (dimension)
 
     int K = atoi(argv[5]);
-    double minK = atof(argv[6]);
+    
     // read in data from the data file
     nc = nf+1; // the data dimension; plus the one label column
 
@@ -76,11 +75,7 @@ if ( cases == 1)
 {
     X = subMatrix(XTr, 0,0, nrTr-1, nf-1);
 
-    // prepare the labels and error count
-    Matrix labelMPP(nrTe, 1);      // a col vector to hold result for MPP
-    int CorrectCountMPP = 0;       // calcualte error rate 
-
-    Matrix means, covr, covarxN, sigma, nXTr, nXTe, D_M, V_M, B_M, E_M  ;
+    Matrix means, covr, covarxN, sigma, nXTr,D_M, V_M, B_M, E_M  ;
     // B_M basis vector
     // E_M eigen vector corresponding to eigen values error rate less than 0.10
 
@@ -135,7 +130,7 @@ if ( cases == 1)
     
     int sampFold = 20;
 }
-    // case: run the task of  MAP, case1, case2, case3 classification on nX data set with equal prior probabilty
+    //run the task of  MAP case1 nX data set with equal prior probabilty
     else if ( cases == 2)
     {
         nXTr = readData("NormData.tr", 23);
@@ -143,11 +138,13 @@ if ( cases == 1)
     }
     else if ( cases == 3)
     {
+        // run the task of  MAP case2 classification on nX data set with equal prior probabilty
         nXTr = readData("NormData.tr", 23);
         RunMPPCase123 (nXTr, 2);
     }
-    else if ( cases == 4) // tXTr
+    else if ( cases == 4)
     {
+    //run the task of  MAP case3 classification on tX (PCA) data set with equal prior probabilty
        tXTr = readData("PCA.tr", 7);
        RunMPPCase123 (tXTr, 3);
     }
@@ -170,18 +167,19 @@ if ( cases == 1)
        fXTr = readData("FLD.tr", 2);
        ClassifyBestPwPCAFLD(fXTr);
     }
+    // perform the task of getting FPR TPR for ROC Curve plot for tX data set
     else if ( cases == 8)
     {
         tXTr = readData("PCA.tr", 7);
         GetROC(tXTr);
     }
-    // perform the task of getting FPR TPR for ROC Curve plot for nX data set
+    // perform the task of getting FPR TPR for ROC Curve plot for fX data set
     else if ( cases == 9)
     {
         fXTr = readData("FLD.tr", 2);
         GetROC(fXTr);
     }
-    // perform the task of getting FPR TPR for ROC Curve plot for tX data set
+    // perform the task of getting FPR TPR for ROC Curve plot for nX data set
     else if ( cases == 10)
     {
         nXTr = readData("NormData.tr", 23);
@@ -190,7 +188,7 @@ if ( cases == 1)
         ClassifyBestPwPCAFLD(nXTr);
 
     }
-    // perform the task of getting FPR TPR for ROC Curve plot for fX data set
+    // kNN implementation using full Euclidean distance on data set nX
     else if ( cases ==11)
     {
         nXTr = readData("NormData.tr", 23);
@@ -198,20 +196,20 @@ if ( cases == 1)
         RunKNN (nXTr, K);
     }
 
-    // kNN basic implementation using full Euclidean distance on data set nX
+    // kNN basic implementation using full Euclidean distance on data set tX
     else if ( cases == 12)
     {
         tXTr = readData("PCA.tr", 7);
         RunKNN (tXTr, K);
 
     }
-    // kNN implementation using partial Euclidean distance on data set nX
+    // kNN implementation using full Euclidean distance on data set fX
     else if ( cases == 13)
     {
        fXTr = readData("FLD.tr", 2);
        RunKNN (fXTr, K);
     }
-    // kNN implementation using full Euclidean distance on data set tX
+    // K-means implementation
     else if ( cases == 14)
     {
         
@@ -220,7 +218,7 @@ if ( cases == 1)
         RunKmeansClustering(nXTr);
 
     }
-    // kNN implementation using partial Euclidean distance on data set tX
+    // winner take all implementation
     else if ( cases == 15)
     {
         nXTr = readData("NormData.tr", 23);
@@ -228,114 +226,26 @@ if ( cases == 1)
         RunWTAClustering(nXTr);
 
     }
-    // kNN implementation using full Euclidean distance on data set fX
+    // classifier fusion Naive Bayes
     else if ( cases == 16)
-    {
-        tXTr = readData("PCA.tr", 7);
-        
-        RunKmeansClustering(tXTr);
-    }
-    // kNN implementation using partial Euclidean distance on data set fX
-    else if ( cases == 17)
-    {
-        tXTr = readData("PCA.tr", 7);
-        RunWTAClustering(tXTr);
-    }
-    // kNN implementation using full Minkowski distance on data set nX
-    else if ( cases == 18)
-    {
-        fXTr = readData("FLD.tr", 2);
-        RunKmeansClustering(fXTr);
-    }
-    // kNN implementation using partial Minkowski distance on data set nX
-    else if ( cases == 19)
-    {
-        fXTr = readData("FLD.tr", 2);
-        RunWTAClustering(fXTr);
-    }
-    // kNN implementation using full Minkowski distance on data set tX
-    else if ( cases == 20)
     {
         RunNaiveBayes();
     }
-    // kNN implementation using partial Minkowski distance on data set tX
-    else if ( cases == 21)
+    // make label from K-means classification similar to class label
+    // for sample from classifier using 10-fold data
+    else if ( cases == 17)
     {
         RunClusterLabel();
 
     }
-    // kNN implementation using full Minkowski distance on data set fX
-    else if ( cases == 22)
+    else
     {
-        Matrix label (fXTe.getRow(), 1);
-
-        // for each sample in testing set call the KNNClassifierMinkowski() to determine the class of the testing sample
-        // Also time the function execution time for classification using KNN with Minkowski distance
-        clock_t start = clock();
-
-        for (int i = 0; i < fXTe.getRow(); i++)
-        {
-            Matrix sample = subMatrix(fXTe, i,0,i, fXTe.getCol()-1);
-
-            label(i,0) = KNNClassifierMinkowski(fXTr, sample, K,minK);
-        }
-        clock_t end = clock();
-
-        DerivePerformanceMetric ( label, cases);
-
-        cout << "Running Time: " << (double) (end-start)/ 1000000 << " seconds" << endl;
-    }
-    // kNN implementation using partial Minkowski distance on data set fX
-    else if ( cases == 23)
-    {
-        Matrix label (fXTe.getRow(), 1);
-
-        // for each sample in testing set call the KNNClassifierPartialMinkowski() to determine the class of the testing sample
-        // Also time the function execution time for classification using KNN with Minkowski distance
-        clock_t start = clock();
-
-        for (int i = 0; i < fXTe.getRow(); i++)
-        {
-            Matrix sample = subMatrix(fXTe, i,0,i, fXTe.getCol()-1);
-
-            label(i,0) = KNNClassifierPartialMinkowski(fXTr, sample, K,minK);
-        }
-        clock_t end = clock();
-
-        DerivePerformanceMetric ( label, cases);
-
-        cout << "Running Time: " << (double) (end-start)/ 1000000 << " seconds" << endl;
-    }
-       else
-    {
-        cout << "Please specify the case from 1 to 16, which task to run" << endl;
+        cout << "Please specify the case from 1 to 17, which task to run" << endl;
     }
 
     return 0;
 }
 
-// this function classify the data set passed using optimal prior probability found
-void ClassificationWithBestPW ( Matrix &trn, Matrix &tet, Matrix &BestPW, int type )
-{
-    int row;
-    int col;
-    row = tet.getRow();
-    col = tet.getCol();
-    Matrix labelMPP(row, 1);  // a col vector to hold result for MAP
-    Matrix temp;
-    temp = tet;
-
-    for (int i=0; i<row; i++) {
-        // classify one test sample at a time, get one sample from the test data
-        Matrix sample = transpose(subMatrix(temp, i, 0, i, col-2));
-
-        // call MPP to perform classification
-        labelMPP(i,0) = mpp(trn, sample, 2 , 4, BestPW);
-    }
-
-    DerivePerformanceMetric ( labelMPP,type );
-
-}
 
 // this function calculates the performance metrics for the classification rule MAP used
 // on the each type of data set tested
@@ -406,7 +316,7 @@ void DerivePerformanceMetric ( Matrix & tested, int datatype)
     ConfusionMatrix(1,0) = FP;
     ConfusionMatrix(1,1) = TN;
     
-    //string lb = "ConfusionMatrix" + to_string(datatype);
+    string lb = "ConfusionMatrix" + to_string(datatype);
   //  string lb = "ConfusionMatrixMPPCase3PCA" + to_string(datatype);
    // string lb = "ConfusionMatrixMPPCase3FLD" + //to_string(datatype);
    // string lb = "ConfusionMatrixKNNNorm" + to_string(datatype);
@@ -415,10 +325,10 @@ void DerivePerformanceMetric ( Matrix & tested, int datatype)
   //  string lb = "ConfusionMatrixNormOptPP" + to_string(datatype);
     //string lb = "ConfusionMatrixKmeans" + to_string(datatype);
     
-    //std::string str = "string";
-   // const char *cstr = lb.c_str();
+    std::string str = "string";
+    const char *cstr = lb.c_str();
 
-   // writeData(ConfusionMatrix, cstr);
+    writeData(ConfusionMatrix, cstr);
     
     cout << "The TP rate using " << datatype << " is " << TP << endl;
     cout << "The TN rate using " << datatype << " is " << TN << endl;
@@ -431,7 +341,7 @@ void DerivePerformanceMetric ( Matrix & tested, int datatype)
     cout << "The Accuracy rate using " << datatype << " is " << Accuracy << endl;
     
     cout << "The FPR rate using " << datatype << " is " << FPR << endl;
-    //cout << TPR << ",";
+    
     cout << "The TPR rate using " << datatype << " is " << TPR << endl;
     
 }
@@ -656,421 +566,8 @@ int KNNClassifierEuclidian(Matrix &nXTr, Matrix &sample, int K)
     return(Class);
 }
 
-
-// this function implement the kNN using partial Euclidean distance 
-// to be used to clasiify the testing set of 
-// nX, tX, fX data set which is normalized, PCA transformed, FLD trasformed respectively
-int KNNClassifierPartialEuclidian(Matrix &nXTr, Matrix &sample, int K)
-{
-    Matrix distance(K,2);
-    Matrix samp;
-    double dis = 0.0;
-    int D = 0;
-    Matrix Kdistance(K, 2);
-
-    samp = subMatrix(sample, 0,0,0,sample.getCol()-1);
-
-    // get the original Euclidean distance from the first K sample only
-    // with its class label information
-    for ( int i =0; i < K; i++)
-    {
-        Matrix samp1 = subMatrix(nXTr, i, 0,i,nXTr.getCol()-2);
-
-        dis = calculatePartDis(samp,samp1);
-
-        distance(i,0) = dis;
-        distance(i,1) = nXTr(i, nXTr.getCol()-1);
-    }
-
-    // sort the computed K distances
-    Kdistance  = ComputeSortedDis( distance);
-
-    double maxDis = Kdistance(K-1,0);
-    D = 0; // untill what dimention to calculate the partial distance
-
-    // for all K+1 onwards sample in the traning set 
-    // compute the partial Euclidean distance by adding the distance between 
-    // each feature one at a time and checking if adding the next feature distance would 
-    // pass the calculated maximum disstance in the K kept sorted distance. 
-
-    for ( int i = K; i < nXTr.getRow(); i++)
-    {
-        dis = 0;
-
-        Matrix s1 = subMatrix(nXTr,i,0,i,D);
-        Matrix s2 = subMatrix(sample,0,0,0,D);
-
-        dis =  calculatePartDis(s1,s2);
-
-        // check if the partial distance is still less than max distance found
-        // also check not surpassing the total dimention 
-        while(D < (nXTr.getCol()-2 )|| dis < maxDis )
-        {
-            // that means partial distance is still less 
-            // than max distance and the boundary of the dimention has not reached
-            if (D != nXTr.getCol()-1 )
-            {
-                // get the feature vector from both testing and training sample 
-                // untill D dimention only
-                s1 = subMatrix(nXTr, i,0,i,D);
-
-                s2 = subMatrix(sample,0,0,0,D);
-
-                // get the calculated partial distance
-                dis = calculatePartDis(s1,s2);
-                D++;
-            }
-            else
-            {
-                break;
-            }
-        }
-        // this means calculated distance all the way to whole dimention 
-        // and the calculated distance is less than the max distance kept in 
-        // K sorted distance so far. 
-        if ( D == nXTr.getCol()-1 && dis < maxDis  )
-        {
-            // include that distance in the 
-            // K nearest distance list and remove the current max from the list
-            // also sort the distance list in increasing order again so that max 
-            // distance is at the end of the list
-            Kdistance(K-1,0) = dis;
-            Kdistance(K-1,1) = nXTr(i,nXTr.getCol()-1);
-            Kdistance = ComputeSortedDis(Kdistance);
-
-            // get the current max from the kept K nearest distance so far list
-            maxDis = Kdistance(K-1,0);
-            D = 0;
-        }
-    }
-
-    // after going through the finding of K nearest neighbor
-    // get the number of sample fall withing that K nearest neighborhood 
-    // for each type and assign the class corresponding to the class with 
-    // max number of sample found 
-    int maxNum = 0;
-    int Class = 0;
-    Matrix Type0 = getType(Kdistance,0);
-    Matrix Type1 = getType(Kdistance,1);
-    if (Type0.getRow() > Type1.getRow())
-    {
-        Class= 0;
-    }
-    else
-    {
-        Class = 1;
-    }
-    return(Class);
-}
-
-// this function calculates the partial Euclidean distance to be used for 
-// kNN implementation using Partial Euclidian distance
-double calculatePartDis(Matrix &s1, Matrix &s2)
-{
-    double d = 0;
-    int col = s1.getCol();
-
-    for ( int i =0; i < col; i++)
-    {
-        d = d + pow((s1(0,i) - s2(0,i)), 2);
-    }
-    d = sqrt(d);
-
-    return d;
-}
-
-// this method gets the unsorted computed K distance 
-// and sorts the K distances using insersort() method from 
-// provided matrix library
-Matrix ComputeSortedDis( Matrix &UnSortDis)
-{
-    // get just the distance part as row to use insersort function to sort the distances
-    Matrix DisUnSort = transpose(subMatrix(UnSortDis, 0, 0, UnSortDis.getRow()-1, 0));
-
-    Matrix DisSort(DisUnSort.getRow(), DisUnSort.getCol()); // this will keep sorted distance
-    Matrix DisPos(DisUnSort.getRow(), DisUnSort.getCol());  // this will keep the index 
-    // of the sorted distance 
-
-    insertsort(DisUnSort, DisSort, DisPos);
-    Matrix KdistanceSorted(DisSort.getCol(), 2);  // to keep only K nearest distances
-
-    // get only the k nearest distance from the list of all calcualted sorted 
-    // distance along with the label for the sample corresponding at that distance apart
-    for ( int i =0; i < DisSort.getCol(); i++)
-    {
-        int pos = DisPos(0,i);
-        int label = UnSortDis(pos,1);
-        KdistanceSorted(i,0) = DisSort (0,i);
-        KdistanceSorted(i,1) = label;
-    }
-    return KdistanceSorted;
-}
-
-// this function implement the kNN using original Minkowski distance 
-// to be used to clasiify the testing set of 
-// nX, tX, fX data set which is normalized, PCA transformed, FLD trasformed respectively
-int KNNClassifierMinkowski(Matrix &nXTr, Matrix &sample, int K, double MinP)
-{
-    Matrix distance(nXTr.getRow(),2);
-    Matrix samp;
-    double sumDistance = 0.0;
-
-    samp = subMatrix(sample, 0,0,0,sample.getCol()-1);
-
-    // calculate the original Minkowski distance using provided P value (MinP)between the current tesing sample and each of the 
-    // sample in the training set 
-    for ( int i =0; i < nXTr.getRow(); i++)
-    {
-        sumDistance = 0.0;
-        Matrix samp1 = subMatrix(nXTr, i, 0,i,nXTr.getCol()-2);
-
-        // get the square of the difference distance for each feature of the
-        for ( int j =0; j < samp1.getCol(); j++)
-        {
-            sumDistance = sumDistance + pow(fabs((samp(0,j) - samp1(0,j))), MinP);
-        }
-
-        sumDistance = pow(sumDistance, 1/MinP);
-
-        // keep the disance calculated from each training sample along 
-        // with their class label info
-        distance(i,0) = sumDistance;
-        distance(i,1) = nXTr(i, nXTr.getCol()-1);
-    }
-
-    // get just the distance part as row to use insersort function to sort the distances
-    Matrix DisUnSort = transpose(subMatrix(distance, 0, 0, distance.getRow()-1, 0));
-
-    Matrix DisSort(DisUnSort.getRow(), DisUnSort.getCol()); // this will keep sorted distance
-    Matrix DisPos(DisUnSort.getRow(), DisUnSort.getCol());  // this will keep the index 
-    // of the sorted distance
-
-    insertsort(DisUnSort, DisSort, DisPos);
-    Matrix Kdistance(K, 2);   // to keep only K nearest distances
-
-    // get only the k nearest distance from the list of all calcualted sorted 
-    // distance along with the label for the sample corresponding at that distance apart
-    for ( int i =0; i< K; i++)
-    {
-        int pos = DisPos(0,i);
-        int label = distance(pos,1);
-        Kdistance(i,0) = DisSort (0,i);
-        Kdistance(i,1) = label;
-    }
-
-    int maxNum = 0;
-    int Class = 0;
-
-    // as in this case there are only two class category 0 or 1 in the 
-    // get the number of sample fall withing that K nearest neighborhood 
-    // for each type and assign the class corresponding to the class with 
-    // max number of sample found 
-    Matrix Type0 = getType(Kdistance,0);
-    Matrix Type1 = getType(Kdistance,1);
-    if (Type0.getRow() > Type1.getRow())
-    {
-        Class= 0;
-    }
-    else
-    {
-        Class = 1;
-    }
-    return(Class);
-}
-
-// this function implement the kNN using partial Minkowski distance 
-// to be used to clasiify the testing set of 
-// nX, tX, fX data set which is normalized, PCA transformed, FLD trasformed respectively
-int KNNClassifierPartialMinkowski(Matrix &nXTr, Matrix &sample, int K, double minK)
-{
-    Matrix distance(K,2);
-    Matrix samp;
-    double dis = 0.0;
-    int D = 0;
-    Matrix Kdistance(K, 2);
-
-    samp = subMatrix(sample, 0,0,0,sample.getCol()-1);
-
-    // get the original Minkowski distance from the first K sample only
-    // with its class label information
-    for ( int i =0; i < K; i++)
-    {
-        Matrix samp1 = subMatrix(nXTr, i, 0,i,nXTr.getCol()-2);
-
-        dis = calculatePartDisMinkowski(samp,samp1, minK);
-
-        distance(i,0) = dis;
-        distance(i,1) = nXTr(i, nXTr.getCol()-1);
-    }
-
-    // sort the computed K distances
-    Kdistance  = ComputeSortedDis( distance);
-
-    double maxDis = Kdistance(K-1,0);
-    D = 0;  // untill what dimention to calculate the partial distance
-
-    // for all K+1 onwards sample in the traning set 
-    // compute the partial Euclidean distance by adding the distance between 
-    // each feature one at a time and checking if adding the next feature distance would 
-    // pass the calculated maximum disstance in the K kept sorted distance. 
-    for ( int i = K; i < nXTr.getRow(); i++)
-    {
-
-        dis = 0;
-
-        Matrix s1 = subMatrix(nXTr,i,0,i,D);
-        Matrix s2 = subMatrix(sample,0,0,0,D);
-
-        dis =  calculatePartDisMinkowski(s1,s2,minK );
-
-        // check if the partial distance is still less than max distance found
-        // also check not surpassing the total dimention
-        while(D < (nXTr.getCol()-2 )|| dis < maxDis )
-        {
-            // that means partial distance is still less 
-            // than max distance and the boundary of the dimention has not reached
-            if (D != nXTr.getCol()-1 )
-            {
-                // get the feature vector from both testing and training sample 
-                // untill D dimention only
-                s1 = subMatrix(nXTr, i,0,i,D);
-
-                s2 = subMatrix(sample,0,0,0,D);
-                // get the calculated partial distance
-                dis = calculatePartDis(s1,s2);
-                D++;
-
-            }
-            else
-            {
-                break;
-            }
-        }
-        // this means calculated distance all the way to whole dimention 
-        // and the calculated distance is less than the max distance kept in 
-        // K sorted distance so far. 
-        if ( D == nXTr.getCol()-1 && dis < maxDis  )
-        {
-            Kdistance(K-1,0) = dis;
-            Kdistance(K-1,1) = nXTr(i,nXTr.getCol()-1);
-            Kdistance = ComputeSortedDis(Kdistance);
-
-            // get the current max from the kept K nearest distance so far list
-            maxDis = Kdistance(K-1,0);
-            D = 0;
-        }
-    }
-
-    // after going through the finding of K nearest neighbor
-    // get the number of sample fall withing that K nearest neighborhood 
-    // for each type and assign the class corresponding to the class with 
-    // max number of sample found 
-
-    int maxNum = 0;
-    int Class = 0;
-    Matrix Type0 = getType(Kdistance,0);
-    Matrix Type1 = getType(Kdistance,1);
-    if (Type0.getRow() > Type1.getRow())
-    {
-        Class= 0;
-    }
-    else
-    {
-        Class = 1;
-    }
-    return(Class);
-}
-
-// this function calculates the partial Minkowski distance to be used for 
-// kNN implementation using Partial Minkowski distance
-double calculatePartDisMinkowski(Matrix &s1, Matrix &s2, double minK)
-{
-    double d = 0;
-    int col = s1.getCol();
-
-    for ( int i =0; i < col; i++)
-    {
-        d = d + pow(fabs((s1(0,i) - s2(0,i))), minK);
-    }
-    d = pow(d, 1/minK);
-
-    return d;
-}
-
-
-// this function implements kNN using original Euclidean distance to be used to 
-// clasiify the testing set using 10 folds cross-validation technique
-int KNNClassifierEuclidianFold(Matrix &nXTr, Matrix &sample, int K,int classes)
-{
-    Matrix distance(nXTr.getRow(),2);
-    Matrix samp;
-    double sumDistance = 0.0;
-
-    samp = subMatrix(sample, 0,0,0,sample.getCol()-1);
-
-    // calculate the original Euclidean distance between the current tesing sample and each of the 
-    // sample in the training set
-    for ( int i =0; i < nXTr.getRow(); i++)
-    {
-        sumDistance = 0.0;
-        Matrix samp1 = subMatrix(nXTr, i, 0,i,nXTr.getCol()-2);
-
-        // get the square of the difference distance for each feature of the
-        for ( int j =0; j < samp1.getCol(); j++)
-        {
-            sumDistance = sumDistance + pow((samp(0,j) - samp1(0,j)), 2);
-        }         
-        sumDistance = sqrt(sumDistance);
-        // keep the disance calculated from each training sample along 
-        // with their class label info
-        distance(i,0) = sumDistance;
-        distance(i,1) = nXTr(i, nXTr.getCol()-1);
-    }
-
-    // get just the distance part as row to use insersort function to sort the distances
-    Matrix DisUnSort = transpose(subMatrix(distance, 0, 0, distance.getRow()-1, 0));
-
-    Matrix DisSort(DisUnSort.getRow(), DisUnSort.getCol()); // this will keep sorted distance
-    Matrix DisPos(DisUnSort.getRow(), DisUnSort.getCol());  // this will keep the index 
-    // of the sorted distance 
-
-    insertsort(DisUnSort, DisSort, DisPos);
-    Matrix Kdistance(K, 2);   // to keep only K nearest distances
-
-    // get only the k nearest distance from the list of all calcualted sorted 
-    // distance along with the label for the sample corresponding at that distance apart
-    for ( int i =0; i< K; i++)
-    {
-        int pos = DisPos(0,i);
-        int label = distance(pos,1);
-        Kdistance(i,0) = DisSort (0,i);
-        Kdistance(i,1) = label;
-    }
-
-    int maxNum = -1;
-    int Class = -1;
-    Matrix type;
-    int num =0;
-
-    // this is the 7 class category data set which has class label from 1 to 7
-    // so for each class type get the number of sample that is of that class and 
-    // included in the that K nearest neighborhood distance list, also keep track of the
-    // max number seen so far along withe label of the class for which that max number has
-    // been seen. Then assign the class corresponding to the class with 
-    // max number of sample found at last 
-    for ( int i = 1; i <= classes; i++)
-    {
-        type = getType(Kdistance,i);
-        num = type.getRow();
-        if (num > maxNum)
-        {
-            maxNum = num;
-            Class = i;
-        }
-    }
-    return(Class);
-}
-
+// this method divides the whole data set into 10 parts
+// to be used for 10 fold cross validation for testing
 void MakeFoldData(int nrTr)
 {
     std::srand(std::time(NULL));
@@ -1084,30 +581,29 @@ void MakeFoldData(int nrTr)
     int h =0;
     do
     {
-        fill = true;
+        fill = true; // to fill with unique sample in each fold
+        
+        // get the random number between 0 and 194
         unsigned rnd = lb + (rand() % ((ub - lb) + 1));
-        //cout << rnd << endl;
+        
+        // make the 10 fold each with 20 samples in it
         for ( int k = 0; k < 200;k++)
         {
             if ( fl(k,0) == rnd)
             {
                 fill = false;
-               // cout << "break: " << rnd << endl;
-             //   cout << "cot for " << cot << endl;
                 break;
             }
         }
         if (fill)
         {
-           // cout << "cot if" << cot << endl;
-          //  cout << "rand: " << rnd << endl;
             fl(h,0) = rnd;
             h++;
         }
         cot++;
     }while(h < nrTr);
     int k =0;
-    // unsigned lb = 0, ub = 200;
+
     for ( int i =0; i < 10; i++)
     {
         for ( int j =0; j < 20; j++)
@@ -1120,21 +616,21 @@ void MakeFoldData(int nrTr)
     writeData(fold, "foldTen.dat");
     cout << fold << endl;
 }
+
 // this method build the validating data set for 10-fold cross-validation
-// with kNN as classifier
 Matrix getTestingData(Matrix &S, Matrix &glassData)
 {
     int row = 0;
     int row1 = -1;
     
-    // ge the count of row number without zero value of the sample from the current fold pass that needs to be
+    // ge the count of row number without -1 value of the sample from the current fold pass that needs to be
     // included in this validating set among the entire "fglass" data set
     for ( int i =0; i < S.getCol(); i++)
     {
         int n = S(0,i);
         
         // get how many row would be in the validating set
-        // disf=regard the zeros as it was to make matrix holding
+        // disregard the -1 as it was to make matrix holding
         // fold to be of same dimention
         if ( n != -1)
         {
@@ -1144,8 +640,8 @@ Matrix getTestingData(Matrix &S, Matrix &glassData)
     
     Matrix ret(row, glassData.getCol());
     
-    // ge the row number without zero value of the sample from the current fold pass that needs to be
-    // included in this validating set among the entire "fglass" data set
+    // ge the row number without -1 value of the sample from the current fold pass that needs to be
+    // included in this validating set among the entire data set
     for ( int i = 0; i < S.getCol(); i++)
     {
         int n = S(0,i);
@@ -1158,8 +654,7 @@ Matrix getTestingData(Matrix &S, Matrix &glassData)
             
             for ( int j = 0; j <Samp.getCol(); j++  )
             {
-                // include the corresponding sample from the
-                // normalized "flassdata" set
+                // include the corresponding sample from the data set
                 ret(row1,j) = Samp(0,j);
             }
         }
@@ -1171,7 +666,6 @@ Matrix getTestingData(Matrix &S, Matrix &glassData)
 }
 
 // this method build the training data set for 10-fold cross-validation
-// with kNN as classifier
 Matrix getTrainingData(Matrix &foldData, Matrix &glassData, int i )
 {
     Matrix samp;
@@ -1184,22 +678,18 @@ Matrix getTrainingData(Matrix &foldData, Matrix &glassData, int i )
     // first fold to build the training set at current round of toal of 10 rounds.
     if ( i == 0)
     {
-      //  cout << "pass 5" << endl;
         samp = subMatrix(foldData,i+1,0,foldData.getRow()-1,foldData.getCol()-1);
-      //  cout << "pass 6" << endl;
     }
     
     // in this case i is the last fold so include all other 9 fold excluding
     // last fold to build the training set at current round of toal of 10 rounds.
     else if ( i == foldData.getRow()-1)
     {
-     //   cout << "pass 61" << endl;
         samp = subMatrix(foldData,0,0,foldData.getRow()-2,foldData.getCol()-1);
     }
     // in this case i is anywhre between first and last fold number.
     else
     {
-      //  cout << "pass 7" << endl;
         // so first half of the fold from all fold above current fold
         Matrix first = subMatrix(foldData,0,0,i-1,foldData.getCol()-1);
         
@@ -1232,16 +722,14 @@ Matrix getTrainingData(Matrix &foldData, Matrix &glassData, int i )
     
     int row = 0;
     int row1 = -1;
-  //  cout << "samp: " << samp << endl;
     
-    // ge the count of row number without zero value of the sample from the current fold pass that needs to be
+    // ge the count of row number without -1 value of the sample from the current fold pass that needs to be
     // included in this validating set among the entire "fglass" data set
     for ( int i = 0; i < samp.getRow(); i++)
     {
         for (int j = 0; j < samp.getCol(); j++)
         {
             int n = samp(i,j);
-           // cout << "pass 8:" << samp(i,j) << endl;
             if ( n != -1)
             {
                 row++;
@@ -1251,8 +739,8 @@ Matrix getTrainingData(Matrix &foldData, Matrix &glassData, int i )
     
     Matrix ret(row, glassData.getCol());
     
-    // ge the row number without zero value of the sample from the current fold pass that needs to be
-    // included in this validating set among the entire "fglass" data set
+    // ge the row number without -1 value of the sample from the current fold pass that needs to be
+    // included in this validating set among the data set
     for ( int i = 0; i < samp.getRow(); i++)
     {
         for (int j =0; j < samp.getCol(); j++)
@@ -1263,7 +751,6 @@ Matrix getTrainingData(Matrix &foldData, Matrix &glassData, int i )
                 row1++;
                 
                 Matrix Samp1 = subMatrix(glassData,n,0,n,glassData.getCol()-1);
-              //  cout << "pass 9:" << n << endl;
                 
                 for ( int k = 0; k < Samp1.getCol(); k++  )
                 {
@@ -1272,14 +759,14 @@ Matrix getTrainingData(Matrix &foldData, Matrix &glassData, int i )
             }
         }
     }
-    //cout << "pass 10" << endl;
     return ret;
 }
 
+// this function implements the MPP for case 1, 2, and 3
+// with equal prior probability
 void RunMPPCase123 (Matrix &nXTr, int caseNum)
 {
-    //  cout << "data " << nXTr << endl;
-    int fea = 22;   // there are 9 features in this data set
+    int fea = 22;   // there are 22 features in this data set
     int sumCorrect = 0;
     int sumTotalCount = 0;
     double totalTime = 0.0;
@@ -1300,28 +787,25 @@ void RunMPPCase123 (Matrix &nXTr, int caseNum)
     {
         // current fold
         Matrix S = subMatrix(foldData, j,0,j,foldData.getCol()-1);
-        //cout << "pass 1" << endl;
+
         // build the validating set from the one fold just read
         Matrix test = getTestingData(S, nXTr);
-        // cout << "pass 2" << endl;
+
         // build the training set from leaving the current fold and including the rest of the
         // fold
         Matrix training = getTrainingData(foldData, nXTr, j );
-        // cout << "pass 3" << endl;
+
         // to hold class label for testing samples
         Matrix label (test.getRow(), 2);
         
         
-        int foldclass = 2; // there are 7 class category in this data set
+        int foldclass = 2;
         int CorrectCount = 0;
         
         // assign prior probability
         Matrix Pw(classes, 1);
         for (int i=0; i<classes; i++)
             Pw(i,0) = (float)1/classes;   // assuming equal prior probability
-        
-        // perform classification
-        //int j;
         
         
         // start timming the kNN classification completion for one fold
@@ -1334,16 +818,12 @@ void RunMPPCase123 (Matrix &nXTr, int caseNum)
         // with original Euclidean disable to find the class label of the sample
         for (int i = 0; i < test.getRow(); i++)
         {
-         //   cout << "come here" << endl;
             Matrix sample = transpose(subMatrix(test, i,0,i, test.getCol()-2));
             
-            //   cout << "pass 4" << endl;
             // call MPP to perform classification
             label(i,0) = test(i,test.getCol()-1);
             label(i,1) = mpp(training, sample, classes, caseNum , Pw);
-           // cout << "come here" << endl;
             
-            // label(i,0) = KNNClassifierEuclidianFold(training, sample, K, foldclass);
             
             labelTotal(labelrow, 0) = test(i,test.getCol()-1);
             labelTotal(labelrow, 1) = label(i,1);
@@ -1354,8 +834,7 @@ void RunMPPCase123 (Matrix &nXTr, int caseNum)
                 CorrectCount++;
             }
         }
-        // get the performance metrics for the classification tested
-       // DerivePerformanceMetric ( label, training, 3);
+
         
         sumCorrect = sumCorrect + CorrectCount;
         sumTotalCount = sumTotalCount + test.getRow();
@@ -1369,6 +848,7 @@ void RunMPPCase123 (Matrix &nXTr, int caseNum)
    if (caseNum == 1)
    {
     writeData(labelTotal, "labelTotalMPP1.dat");
+    // get the performance metrics for the classification tested
     DerivePerformanceMetric ( labelTotal, 1);
    }
     else if (caseNum == 2)
@@ -1388,20 +868,24 @@ void RunMPPCase123 (Matrix &nXTr, int caseNum)
     
     
 }
+
+// this function finds the optimal prior probability
+// to use for MPP case 1,2,3
 void FindOptimalPP( Matrix &nXTr)
 {
     double maxMPP = 0.0;
     double accuracy = 0.0;
     Matrix highPw(2,1);
     Matrix Pw(2, 1);
-    //  cout << "data " << nXTr << endl;
-    int fea = 22;   // there are 9 features in this data set
-    double sumError = 0;
+
+    int fea = 22;   // there are 22 features in this data set
+    double sumCorrect = 0;
     double sumTotalCount = 0;
     double totalTime = 0.0;
     double avg = 0.0;
     int sampFold = 20;
     int classes = 2;
+    
     // read in fold data
     Matrix foldData = readData("foldTen.dat", sampFold );
     
@@ -1414,74 +898,60 @@ void FindOptimalPP( Matrix &nXTr)
         Pw(1,0) = 1 - (Pw(0,0));
         
         
-        //CorrectCountMPP = 0;
+
         for (int i = 0; i < foldData.getRow(); i++ )
         {
             // current fold
             Matrix S = subMatrix(foldData, i,0,i,foldData.getCol()-1);
-            //cout << "pass 1" << endl;
+
             // build the validating set from the one fold just read
             Matrix test = getTestingData(S, nXTr);
-            // cout << "pass 2" << endl;
+
             // build the training set from leaving the current fold and including the rest of the
             // fold
             Matrix training = getTrainingData(foldData, nXTr, i );
-            // cout << "pass 3" << endl;
+
             // to hold class label for testing samples
             Matrix label (test.getRow(), 1);
             
             
-            int foldclass = 2; // there are 7 class category in this data set
-            double ErrorCount = 0;
+            int foldclass = 2;
+            double CorrectCount = 0;
             
-            
-            // perform classification
-            int j;
-            
-            
-            // start timming the kNN classification completion for one fold
+            // start timming the classification completion for one fold
             // of the validating set
             clock_t start = clock();
             
             
-            
-            // for each sample in the validating set use the kNN
-            // with original Euclidean disable to find the class label of the sample
+            // for each sample in the validating set use MPP
+            // to find the class label of the sample
             for (int i = 0; i < test.getRow(); i++)
             {
-                //cout << "come here" << endl;
                 Matrix sample = transpose(subMatrix(test, i,0,i, test.getCol()-2));
                 
-                //   cout << "pass 4" << endl;
                 // call MPP to perform classification
                 label(i,0) = mpp(training, sample, classes, 2, Pw);
-               // cout << "come here" << endl;
-                
-                // label(i,0) = KNNClassifierEuclidianFold(training, sample, K, foldclass);
                 
                 if (label(i,0) == test(i,test.getCol()-1))
                 {
-                    ErrorCount++;
+                    CorrectCount++;
                 }
             }
-            // get the performance metrics for the classification tested
-            // DerivePerformanceMetric ( label, training, 3);
             
-            
-            sumError = sumError + ErrorCount;
+            sumCorrect = sumCorrect + CorrectCount;
             sumTotalCount = sumTotalCount + test.getRow();
             
-            cout << "Error Rate: " << (((float) ErrorCount) / test.getRow())*100 << endl;
+            cout << "Correct Rate: " << (((float) CorrectCount) / test.getRow())*100 << endl;
             
             clock_t end = clock();
             totalTime = totalTime + (((double) (end-start)) / 1000000);
             cout << "Running Time: " << (double) (end-start)/ 1000000 << " seconds" << endl;
         }
-        //cout << "sunerror: " << sumError << endl;
-        //cout <<"sumtotal " << sumTotalCount << endl;
-        avg = (((float) sumError) / sumTotalCount)*100;
-        cout << "Average Error Rate: " << (((float) sumError) / sumTotalCount)*100 << endl;
-        cout << "Average Running Time: " << totalTime / 10 << " seconds" << endl;        //accuracy = ((float)CorrectCountMPP/nrTe) * 100;
+
+        avg = (((float) sumCorrect) / sumTotalCount)*100;
+        cout << "Average correct Rate: " << (((float) sumCorrect) / sumTotalCount)*100 << endl;
+        cout << "Average Running Time: " << totalTime / 10 << " seconds" << endl;
+        
         // keep track of max accuracy and corresponding prior probability found so far
         if( avg > maxMPP)
         {
@@ -1494,6 +964,9 @@ void FindOptimalPP( Matrix &nXTr)
     cout << "highest Pw found: " << highPw << endl;
     cout << "high accuracy found: " << maxMPP << endl;
 }
+
+// this function implements MPP case1,2,3 using optimal
+// prior probabiliy on PCA and FLD data
 void ClassifyBestPwPCAFLD(Matrix &nXTr)
 {
     // using optimal prior probability found from task before
@@ -1501,13 +974,8 @@ void ClassifyBestPwPCAFLD(Matrix &nXTr)
     Matrix Pw(2, 1);
     Pw(0,0) = 0.7;
     Pw(1,0) = 0.3;
-    //clock_t start = clock();
-    //clock_t end = clock();
-   // ClassificationWithBestPW ( tXTr, tXTe,Pw2, cases );
-   // clock_t end = clock();
-    
-    //  cout << "data " << nXTr << endl;
-    int fea = 22;   // there are 9 features in this data set
+
+    int fea = 22;   // there are 22 features in this data set
     int sumCorrect = 0;
     int sumTotalCount = 0;
     double totalTime = 0.0;
@@ -1523,45 +991,38 @@ void ClassifyBestPwPCAFLD(Matrix &nXTr)
     
     // read one row at a time from the 10 folds and assign the current row read as
     // fold for building validating set. Then assign rest of the current to use as
-    // training set using kNN classifier c;assify the validating set from training set
+    // training set using classifier classify the validating set from training set
     for (int j = 0; j < foldData.getRow(); j++ )
     {
         // current fold
         Matrix S = subMatrix(foldData, j,0,j,foldData.getCol()-1);
-        //cout << "pass 1" << endl;
+
         // build the validating set from the one fold just read
         Matrix test = getTestingData(S, nXTr);
-        // cout << "pass 2" << endl;
+
         // build the training set from leaving the current fold and including the rest of the
         // fold
         Matrix training = getTrainingData(foldData, nXTr, j );
-        // cout << "pass 3" << endl;
+
         // to hold class label for testing samples
         Matrix label (test.getRow(), 2);
         
-        
-        int foldclass = 2; // there are 7 class category in this data set
+        int foldclass = 2; // there are 2 class category in this data set
         int CorrectCount = 0;
         
         
-        // perform classification
-        //int j;
-        
-        
-        // start timming the kNN classification completion for one fold
+        // start timming the classification completion for one fold
         // of the validating set
         clock_t start = clock();
         
         
         
-        // for each sample in the validating set use the kNN
-        // with original Euclidean disable to find the class label of the sample
+        // for each sample in the validating set use the MPP
+        // to find the class label of the sample
         for (int i = 0; i < test.getRow(); i++)
         {
-          //  cout << "come here" << endl;
             Matrix sample = transpose(subMatrix(test, i,0,i, test.getCol()-2));
             
-            //   cout << "pass 4" << endl;
             // call MPP to perform classification
             label(i,0) = test(i,test.getCol()-1);
             label(i,1) = mpp(training, sample, classes, 2, Pw);
@@ -1569,20 +1030,11 @@ void ClassifyBestPwPCAFLD(Matrix &nXTr)
             labelTotal(labelrow, 1) = label(i,1);
             labelrow++;
 
-            //ClassificationWithBestPW ( tXTr, tXTe,Pw2, cases );
-            //label(i,0) = mpp(training, sample, classes, caseNum , Pw);
-          //  cout << "come here" << endl;
-            
-            // label(i,0) = KNNClassifierEuclidianFold(training, sample, K, foldclass);
-            
             if (label(i,1) == test(i,test.getCol()-1))
             {
                 CorrectCount++;
             }
         }
-        // get the performance metrics for the classification tested
-        // DerivePerformanceMetric ( label, training, 3);
-        
         
         sumCorrect = sumCorrect + CorrectCount;
         sumTotalCount = sumTotalCount + test.getRow();
@@ -1595,6 +1047,7 @@ void ClassifyBestPwPCAFLD(Matrix &nXTr)
     }
     if (nXTr.getCol() > 2)
     {
+        // get the performance metrics for the classification tested
         writeData(labelTotal, "labelTotalNormOptPP.dat");
         
         DerivePerformanceMetric ( labelTotal,4 ); // PCA
@@ -1602,7 +1055,7 @@ void ClassifyBestPwPCAFLD(Matrix &nXTr)
     else
     {
         writeData(labelTotal, "labelTotalNormOptPP.dat");
-        
+        // get the performance metrics for the classification tested
         DerivePerformanceMetric ( labelTotal,5 ); // FLD
     }
     
@@ -1610,16 +1063,13 @@ void ClassifyBestPwPCAFLD(Matrix &nXTr)
     cout << "Average Running Time: " << totalTime / 10 << " seconds" << endl;
 }
 
+// This method gets the points TPR and FPR for the
+// ROC curve drawing
 void GetROC(Matrix &nXTr)
 {
     Matrix Pw(2, 1);
-        //clock_t start = clock();
-    //clock_t end = clock();
-    // ClassificationWithBestPW ( tXTr, tXTe,Pw2, cases );
-    // clock_t end = clock();
-    
-    //  cout << "data " << nXTr << endl;
-    int fea = 22;   // there are 9 features in this data set
+
+    int fea = 22;   // there are 22 features in this data set
     int sumCorrect = 0;
     int sumTotalCount = 0;
     double totalTime = 0.0;
@@ -1632,7 +1082,7 @@ void GetROC(Matrix &nXTr)
     // read in fold data
     Matrix foldData = readData("foldTen.dat", sampFold );
 
-    // variy the prior probabity over the range 0 to 1 with increment of 0.1
+    // variy the prior probabity over the range 0 to 1 with increment of 0.05
     // and get the performance metric in each case for classification rule MAP applied
     for ( int k = 0; k < 21; k++)
     {
@@ -1640,89 +1090,45 @@ void GetROC(Matrix &nXTr)
         
         Pw(1,0) = 1 - (Pw(0,0));
         labelTotal.initMatrix(-1);
-        //labelTotal(numrow, 2);
+
         labelrow =0;
-       // clock_t start = clock();
-        //clock_t end = clock();
-        //ClassificationWithBestPW ( nXTr, nXTe, Pw2, cases );
-       // clock_t end = clock();
+
         // read one row at a time from the 10 folds and assign the current row read as
         // fold for building validating set. Then assign rest of the current to use as
-        // training set using kNN classifier c;assify the validating set from training set
+        // training set using classifier classify the validating set from training set
         for (int j = 0; j < foldData.getRow(); j++ )
         {
             // current fold
             Matrix S = subMatrix(foldData, j,0,j,foldData.getCol()-1);
-            //cout << "pass 1" << endl;
+
             // build the validating set from the one fold just read
             Matrix test = getTestingData(S, nXTr);
-            // cout << "pass 2" << endl;
+
             // build the training set from leaving the current fold and including the rest of the
             // fold
             Matrix training = getTrainingData(foldData, nXTr, j );
-            // cout << "pass 3" << endl;
+
             // to hold class label for testing samples
             Matrix label (test.getRow(), 2);
-            
             
             int foldclass = 2; // there are 2 class category in this data set
             int CorrectCount = 0;
             
-            
-            // perform classification
-           // int j;
-            
-            
-            // start timming the kNN classification completion for one fold
-            // of the validating set
-          //  clock_t start = clock();
-            
-            
-            
-            // for each sample in the validating set use the kNN
-            // with original Euclidean disable to find the class label of the sample
+            // for each sample in the validating set use the MPP
+            // to find the class label of the sample
             for (int i = 0; i < test.getRow(); i++)
             {
-              //  cout << "come here" << endl;
                 Matrix sample = transpose(subMatrix(test, i,0,i, test.getCol()-2));
-                
-                //   cout << "pass 4" << endl;
+
                 // call MPP to perform classification
                 label(i,0) = test(i,test.getCol()-1);
                 label(i,1) = mpp(training, sample, classes, 3 , Pw);
                 labelTotal(labelrow, 0) = label(i,0);
                 labelTotal(labelrow, 1) = label(i,1);
                 labelrow++;
-              //  ClassificationWithBestPW ( training, sample, Pw, 1 );
-                //ClassificationWithBestPW ( tXTr, tXTe,Pw2, cases );
-                //label(i,0) = mpp(training, sample, classes, caseNum , Pw);
-              //  cout << "come here" << endl;
-                
-                // label(i,0) = KNNClassifierEuclidianFold(training, sample, K, foldclass);
-                
-              //  if (label(i,0) == test(i,test.getCol()-1))
-              //  {
-              //      ErrorCount++;
-              //  }
             }
-            // get the performance metrics for the classification tested
-            
-            
-            
-           // sumError = sumError + ErrorCount;
-          //  sumTotalCount = sumTotalCount + test.getRow();
-            
-           // cout << "Error Rate: " << (((float) ErrorCount) / test.getRow())*100 << endl;
-            
-          //  clock_t end = clock();
-          //  totalTime = totalTime + (((double) (end-start)) / 1000000);
-         //   cout << "Running Time: " << (double) (end-start)/ 1000000 << " seconds" << endl;
         }
         
-        //cout << "sunerror: " << sumError << endl;
-       // cout <<"sumtotal " << sumTotalCount << endl;
-      //  cout << "Average Error Rate: " << (((float) sumError) / sumTotalCount)*100 << endl;
-      //  cout << "Average Running Time: " << totalTime / 10 << " seconds" << endl;
         cout << "PW0 is: " << Pw(0,0) << endl;
         cout << "PW1 is: " << Pw(0,1) << endl;
         DerivePerformanceMetricROC ( labelTotal);
@@ -1730,7 +1136,7 @@ void GetROC(Matrix &nXTr)
 }
 
 // this function calculates the performance metrics for the classification rule MAP used
-// on the each type of data set tested
+// on the each type of data set tested for the ROC curve
 void DerivePerformanceMetricROC ( Matrix & tested)
 {
     double Sensitivity;
@@ -1758,7 +1164,6 @@ void DerivePerformanceMetricROC ( Matrix & tested)
     FPR = 0.0;
     int row = tested.getRow();
     int col = tested.getCol();
-   // Matrix ConfusionMatrix (2,2);
     
     for (int i=0; i<row; i++) {
         if (tested(i,0) == tested(i,1))
@@ -1793,38 +1198,18 @@ void DerivePerformanceMetricROC ( Matrix & tested)
     Accuracy = ((double)((TP+TN)))/(TP+TN+FN+FP);
     FPR = ((double)(FP))/(FP+TN);
     TPR = ((double)(TP))/(TP+FN);
-    //ConfusionMatrix(0,0) = TP;
-   // ConfusionMatrix(0,1) = FN;
-   // ConfusionMatrix(1,0) = FP;
-   // ConfusionMatrix(1,1) = TN;
     
-   // string lb = "ConfusionMatrix" + to_string(datatype);
-    
-    //std::string str = "string";
-  //  const char *cstr = lb.c_str();
-    
-  //  writeData(ConfusionMatrix, cstr);
-   /*
-    cout << "The TP rate using " << datatype << " is " << TP << endl;
-    cout << "The TN rate using " << datatype << " is " << TN << endl;
-    cout << "The FP rate using " << datatype << " is " << FP << endl;
-    cout << "The FN rate using " << datatype << " is " << FN << endl;
-    cout << "The Sensitivity rate using " << datatype << " is " << Sensitivity << endl;
-    cout << "The Specificity rate using " << datatype << " is " << Specificity << endl;
-    cout << "The Precision rate using " << datatype << " is " << Precision << endl;
-    cout << "The Recall rate using " << datatype << " is " << Recall << endl;
-    cout << "The Accuracy rate using " << datatype << " is " << Accuracy << endl;
-   */
     cout << "The FPR rate is " << FPR << endl;
-   // cout << TPR << ",";
+
     cout << "The TPR rate is " << TPR << endl;
     
 }
 
+// this function performs the KNN classification with different
+// k values passed using full Euclidean distance metric
 void RunKNN (Matrix &nXTr, int caseNum)
 {
-    //  cout << "data " << nXTr << endl;
-    int fea = 22;   // there are 9 features in this data set
+    int fea = 22;   // there are 22 features in this data set
     int sumCorrect = 0;
     int sumTotalCount = 0;
     double totalTime = 0.0;
@@ -1845,46 +1230,36 @@ void RunKNN (Matrix &nXTr, int caseNum)
     {
         // current fold
         Matrix S = subMatrix(foldData, j,0,j,foldData.getCol()-1);
-        //cout << "pass 1" << endl;
+
         // build the validating set from the one fold just read
         Matrix test = getTestingData(S, nXTr);
-        // cout << "pass 2" << endl;
+
         // build the training set from leaving the current fold and including the rest of the
         // fold
         Matrix training = getTrainingData(foldData, nXTr, j );
-        // cout << "pass 3" << endl;
+
         // to hold class label for testing samples
         Matrix label (test.getRow(), 2);
         
         
-        int foldclass = 2; // there are 7 class category in this data set
+        int foldclass = 2; // there are 2 class category in this data set
         int CorrectCount = 0;
-        
-        
         
         // start timming the kNN classification completion for one fold
         // of the validating set
         clock_t start = clock();
         
-        
-        
         // for each sample in the validating set use the kNN
         // with original Euclidean disable to find the class label of the sample
         for (int i = 0; i < test.getRow(); i++)
         {
-            //   cout << "come here" << endl;
             Matrix sample = subMatrix(test, i,0,i, test.getCol()-2);
             
-               //cout << "pass 4" << endl;
             // call MPP to perform classification
             label(i,0) = test(i,test.getCol()-1);
-           // label(i,1) = mpp(training, sample, classes, caseNum , Pw);
+
             label(i,1) = KNNClassifierEuclidian(training, sample, caseNum);
 
-            // cout << "come here" << endl;
-            
-            // label(i,0) = KNNClassifierEuclidianFold(training, sample, K, foldclass);
-            
             labelTotal(labelrow, 0) = test(i,test.getCol()-1);
             labelTotal(labelrow, 1) = label(i,1);
             labelrow++;
@@ -1894,9 +1269,10 @@ void RunKNN (Matrix &nXTr, int caseNum)
                 CorrectCount++;
             }
         }
+        
         // get the performance metrics for the classification tested
-        // DerivePerformanceMetric ( label, training, 3);
-       // writeData(labelTotal, "labelKNN_NormData_K_1.dat");
+        
+        writeData(labelTotal, "labelKNN_NormData_K_1.dat");
       //  writeData(labelTotal, "labelKNN_PCAData_K_1.dat");
        // writeData(labelTotal, "labelKNN_FLDData_K_1.dat");
         
@@ -1927,40 +1303,28 @@ void RunKNN (Matrix &nXTr, int caseNum)
     cout << "Average Correct Rate: " << (((float) sumCorrect) / sumTotalCount)*100 << endl;
     cout << "Average Running Time: " << totalTime / 10 << " seconds" << endl;
     DerivePerformanceMetric ( labelTotal,caseNum );
-    /*
-    if(caseNum == 1)
-    {
-        DerivePerformanceMetric ( labelTotal, 6);
-    }
-    else if (caseNum == 5)
-    {
-        DerivePerformanceMetric ( labelTotal, 7);
-    }
-    else
-    {
-        DerivePerformanceMetric ( labelTotal,caseNum );
-    }
-     */
-    
 }
+
+// this function implements the K-means classifier
 void RunKmeansClustering(Matrix &XTr)
 {
     
-    int row;          // for rows in image matrix
-    int col;		  // for column in image matrix
+    int row;          // for rows in the matrix
+    int col;		  // for column in the matrix
     
     // number of clunters center to test with
-    // int numclusters = 256;
-     int numclusters = 128;
+    // we used only result from cluster = 2
+    // other values are used for just testing purpose
+    // int numclusters = 128;
     //int numclusters = 64;
    // int numclusters = 32;
-    //int numclusters = 2;
+    int numclusters = 2;
     row = XTr.getRow();
     col = XTr.getCol()-1;
     
     Matrix centers(numclusters, col);     // for random centroids to start with
     Matrix newcenters(numclusters, col);  // for updated centroids in case of WTA
-    // Matrix newData;
+
     Matrix clusterAssign(row, 1);         // assigned clusters to the test samples
     
     
@@ -2094,24 +1458,12 @@ void RunKmeansClustering(Matrix &XTr)
         
     
         Matrix FinalData(row,2);
-    /*
-        Matrix newData1(row,col);
-        // change the value of the data set to corresponding to the value
-        // of the assigned cluster centers that they belong to
-        for (int i=0; i < row; i++)
-        {
-            int r;
-            r = clusterAssign(i,0);
-            for (int j =0; j < col; j++ )
-            {
-                newData1(i,j) = centers(r, j);
-            }
-        }
-    */
     for ( int i=0; i< row; i++ )
     {
         int r;
         r = clusterAssign(i,0);
+        // store class label from assined cluster center
+        // for the cunfusion matrix
         FinalData(i,0) = XTr(i, XTr.getCol()-1);
         FinalData(i,1) = XTr(r, XTr.getCol()-1);
     }
@@ -2119,27 +1471,16 @@ void RunKmeansClustering(Matrix &XTr)
     writeData(FinalData, "LabelKMeansNorm128.dat");
     clock_t end = clock();
     cout << "Running Time: " << (double) (end-start)/ 1000000 << " seconds" << endl;
-        // writeData(newData1, "data32NewKM.tr");
-       // writeData(newData1, "data2NewKMNorm.dat");
-        //   writeData(newData1, "data128NewKM.tr");
-        //  writeData(newData1, "data256NewKM.tr");
-      //  writeData(XTr, "originalDataNorm.dat");
-        //  writeImage("figout32Kmean.ppm", newData1, nrow,  ncol);
-      //  writeImage("figout64Kmean.ppm", newData1, nrow,  ncol);
-        // writeImage("figout128Kmean.ppm", newData1, nrow,  ncol);
-        // writeImage("figout256Kmean.ppm", newData1, nrow,  ncol);
-    
-    
 }
 
+// this performs the WTA classification
 void RunWTAClustering(Matrix &XTr)
 {
     
-    int row;          // for rows in image matrix
-    int col;		  // for column in image matrix
+    int row;          // for rows in the matrix
+    int col;		  // for column in the matrix
     
     // number of clunters center to test with
-    // int numclusters = 256;
     // int numclusters = 128;
    // int numclusters = 64;
     int numclusters = 2;
@@ -2153,7 +1494,7 @@ void RunWTAClustering(Matrix &XTr)
     
     Matrix centers(numclusters, col);     // for random centroids to start with
     Matrix newcenters(numclusters, col);  // for updated centroids in case of WTA
-    // Matrix newData;
+
     Matrix clusterAssign(row, 1);         // assigned clusters to the test samples
     
     
@@ -2172,7 +1513,6 @@ void RunWTAClustering(Matrix &XTr)
         }
     }
     
-    //
     int done = 0;
     int epoc = 0;
     
@@ -2294,20 +1634,7 @@ void RunWTAClustering(Matrix &XTr)
             
         }
         Matrix FinalData(row,2);
-    /*
-        // change the value of the data set to corresponding to the value
-        // of the assigned cluster centers that they belong to
-        Matrix newData1(row,col);
-    
-        for (int i=0; i < row; i++)
-        {
-            int r;
-            r = clusterAssign(i,0);
-            for (int j =0; j < col; j++ )
-            {
-                newData1(i,j) = centers(r, j);
-            }
-        } */
+
         for ( int i=0; i< row; i++ )
         {
             int r;
@@ -2319,18 +1646,10 @@ void RunWTAClustering(Matrix &XTr)
       //  writeData(FinalData, "LabelWTANorm128.dat");
         clock_t end = clock();
         cout << "Running Time: " << (double) (end-start)/ 1000000 << " seconds" << endl;
-        //writeData(newData1, "data2NewWTANorm.dat");
-        //  writeData(newData1, "data64NewWTA.tr");
-        //   writeData(newData1, "data128NewWTA.tr");
-        //  writeData(newData1, "data256NewWTA.tr");
-       // writeData(XTr, "originalData.tr");
-      //  writeImage("figout32WTA.ppm", newData1, nrow,  ncol);
-        //  writeImage("figout64WTA.ppm", newData1, nrow,  ncol);
-        //     writeImage("figout128WTA.ppm", newData1, nrow,  ncol);
-        //  writeImage("figout256WTA.ppm", newData1, nrow,  ncol);
-    
 }
 
+// this performs the classifier fusion using
+// Naive Bayes
 void RunNaiveBayes()
 {
    // Matrix x1 = readData("ConfusionMatrix4", 2);
@@ -2348,6 +1667,7 @@ void RunNaiveBayes()
     double m3 = x2(1,0);
     double m4 = x2(1,1);
     
+    // get the probability
     x1(0,0) = ((double)n1)/ (n1+n2);
     x1(0,1) = ((double)n2)/ (n1+n2);
     x1(1,0) = ((double)n3)/ (n3+n4);
@@ -2359,6 +1679,8 @@ void RunNaiveBayes()
     x2(1,1) = m4/ (m3+m4);
 
     int j;
+    
+    // do the multiplication part
     for (int i=0; i<2; i++)
     {
       for (j=0; j<2; j++)
@@ -2383,6 +1705,8 @@ void RunNaiveBayes()
     
     int l1,l2;
     
+    // assign the label based on label with highest
+    // probability
     for(int i =0; i < row; i++)
     {
         l1 = y1(i,1);
@@ -2438,6 +1762,8 @@ void RunNaiveBayes()
     DerivePerformanceMetric(label, 1);
 }
 
+// this is used to make the labels from K-mean
+// corresponding to classifier using K-fold data
 void RunClusterLabel()
 {
      Matrix foldData = readData("foldTen.dat", 20 );
@@ -2458,10 +1784,7 @@ void RunClusterLabel()
             }
         }
     }
-    
     writeData(newLb, "NewLabelKmeanNorm2");
-    
-    
 }
 
 
